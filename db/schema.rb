@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730152033) do
+ActiveRecord::Schema.define(:version => 20120730223254) do
 
   create_table "refinery_citizens", :force => true do |t|
     t.string   "firstname"
@@ -132,6 +132,17 @@ ActiveRecord::Schema.define(:version => 20120730152033) do
   add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
   add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
 
+  create_table "refinery_politicians", :primary_key => "subject_id", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.text     "notes"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_politicians", ["firstname", "lastname"], :name => "index_refinery_politicians_on_firstname_and_lastname", :unique => true
+
   create_table "refinery_resources", :force => true do |t|
     t.string   "file_mime_type"
     t.string   "file_name"
@@ -193,5 +204,17 @@ ActiveRecord::Schema.define(:version => 20120730152033) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
+
+  create_table "subjects", :force => true do |t|
+    t.string   "contact_person", :null => false
+    t.string   "email",          :null => false
+    t.string   "phone"
+    t.string   "subtype",        :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "subjects", ["contact_person"], :name => "index_subjects_on_contact_person"
+  add_index "subjects", ["email"], :name => "index_subjects_on_email"
 
 end

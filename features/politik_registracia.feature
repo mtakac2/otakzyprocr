@@ -6,6 +6,7 @@ Požiadavka: Registrácia politika
     Pokiaľ je zaregistrovaný admin
 
   Scenár: Úspešná registrácia
-    Keď sa volič zaregistruje
-    Tak je prihlásený do systému
-    A vidí správu "Vaše registrace proběhla úspěšne."
+    Keď vytvorí nového politika
+    Tak vidí správu "was successfully added."
+    A vidí zoznam politikov
+    A vidí v ňom novovytvoreného politika

@@ -7,6 +7,8 @@ PATH
       refinerycms-core (~> 2.0.5)
     refinerycms-elections (1.0)
       refinerycms-core (~> 2.0.5)
+    refinerycms-politicians (1.0)
+      refinerycms-core (~> 2.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -32,6 +34,10 @@ GEM
       activesupport (= 3.2.7)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.4.0)
+      pg
+      rails
+      rake
     activeresource (3.2.7)
       activemodel (= 3.2.7)
       activesupport (= 3.2.7)
@@ -141,6 +147,9 @@ GEM
     method_source (0.8)
     mime-types (1.19)
     multi_json (1.3.6)
+    multiple_table_inheritance (0.2.1)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
     paper_trail (2.6.3)
@@ -279,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore
   bcrypt-ruby (= 3.0.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
@@ -290,6 +300,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   jquery-rails (= 2.0.2)
+  multiple_table_inheritance (~> 0.2.1)
   pg (= 0.14.0)
   pry
   rack-livereload
@@ -299,6 +310,7 @@ DEPENDENCIES
   refinerycms-counties!
   refinerycms-elections!
   refinerycms-i18n
+  refinerycms-politicians!
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   uglifier (= 1.2.6)

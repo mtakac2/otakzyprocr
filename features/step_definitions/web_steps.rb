@@ -104,3 +104,16 @@ end
 Tak /^vidí práve vytvorené voľby$/ do
   pending # express the regexp above with the code you wish you had
 end
+
+Keď /^vytvorí nového politika$/ do
+  click_link 'Politicians'
+  fill_in ''
+end
+
+Tak /^vidí zoznam politikov$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Tak /^vidí v ňom novovytvoreného politika$/ do
+  pending # express the regexp above with the code you wish you had
+end

@@ -16,3 +16,6 @@ Refinery::Counties::Engine.load_seed
 
 # Added by Refinery CMS Elections extension
 Refinery::Elections::Engine.load_seed
+
+# Added by Refinery CMS Politicians extension
+Refinery::Politicians::Engine.load_seed

@@ -29,10 +29,15 @@ group :test do
   gem 'factory_girl_rails'
 end
 
+
 gem 'jquery-rails',     '2.0.2'
 gem 'bcrypt-ruby',      '3.0.1'
+gem 'activerecord-postgres-hstore'
+gem 'multiple_table_inheritance', '~> 0.2.1'
+
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'
 gem 'refinerycms-citizens',  :path => 'vendor/extensions'
 gem 'refinerycms-counties',  :path => 'vendor/extensions'
 gem 'refinerycms-elections', :path => 'vendor/extensions'
+gem 'refinerycms-politicians', :path => 'vendor/extensions'
