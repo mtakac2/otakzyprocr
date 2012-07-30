@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @election.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @election.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Election Type</h1>
+    <p>
+      <%=raw @election.election_type_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Held</h1>
+    <p>
+      <%=raw @election.held %>
+    </p>
+  </section>
+  <section>
+    <h1>Notes</h1>
+    <p>
+      <%=raw @election.notes %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="elections">
+      <% @elections.each do |election| %>
+        <li>
+          <%= link_to election.title, refinery.elections_election_path(election) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

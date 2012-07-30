@@ -13,3 +13,6 @@ Refinery::Citizens::Engine.load_seed
 
 # Added by Refinery CMS Counties extension
 Refinery::Counties::Engine.load_seed
+
+# Added by Refinery CMS Elections extension
+Refinery::Elections::Engine.load_seed

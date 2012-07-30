@@ -4,6 +4,7 @@ module Refinery
   module Citizens
     class Citizen < Refinery::Core::BaseModel
       self.table_name = 'refinery_citizens'
+      belongs_to :county, :class_name => 'Refinery::Counties::County'
 
       has_secure_password
       

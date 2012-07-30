@@ -16,14 +16,6 @@ class CreateCitizensCitizens < ActiveRecord::Migration
 
     add_index :refinery_citizens, :email, :unique => true
     add_index :refinery_citizens, :password_digest    
-
-    # Create foreign key citizens_countys on citizen.county
-    # execute <<-SQL      
-    #  ALTER TABLE refinery_citizens
-    #  ADD CONSTRAINT fk_citizens_countys
-    #  FOREIGN KEY (county_id) REFERENCES countys;
-    # SQL
-
   end
 
   def down

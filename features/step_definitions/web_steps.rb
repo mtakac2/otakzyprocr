@@ -87,3 +87,20 @@ end
 Keď /^sa volič odhlási zo systému$/ do
   click_link 'Odhlásit se'
 end
+
+Keď /^admin vytvorí voľby typu "(.*?)"$/ do |election_type|
+  click_link 'Elections'
+  click_link 'Add New Election'
+  fill_in 'Election Type', :with => election_type
+  select '2012', :from => 'election_held_1i'
+  fill_in 'election_notes', :with => 'Lorem ipsum dolor sit amet...'
+  click_button 'Save'
+end
+
+Tak /^vidí zoznam všetkých volieb$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+Tak /^vidí práve vytvorené voľby$/ do
+  pending # express the regexp above with the code you wish you had
+end

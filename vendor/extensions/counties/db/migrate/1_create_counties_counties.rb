@@ -10,6 +10,12 @@ class CreateCountiesCounties < ActiveRecord::Migration
 
     add_index :refinery_counties, :name, :unique => true
 
+    # Create foreign key citizens_countys on citizens.county_id
+    execute <<-SQL      
+      ALTER TABLE refinery_citizens
+      ADD CONSTRAINT fk_citizens_countys
+      FOREIGN KEY (county_id) REFERENCES refinery_counties;
+    SQL
   end
 
   def down

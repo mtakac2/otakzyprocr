@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729122951) do
+ActiveRecord::Schema.define(:version => 20120730152033) do
 
   create_table "refinery_citizens", :force => true do |t|
     t.string   "firstname"
@@ -37,6 +37,26 @@ ActiveRecord::Schema.define(:version => 20120729122951) do
   end
 
   add_index "refinery_counties", ["name"], :name => "index_refinery_counties_on_name", :unique => true
+
+  create_table "refinery_election_types", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_election_types", ["name"], :name => "index_refinery_election_types_on_name", :unique => true
+
+  create_table "refinery_elections", :force => true do |t|
+    t.string   "title",            :null => false
+    t.integer  "election_type_id", :null => false
+    t.datetime "held",             :null => false
+    t.text     "notes"
+    t.integer  "position"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "refinery_elections", ["election_type_id", "held"], :name => "index_refinery_elections_on_election_type_id_and_held", :unique => true
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"

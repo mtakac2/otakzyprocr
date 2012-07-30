@@ -5,6 +5,8 @@ PATH
       refinerycms-core (~> 2.0.5)
     refinerycms-counties (1.0)
       refinerycms-core (~> 2.0.5)
+    refinerycms-elections (1.0)
+      refinerycms-core (~> 2.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -99,7 +101,7 @@ GEM
     factory_girl_rails (3.5.0)
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
-    ffi (1.1.1)
+    ffi (1.1.2)
     friendly_id (4.0.7)
     gherkin (2.11.1)
       json (>= 1.4.6)
@@ -295,6 +297,7 @@ DEPENDENCIES
   refinerycms (= 2.0.5)
   refinerycms-citizens!
   refinerycms-counties!
+  refinerycms-elections!
   refinerycms-i18n
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)

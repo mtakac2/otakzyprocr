@@ -1,0 +1,30 @@
+en:
+  refinery:
+    plugins:
+      elections:
+        title: Elections
+    elections:
+      admin:
+        elections:
+          actions:
+            create_new: Add New Election
+            reorder: Reorder Elections
+            reorder_done: Done Reordering Elections
+          records:
+            title: Elections
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Elections yet. Click "Add New Election" to add your first election.
+          election:
+            view_live_html: View this election live <br/><em>(opens in a new window)</em>
+            edit: Edit this election
+            delete: Remove this election forever
+      elections:
+        show:
+          other: Other Elections
+  activerecord:
+    attributes:
+      'refinery/elections/election':
+        title: Title
+        election_type_id: Election Type
+        held: Held
+        notes: Notes
