@@ -1,0 +1,53 @@
+<%= form_for [refinery, :citizens_admin, @citizen] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @citizen,
+              :include_object_name => true %>
+
+  
+  <div class='field'>
+    <%= f.label :firstname -%>
+    <%= f.text_field :firstname, :class => 'larger widest'  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :lastname -%>
+    <%= f.text_field :lastname  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= f.text_field :email  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :password_digest -%>
+    <%= f.text_field :password_digest  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :age -%>
+    <%= f.number_field :age  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :county -%>
+    <%= f.number_field :county  -%>
+
+  </div>
+  
+  <div class='field'>
+    <%= f.label :sex -%>
+    <%= f.text_field :sex  -%>
+
+  </div>
+  
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.citizens.admin.citizens.citizen'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @citizen.firstname) %>
+<% end -%>

@@ -1,0 +1,33 @@
+nb:
+  refinery:
+    plugins:
+      citizens:
+        title: Citizens
+    citizens:
+      admin:
+        citizens:
+          actions:
+            create_new: Lag en ny Citizen
+            reorder: Endre rekkefølgen på Citizens
+            reorder_done: Ferdig å endre rekkefølgen Citizens
+          records:
+            title: Citizens
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Citizens enda. Klikk på "Lag en ny Citizen" for å legge til din første citizen.
+          citizen:
+            view_live_html: Vis hvordan denne citizen ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne citizen
+            delete: Fjern denne citizen permanent
+      citizens:
+        show:
+          other: Andre Citizens
+  activerecord:
+    attributes:
+      'refinery/citizens/citizen':
+        firstname: Firstname
+        lastname: Lastname
+        email: Email
+        password_digest: Password Digest
+        age: Age
+        county: County
+        sex: Sex

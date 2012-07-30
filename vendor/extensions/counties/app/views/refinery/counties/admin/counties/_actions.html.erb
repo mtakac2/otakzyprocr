@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Counties::Admin::CountiesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.counties_admin_counties_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_counties_admin_county_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Counties::Admin::CountiesController.sortable? && ::Refinery::Counties::County.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Counties"),
+                 refinery.counties_admin_counties_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Counties"),
+                 refinery.counties_admin_counties_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

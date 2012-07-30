@@ -17,17 +17,21 @@ group :test, :development do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec'
   gem 'guard-cucumber'
+  gem 'rack-livereload'
   gem 'guard-livereload'
+  gem 'pry'
 end
 
 group :test do
   gem 'capybara',         '1.1.2'
   gem 'cucumber-rails',   '1.2.1'
   gem 'database_cleaner', '0.8.0'
-  gem 'factory_girl',     '3.6.0'
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails',     '2.0.2'
 gem 'bcrypt-ruby',      '3.0.1'
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'
+gem 'refinerycms-citizens', :path => 'vendor/extensions'
+gem 'refinerycms-counties', :path => 'vendor/extensions'

@@ -1,4 +1,7 @@
-Otazkyprocr::Application.routes.draw do
+Otazkyprocr::Application.routes.draw do  
+
+  resources :citizens
+  resources :sessions
 
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.

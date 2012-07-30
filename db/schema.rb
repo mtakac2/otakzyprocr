@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120728224643) do
+ActiveRecord::Schema.define(:version => 20120729122951) do
+
+  create_table "refinery_citizens", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email",           :null => false
+    t.string   "password_digest", :null => false
+    t.integer  "age",             :null => false
+    t.integer  "county_id",       :null => false
+    t.string   "sex",             :null => false
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "refinery_citizens", ["email"], :name => "index_refinery_citizens_on_email", :unique => true
+  add_index "refinery_citizens", ["password_digest"], :name => "index_refinery_citizens_on_password_digest"
+
+  create_table "refinery_counties", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_counties", ["name"], :name => "index_refinery_counties_on_name", :unique => true
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"

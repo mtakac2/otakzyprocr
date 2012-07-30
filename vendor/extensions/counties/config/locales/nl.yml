@@ -1,0 +1,27 @@
+nl:
+  refinery:
+    plugins:
+      counties:
+        title: Counties
+    counties:
+      admin:
+        counties:
+          actions:
+            create_new: Maak een nieuwe County
+            reorder: Wijzig de volgorde van de Counties
+            reorder_done: Klaar met het wijzingen van de volgorde van de Counties
+          records:
+            title: Counties
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Counties. Druk op 'Maak een nieuwe County' om de eerste aan te maken.
+          county:
+            view_live_html: Bekijk deze county op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze county
+            delete: Verwijder deze county voor eeuwig
+      counties:
+        show:
+          other: Andere Counties
+  activerecord:
+    attributes:
+      'refinery/counties/county':
+        name: Name

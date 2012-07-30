@@ -1,0 +1,18 @@
+<%= form_for @citizen do |f| %>
+  <% if @citizen.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @citizen.errors.each do |key, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>  
+
+  <%= render "form_#{@citizen.current_step}", :f => f %>
+
+  <div class="actions">
+    <%= f.submit 'Registrovat se' %>
+  </div>
+<% end %>
