@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      parties:
+        title: Parties
+#        article: masculino/femenino
+    parties:
+      admin:
+        parties:
+          actions:
+            create_new: Crear nuevo party
+            reorder: Reordenar parties
+            reorder_done: Reordenación de parties completada
+          records:
+            title: Parties
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay parties todavía. Pulsa en "Crear nuevo Party" para crear tu primer party.
+          party:
+            view_live_html: Ver este party como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este party
+            delete: Borrar este party para siempre
+      parties:
+        show:
+          other: Otros parties
+  activerecord:
+    attributes:
+      'refinery/parties/party':
+        name: Name
+        parliament_leaders: Parliament Leaders
+        senate_candidates: Senate Candidates
+        county_leaders: County Leaders

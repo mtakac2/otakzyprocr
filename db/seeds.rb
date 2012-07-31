@@ -19,3 +19,6 @@ Refinery::Elections::Engine.load_seed
 
 # Added by Refinery CMS Politicians extension
 Refinery::Politicians::Engine.load_seed
+
+# Added by Refinery CMS Parties extension
+Refinery::Parties::Engine.load_seed

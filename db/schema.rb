@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730223254) do
+ActiveRecord::Schema.define(:version => 20120731125544) do
 
   create_table "refinery_citizens", :force => true do |t|
     t.string   "firstname"
@@ -132,6 +132,18 @@ ActiveRecord::Schema.define(:version => 20120730223254) do
   add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
   add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
 
+  create_table "refinery_parties", :primary_key => "subject_id", :force => true do |t|
+    t.string   "name",               :null => false
+    t.text     "parliament_leaders"
+    t.text     "senate_candidates"
+    t.text     "county_leaders"
+    t.integer  "position"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "refinery_parties", ["name"], :name => "index_refinery_parties_on_name", :unique => true
+
   create_table "refinery_politicians", :primary_key => "subject_id", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -212,9 +224,11 @@ ActiveRecord::Schema.define(:version => 20120730223254) do
     t.string   "subtype",        :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.hstore   "properties"
   end
 
   add_index "subjects", ["contact_person"], :name => "index_subjects_on_contact_person"
   add_index "subjects", ["email"], :name => "index_subjects_on_email"
+  add_index "subjects", ["properties"], :name => "subjects_properties"
 
 end

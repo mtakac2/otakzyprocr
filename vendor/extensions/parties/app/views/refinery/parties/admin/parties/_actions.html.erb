@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Parties::Admin::PartiesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.parties_admin_parties_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_parties_admin_party_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Parties::Admin::PartiesController.sortable? && ::Refinery::Parties::Party.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Parties"),
+                 refinery.parties_admin_parties_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Parties"),
+                 refinery.parties_admin_parties_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

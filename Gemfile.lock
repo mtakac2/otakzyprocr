@@ -7,6 +7,8 @@ PATH
       refinerycms-core (~> 2.0.5)
     refinerycms-elections (1.0)
       refinerycms-core (~> 2.0.5)
+    refinerycms-parties (1.0)
+      refinerycms-core (~> 2.0.5)
     refinerycms-politicians (1.0)
       refinerycms-core (~> 2.0.5)
 
@@ -310,6 +312,7 @@ DEPENDENCIES
   refinerycms-counties!
   refinerycms-elections!
   refinerycms-i18n
+  refinerycms-parties!
   refinerycms-politicians!
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
