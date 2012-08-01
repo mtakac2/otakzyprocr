@@ -11,26 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120730121814) do
-
-  create_table "refinery_citizens", :force => true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
-    t.integer  "age",             :null => false
-    t.integer  "county_id",       :null => false
-    t.string   "sex",             :null => false
-    t.integer  "position"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  add_index "refinery_citizens", ["email"], :name => "index_refinery_citizens_on_email", :unique => true
-  add_index "refinery_citizens", ["password_digest"], :name => "index_refinery_citizens_on_password_digest"
+ActiveRecord::Schema.define(:version => 20120801113717) do
 
   create_table "refinery_counties", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -173,5 +157,17 @@ ActiveRecord::Schema.define(:version => 20120730121814) do
 
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
+
+  create_table "users", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email",           :null => false
+    t.string   "password_digest", :null => false
+    t.string   "subtype",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

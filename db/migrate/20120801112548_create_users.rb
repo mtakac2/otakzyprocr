@@ -8,8 +8,12 @@ class CreateUsers < ActiveRecord::Migration
       t.string :subtype, :null => false
 
       t.timestamps
-    up
+    end
+
+    add_index :users, :email, :unique => true
   end
 
-  add_index :users, :email, :unique => true
+  def down
+    drop_table :users
+  end
 end

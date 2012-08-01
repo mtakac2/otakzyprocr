@@ -10,7 +10,7 @@
     <%= current_user.email %>
     <%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %>
   <% else %>
-    <%= link_to 'Registrovat se', main_app.new_citizen_path %>
+    <%= link_to 'Registrovat se', main_app.new_user_path %>
     <%= link_to 'Přihlásit se', main_app.new_session_path %>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 Otazkyprocr::Application.routes.draw do  
 
-  resources :citizens
+  resources :users
   resources :sessions
 
   # This line mounts Refinery's routes at the root of your application.

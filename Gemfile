@@ -37,3 +37,4 @@ gem 'multiple_table_inheritance', '~> 0.2.1'
 
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'
+gem 'refinerycms-counties', :path => 'vendor/extensions'
