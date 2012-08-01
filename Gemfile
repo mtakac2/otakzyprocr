@@ -37,8 +37,3 @@ gem 'multiple_table_inheritance', '~> 0.2.1'
 
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'
-gem 'refinerycms-citizens',  :path => 'vendor/extensions'
-gem 'refinerycms-counties',  :path => 'vendor/extensions'
-gem 'refinerycms-elections', :path => 'vendor/extensions'
-gem 'refinerycms-politicians', :path => 'vendor/extensions'
-gem 'refinerycms-parties', :path => 'vendor/extensions'
