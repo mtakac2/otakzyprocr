@@ -1,0 +1,93 @@
+<% content_for :body_content_title do %>
+  <%= @citizen.firstname %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Firstname</h1>
+    <p>
+      <%=raw @citizen.firstname %>
+    </p>
+  </section>
+  <section>
+    <h1>Lastname</h1>
+    <p>
+      <%=raw @citizen.lastname %>
+    </p>
+  </section>
+  <section>
+    <h1>String</h1>
+    <p>
+      <%=raw @citizen.string %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @citizen.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Password Hash</h1>
+    <p>
+      <%=raw @citizen.password_hash %>
+    </p>
+  </section>
+  <section>
+    <h1>Street</h1>
+    <p>
+      <%=raw @citizen.street %>
+    </p>
+  </section>
+  <section>
+    <h1>Street Number</h1>
+    <p>
+      <%=raw @citizen.street_number %>
+    </p>
+  </section>
+  <section>
+    <h1>Postal Code</h1>
+    <p>
+      <%=raw @citizen.postal_code %>
+    </p>
+  </section>
+  <section>
+    <h1>City</h1>
+    <p>
+      <%=raw @citizen.city %>
+    </p>
+  </section>
+  <section>
+    <h1>County</h1>
+    <p>
+      <%=raw @citizen.county_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Gender</h1>
+    <p>
+      <%=raw @citizen.gender %>
+    </p>
+  </section>
+  <section>
+    <h1>Age</h1>
+    <p>
+      <%=raw @citizen.age %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="citizens">
+      <% @citizens.each do |citizen| %>
+        <li>
+          <%= link_to citizen.firstname, refinery.citizens_citizen_path(citizen) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

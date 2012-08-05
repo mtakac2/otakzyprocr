@@ -1,0 +1,38 @@
+nl:
+  refinery:
+    plugins:
+      citizens:
+        title: Citizens
+    citizens:
+      admin:
+        citizens:
+          actions:
+            create_new: Maak een nieuwe Citizen
+            reorder: Wijzig de volgorde van de Citizens
+            reorder_done: Klaar met het wijzingen van de volgorde van de Citizens
+          records:
+            title: Citizens
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Citizens. Druk op 'Maak een nieuwe Citizen' om de eerste aan te maken.
+          citizen:
+            view_live_html: Bekijk deze citizen op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze citizen
+            delete: Verwijder deze citizen voor eeuwig
+      citizens:
+        show:
+          other: Andere Citizens
+  activerecord:
+    attributes:
+      'refinery/citizens/citizen':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        county_id: County
+        gender: Gender
+        age: Age

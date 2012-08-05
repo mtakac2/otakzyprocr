@@ -1,0 +1,29 @@
+nb:
+  refinery:
+    plugins:
+      elections:
+        title: Elections
+    elections:
+      admin:
+        elections:
+          actions:
+            create_new: Lag en ny Election
+            reorder: Endre rekkefølgen på Elections
+            reorder_done: Ferdig å endre rekkefølgen Elections
+          records:
+            title: Elections
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Elections enda. Klikk på "Lag en ny Election" for å legge til din første election.
+          election:
+            view_live_html: Vis hvordan denne election ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne election
+            delete: Fjern denne election permanent
+      elections:
+        show:
+          other: Andre Elections
+  activerecord:
+    attributes:
+      'refinery/elections/election':
+        election_type_id: Election Type
+        held: Held
+        description: Description

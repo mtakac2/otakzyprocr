@@ -1,0 +1,37 @@
+es:
+  refinery:
+    plugins:
+      keepers:
+        title: Keepers
+#        article: masculino/femenino
+    keepers:
+      admin:
+        keepers:
+          actions:
+            create_new: Crear nuevo keeper
+            reorder: Reordenar keepers
+            reorder_done: Reordenación de keepers completada
+          records:
+            title: Keepers
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay keepers todavía. Pulsa en "Crear nuevo Keeper" para crear tu primer keeper.
+          keeper:
+            view_live_html: Ver este keeper como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este keeper
+            delete: Borrar este keeper para siempre
+      keepers:
+        show:
+          other: Otros keepers
+  activerecord:
+    attributes:
+      'refinery/keepers/keeper':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        phone: Phone

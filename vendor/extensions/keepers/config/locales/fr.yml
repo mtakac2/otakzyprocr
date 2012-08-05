@@ -1,0 +1,36 @@
+fr:
+  refinery:
+    plugins:
+      keepers:
+        title: Keepers
+    keepers:
+      admin:
+        keepers:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Keeper
+            reorder: Réordonner les Keepers
+            reorder_done: Fin de réordonnancement des Keepers
+          records:
+            title: Keepers
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Keeper. Cliquer sur "Créer un(e) nouve(au/l/lle) Keeper" pour créer votre premi(er/ère) keeper.'
+          keeper:
+            view_live_html: Voir ce(t/tte) keeper <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) keeper
+            delete: Supprimer définitivement ce(t/tte) keeper
+      keepers:
+        show:
+          other: Autres Keepers
+  activerecord:
+    attributes:
+      'refinery/keepers/keeper':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        phone: Phone

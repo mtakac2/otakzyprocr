@@ -1,0 +1,36 @@
+nb:
+  refinery:
+    plugins:
+      keepers:
+        title: Keepers
+    keepers:
+      admin:
+        keepers:
+          actions:
+            create_new: Lag en ny Keeper
+            reorder: Endre rekkefølgen på Keepers
+            reorder_done: Ferdig å endre rekkefølgen Keepers
+          records:
+            title: Keepers
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Keepers enda. Klikk på "Lag en ny Keeper" for å legge til din første keeper.
+          keeper:
+            view_live_html: Vis hvordan denne keeper ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne keeper
+            delete: Fjern denne keeper permanent
+      keepers:
+        show:
+          other: Andre Keepers
+  activerecord:
+    attributes:
+      'refinery/keepers/keeper':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        phone: Phone

@@ -1,0 +1,39 @@
+es:
+  refinery:
+    plugins:
+      citizens:
+        title: Citizens
+#        article: masculino/femenino
+    citizens:
+      admin:
+        citizens:
+          actions:
+            create_new: Crear nuevo citizen
+            reorder: Reordenar citizens
+            reorder_done: Reordenación de citizens completada
+          records:
+            title: Citizens
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay citizens todavía. Pulsa en "Crear nuevo Citizen" para crear tu primer citizen.
+          citizen:
+            view_live_html: Ver este citizen como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este citizen
+            delete: Borrar este citizen para siempre
+      citizens:
+        show:
+          other: Otros citizens
+  activerecord:
+    attributes:
+      'refinery/citizens/citizen':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        county_id: County
+        gender: Gender
+        age: Age

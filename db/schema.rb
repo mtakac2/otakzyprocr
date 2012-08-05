@@ -11,7 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801113717) do
+ActiveRecord::Schema.define(:version => 20120802121758) do
+
+  create_table "election_subject_elections", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "election_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "refinery_citizens", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email",           :null => false
+    t.string   "password_digest", :null => false
+    t.string   "street"
+    t.integer  "street_number"
+    t.string   "postal_code"
+    t.string   "city"
+    t.integer  "county_id",       :null => false
+    t.string   "gender",          :null => false
+    t.integer  "age",             :null => false
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "refinery_citizens", ["county_id"], :name => "index_refinery_citizens_on_county_id"
+  add_index "refinery_citizens", ["email"], :name => "index_refinery_citizens_on_email", :unique => true
 
   create_table "refinery_counties", :force => true do |t|
     t.string   "name",       :null => false
@@ -21,6 +48,26 @@ ActiveRecord::Schema.define(:version => 20120801113717) do
   end
 
   add_index "refinery_counties", ["name"], :name => "index_refinery_counties_on_name", :unique => true
+
+  create_table "refinery_election_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_election_types", ["name"], :name => "index_refinery_election_types_on_name", :unique => true
+
+  create_table "refinery_elections", :force => true do |t|
+    t.integer  "election_type_id", :null => false
+    t.date     "held",             :null => false
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "refinery_elections", ["election_type_id", "held"], :name => "index_refinery_elections_on_election_type_id_and_held", :unique => true
+  add_index "refinery_elections", ["election_type_id"], :name => "index_refinery_elections_on_election_type_id"
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
@@ -33,6 +80,23 @@ ActiveRecord::Schema.define(:version => 20120801113717) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "refinery_keepers", :force => true do |t|
+    t.string   "firstname",       :null => false
+    t.string   "lastname",        :null => false
+    t.string   "email",           :null => false
+    t.string   "password_digest", :null => false
+    t.string   "street"
+    t.integer  "street_number"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "phone"
+    t.integer  "position"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "refinery_keepers", ["email"], :name => "index_refinery_keepers_on_email", :unique => true
 
   create_table "refinery_page_part_translations", :force => true do |t|
     t.integer  "refinery_page_part_id"
@@ -96,6 +160,28 @@ ActiveRecord::Schema.define(:version => 20120801113717) do
   add_index "refinery_pages", ["parent_id"], :name => "index_refinery_pages_on_parent_id"
   add_index "refinery_pages", ["rgt"], :name => "index_refinery_pages_on_rgt"
 
+  create_table "refinery_parties", :primary_key => "subject_id", :force => true do |t|
+    t.string   "name",                  :null => false
+    t.text     "parliament_candidates"
+    t.text     "senat_candidates"
+    t.text     "county_leaders"
+    t.integer  "position"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
+
+  add_index "refinery_parties", ["name"], :name => "index_refinery_parties_on_name", :unique => true
+
+  create_table "refinery_politicians", :primary_key => "subject_id", :force => true do |t|
+    t.string   "firstname",  :null => false
+    t.string   "lastname",   :null => false
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_politicians", ["firstname", "lastname"], :name => "index_refinery_politicians_on_firstname_and_lastname", :unique => true
+
   create_table "refinery_resources", :force => true do |t|
     t.string   "file_mime_type"
     t.string   "file_name"
@@ -158,16 +244,13 @@ ActiveRecord::Schema.define(:version => 20120801113717) do
   add_index "seo_meta", ["id"], :name => "index_seo_meta_on_id"
   add_index "seo_meta", ["seo_meta_id", "seo_meta_type"], :name => "index_seo_meta_on_seo_meta_id_and_seo_meta_type"
 
-  create_table "users", :force => true do |t|
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
-    t.string   "subtype",         :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "subjects", :force => true do |t|
+    t.integer  "keeper_id",  :null => false
+    t.string   "subtype",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "subjects", ["keeper_id"], :name => "index_subjects_on_keeper_id"
 
 end

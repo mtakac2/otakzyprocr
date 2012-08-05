@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      parties:
+        title: Parties
+    parties:
+      admin:
+        parties:
+          actions:
+            create_new: Lag en ny Party
+            reorder: Endre rekkefølgen på Parties
+            reorder_done: Ferdig å endre rekkefølgen Parties
+          records:
+            title: Parties
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Parties enda. Klikk på "Lag en ny Party" for å legge til din første party.
+          party:
+            view_live_html: Vis hvordan denne party ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne party
+            delete: Fjern denne party permanent
+      parties:
+        show:
+          other: Andre Parties
+  activerecord:
+    attributes:
+      'refinery/parties/party':
+        name: Name
+        parliament_candidates: Parliament Candidates
+        senat_candidates: Senat Candidates
+        county_leaders: County Leaders

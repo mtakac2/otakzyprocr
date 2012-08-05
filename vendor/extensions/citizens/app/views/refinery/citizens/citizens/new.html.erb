@@ -1,0 +1,18 @@
+<%= form_for @citizen, :url => refinery.citizens_citizens_path do |f| %>
+  <% if @citizen.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% @citizen.errors.each do |key, msg| %>
+          <li><%= key %> <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>  
+
+  <%= render "form_#{@citizen.current_step}", :f => f %>
+
+  <div class="actions">
+    <%= f.submit 'Registrovat se' %>
+  </div>
+<% end %>

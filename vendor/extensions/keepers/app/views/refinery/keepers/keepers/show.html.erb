@@ -1,0 +1,81 @@
+<% content_for :body_content_title do %>
+  <%= @keeper.firstname %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Firstname</h1>
+    <p>
+      <%=raw @keeper.firstname %>
+    </p>
+  </section>
+  <section>
+    <h1>Lastname</h1>
+    <p>
+      <%=raw @keeper.lastname %>
+    </p>
+  </section>
+  <section>
+    <h1>String</h1>
+    <p>
+      <%=raw @keeper.string %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @keeper.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Password Hash</h1>
+    <p>
+      <%=raw @keeper.password_hash %>
+    </p>
+  </section>
+  <section>
+    <h1>Street</h1>
+    <p>
+      <%=raw @keeper.street %>
+    </p>
+  </section>
+  <section>
+    <h1>Street Number</h1>
+    <p>
+      <%=raw @keeper.street_number %>
+    </p>
+  </section>
+  <section>
+    <h1>Postal Code</h1>
+    <p>
+      <%=raw @keeper.postal_code %>
+    </p>
+  </section>
+  <section>
+    <h1>City</h1>
+    <p>
+      <%=raw @keeper.city %>
+    </p>
+  </section>
+  <section>
+    <h1>Phone</h1>
+    <p>
+      <%=raw @keeper.phone %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="keepers">
+      <% @keepers.each do |keeper| %>
+        <li>
+          <%= link_to keeper.firstname, refinery.keepers_keeper_path(keeper) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

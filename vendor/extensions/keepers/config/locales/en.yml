@@ -1,0 +1,36 @@
+en:
+  refinery:
+    plugins:
+      keepers:
+        title: Keepers
+    keepers:
+      admin:
+        keepers:
+          actions:
+            create_new: Add New Keeper
+            reorder: Reorder Keepers
+            reorder_done: Done Reordering Keepers
+          records:
+            title: Keepers
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Keepers yet. Click "Add New Keeper" to add your first keeper.
+          keeper:
+            view_live_html: View this keeper live <br/><em>(opens in a new window)</em>
+            edit: Edit this keeper
+            delete: Remove this keeper forever
+      keepers:
+        show:
+          other: Other Keepers
+  activerecord:
+    attributes:
+      'refinery/keepers/keeper':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        phone: Phone

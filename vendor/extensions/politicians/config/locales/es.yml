@@ -1,0 +1,29 @@
+es:
+  refinery:
+    plugins:
+      politicians:
+        title: Politicians
+#        article: masculino/femenino
+    politicians:
+      admin:
+        politicians:
+          actions:
+            create_new: Crear nuevo politician
+            reorder: Reordenar politicians
+            reorder_done: Reordenación de politicians completada
+          records:
+            title: Politicians
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay politicians todavía. Pulsa en "Crear nuevo Politician" para crear tu primer politician.
+          politician:
+            view_live_html: Ver este politician como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este politician
+            delete: Borrar este politician para siempre
+      politicians:
+        show:
+          other: Otros politicians
+  activerecord:
+    attributes:
+      'refinery/politicians/politician':
+        firstname: Firstname
+        lastname: Lastname

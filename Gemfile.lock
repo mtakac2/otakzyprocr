@@ -1,7 +1,17 @@
 PATH
   remote: vendor/extensions
   specs:
+    refinerycms-citizens (1.0)
+      refinerycms-core (~> 2.0.5)
     refinerycms-counties (1.0)
+      refinerycms-core (~> 2.0.5)
+    refinerycms-elections (1.0)
+      refinerycms-core (~> 2.0.5)
+    refinerycms-keepers (1.0)
+      refinerycms-core (~> 2.0.5)
+    refinerycms-parties (1.0)
+      refinerycms-core (~> 2.0.5)
+    refinerycms-politicians (1.0)
       refinerycms-core (~> 2.0.5)
 
 GEM
@@ -300,8 +310,13 @@ DEPENDENCIES
   rack-livereload
   rails (= 3.2.7)
   refinerycms (= 2.0.5)
+  refinerycms-citizens!
   refinerycms-counties!
+  refinerycms-elections!
   refinerycms-i18n
+  refinerycms-keepers!
+  refinerycms-parties!
+  refinerycms-politicians!
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   uglifier (= 1.2.6)

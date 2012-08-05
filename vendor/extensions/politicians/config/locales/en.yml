@@ -1,0 +1,28 @@
+en:
+  refinery:
+    plugins:
+      politicians:
+        title: Politicians
+    politicians:
+      admin:
+        politicians:
+          actions:
+            create_new: Add New Politician
+            reorder: Reorder Politicians
+            reorder_done: Done Reordering Politicians
+          records:
+            title: Politicians
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Politicians yet. Click "Add New Politician" to add your first politician.
+          politician:
+            view_live_html: View this politician live <br/><em>(opens in a new window)</em>
+            edit: Edit this politician
+            delete: Remove this politician forever
+      politicians:
+        show:
+          other: Other Politicians
+  activerecord:
+    attributes:
+      'refinery/politicians/politician':
+        firstname: Firstname
+        lastname: Lastname

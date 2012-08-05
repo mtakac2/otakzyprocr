@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   private
 
     def current_user
-      @current_user ||= Refinery::Citizens::Citizen.find(session[:user_id]) if session[:user_id]
+      if session[:user_type] == 'Refinery::Citizens::Citizen'
+        @current_user ||= Refinery::Citizens::Citizen.find(session[:user_id]) if session[:user_id]
+      end
+
+      if session[:user_type] == 'Refinery::Keepers::Keeper'
+        @current_user ||= Refinery::Keepers::Keeper.find(session[:user_id]) if session[:user_id]
+      end
     end
     helper_method :current_user
 end

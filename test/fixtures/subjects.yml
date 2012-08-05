@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: MyString
+  keeper_id: 1
+  subtype: MyString
 
 two:
-  email: MyString
+  keeper_id: 1
+  subtype: MyString

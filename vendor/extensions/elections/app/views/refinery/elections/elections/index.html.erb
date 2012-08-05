@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="elections">
+    <% @elections.each do |election| %>
+      <li>
+        <%= link_to election, refinery.elections_election_path(election) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

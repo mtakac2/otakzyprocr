@@ -1,0 +1,30 @@
+es:
+  refinery:
+    plugins:
+      elections:
+        title: Elections
+#        article: masculino/femenino
+    elections:
+      admin:
+        elections:
+          actions:
+            create_new: Crear nuevo election
+            reorder: Reordenar elections
+            reorder_done: Reordenación de elections completada
+          records:
+            title: Elections
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay elections todavía. Pulsa en "Crear nuevo Election" para crear tu primer election.
+          election:
+            view_live_html: Ver este election como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este election
+            delete: Borrar este election para siempre
+      elections:
+        show:
+          other: Otros elections
+  activerecord:
+    attributes:
+      'refinery/elections/election':
+        election_type_id: Election Type
+        held: Held
+        description: Description

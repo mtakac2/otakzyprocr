@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="parties">
+    <% @parties.each do |party| %>
+      <li>
+        <%= link_to party.name, refinery.parties_party_path(party) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

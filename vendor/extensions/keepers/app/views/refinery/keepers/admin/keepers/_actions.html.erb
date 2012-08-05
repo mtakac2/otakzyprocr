@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Keepers::Admin::KeepersController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.keepers_admin_keepers_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_keepers_admin_keeper_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Keepers::Admin::KeepersController.sortable? && ::Refinery::Keepers::Keeper.any? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Keepers"),
+                 refinery.keepers_admin_keepers_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Keepers"),
+                 refinery.keepers_admin_keepers_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,28 @@
+nb:
+  refinery:
+    plugins:
+      politicians:
+        title: Politicians
+    politicians:
+      admin:
+        politicians:
+          actions:
+            create_new: Lag en ny Politician
+            reorder: Endre rekkefølgen på Politicians
+            reorder_done: Ferdig å endre rekkefølgen Politicians
+          records:
+            title: Politicians
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Politicians enda. Klikk på "Lag en ny Politician" for å legge til din første politician.
+          politician:
+            view_live_html: Vis hvordan denne politician ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne politician
+            delete: Fjern denne politician permanent
+      politicians:
+        show:
+          other: Andre Politicians
+  activerecord:
+    attributes:
+      'refinery/politicians/politician':
+        firstname: Firstname
+        lastname: Lastname

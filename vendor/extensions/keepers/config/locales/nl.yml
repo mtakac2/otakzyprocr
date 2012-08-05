@@ -1,0 +1,36 @@
+nl:
+  refinery:
+    plugins:
+      keepers:
+        title: Keepers
+    keepers:
+      admin:
+        keepers:
+          actions:
+            create_new: Maak een nieuwe Keeper
+            reorder: Wijzig de volgorde van de Keepers
+            reorder_done: Klaar met het wijzingen van de volgorde van de Keepers
+          records:
+            title: Keepers
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Keepers. Druk op 'Maak een nieuwe Keeper' om de eerste aan te maken.
+          keeper:
+            view_live_html: Bekijk deze keeper op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze keeper
+            delete: Verwijder deze keeper voor eeuwig
+      keepers:
+        show:
+          other: Andere Keepers
+  activerecord:
+    attributes:
+      'refinery/keepers/keeper':
+        firstname: Firstname
+        lastname: Lastname
+        string: String
+        email: Email
+        password_hash: Password Hash
+        street: Street
+        street_number: Street Number
+        postal_code: Postal Code
+        city: City
+        phone: Phone

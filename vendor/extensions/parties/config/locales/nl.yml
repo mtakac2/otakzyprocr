@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      parties:
+        title: Parties
+    parties:
+      admin:
+        parties:
+          actions:
+            create_new: Maak een nieuwe Party
+            reorder: Wijzig de volgorde van de Parties
+            reorder_done: Klaar met het wijzingen van de volgorde van de Parties
+          records:
+            title: Parties
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Parties. Druk op 'Maak een nieuwe Party' om de eerste aan te maken.
+          party:
+            view_live_html: Bekijk deze party op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze party
+            delete: Verwijder deze party voor eeuwig
+      parties:
+        show:
+          other: Andere Parties
+  activerecord:
+    attributes:
+      'refinery/parties/party':
+        name: Name
+        parliament_candidates: Parliament Candidates
+        senat_candidates: Senat Candidates
+        county_leaders: County Leaders

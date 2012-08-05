@@ -1,0 +1,83 @@
+<%= form_tag 'new', :method => :get %>
+  <%= hidden_field_tag 'subject', 'politician' %>
+  <div class="actions">
+    <%= submit_tag 'Add politician' %>
+  </div>
+</form>
+
+<%= form_tag 'new', :method => :get %>
+  <div class="actions">
+    <%= hidden_field_tag 'subject', 'party' %>
+    <%= submit_tag 'Add party' %>
+  </div>
+</form>
+
+<%= form_for [refinery, :keepers_admin, @keeper] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @keeper,
+              :include_object_name => true %>
+
+  <% if @subject == 'politician' %>
+    <%= render 'form_politician' %>
+  <% end %>
+  <% if @subject == 'party' %>
+    <%= render 'form_party' %>
+  <% end %>
+
+  <h2>Keeper info</h2>
+  
+  <div class='field'>
+    <%= f.label :firstname -%>
+    <%= f.text_field :firstname, :class => 'larger widest'  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :lastname -%>
+    <%= f.text_field :lastname  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :email -%>
+    <%= f.text_field :email  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :password -%>
+    <%= f.password_field :password  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password_confirmation -%>
+    <%= f.password_field :password_confirmation  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :street -%>
+    <%= f.text_field :street  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :street_number -%>
+    <%= f.number_field :street_number  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :postal_code -%>
+    <%= f.text_field :postal_code  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :city -%>
+    <%= f.text_field :city  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :phone -%>
+    <%= f.text_field :phone  -%>
+  </div>  
+  
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.keepers.admin.keepers.keeper'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @keeper.firstname) %>
+<% end -%>

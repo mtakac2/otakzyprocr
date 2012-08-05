@@ -1,0 +1,16 @@
+<h2>Politician</h2>
+
+<div class="field">
+  <%= label_tag 'politician_firstname', 'Candidate firstname' %>
+  <%= text_field_tag 'politician[firstname]' %>
+</div>
+
+<div class="field">
+  <%= label_tag 'politician_lastname', 'Candidate lastname' %>
+  <%= text_field_tag 'politician[lastname]' %>
+</div>
+
+<div class="select">
+  <%= label_tag 'election_subject_election', 'Volby' %>
+  <%= select 'election_subject_election', 'election_id', @elections.collect{ |e| [e.election_type.name, e.id] } %>
+</div>
