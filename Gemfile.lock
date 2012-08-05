@@ -74,6 +74,9 @@ GEM
       execjs
     coffee-script-source (1.3.3)
     columnize (0.3.6)
+    css_parser (1.2.6)
+      addressable
+      rdoc
     cucumber (1.2.1)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -138,6 +141,10 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.7.4)
+    launchy (2.1.1)
+      addressable (~> 2.3)
+    letter_opener (0.0.2)
+      launchy
     libwebsocket (0.1.5)
       addressable
     listen (0.4.7)
@@ -239,6 +246,11 @@ GEM
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
       refinerycms-core (= 2.0.5)
+    roadie (2.3.2)
+      actionmailer (> 3.0.0, < 3.3.0)
+      css_parser
+      nokogiri (>= 1.4.4)
+      sprockets
     routing-filter (0.3.1)
       actionpack
     rspec (2.11.0)
@@ -304,6 +316,7 @@ DEPENDENCIES
   guard-livereload
   guard-rspec
   jquery-rails (= 2.0.2)
+  letter_opener
   multiple_table_inheritance (~> 0.2.1)
   pg (= 0.14.0)
   pry
@@ -317,6 +330,7 @@ DEPENDENCIES
   refinerycms-keepers!
   refinerycms-parties!
   refinerycms-politicians!
+  roadie
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   uglifier (= 1.2.6)

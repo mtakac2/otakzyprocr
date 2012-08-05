@@ -6,6 +6,7 @@ gem 'pg',         '0.14.0'
 
 group :development do
   gem 'debugger',     '1.2.0'
+  gem 'letter_opener'
 end
 
 group :assets do  
@@ -34,6 +35,7 @@ gem 'jquery-rails',     '2.0.2'
 gem 'bcrypt-ruby',      '3.0.1'
 gem 'activerecord-postgres-hstore'
 gem 'multiple_table_inheritance', '~> 0.2.1'
+gem 'roadie'
 
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'

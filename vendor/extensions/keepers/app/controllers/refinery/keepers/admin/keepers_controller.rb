@@ -32,6 +32,7 @@ module Refinery
             @election_subject_election.subject_id = subject_id
             @election_subject_election.save
 
+            KeepersMailer.registration(@keeper).deliver
             redirect_to  refinery.keepers_admin_keepers_path, :notice => "'#{@keeper.email}' was successfully added."
           else
             render 'new'
