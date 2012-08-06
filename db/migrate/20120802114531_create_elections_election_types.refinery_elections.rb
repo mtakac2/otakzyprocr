@@ -21,7 +21,9 @@ class CreateElectionsElectionTypes < ActiveRecord::Migration
       ::Refinery::Page.delete_all({:link_url => "/elections/elections"})
     end
 
-    drop_table :refinery_election_types
+    execute <<-SQL
+      DROP TABLE refinery_election_types CASCADE
+    SQL
 
   end
 
