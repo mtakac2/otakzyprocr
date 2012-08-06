@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @question.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @question.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Content</h1>
+    <p>
+      <%=raw @question.content %>
+    </p>
+  </section>
+  <section>
+    <h1>Election</h1>
+    <p>
+      <%=raw @question.election_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Subject</h1>
+    <p>
+      <%=raw @question.subject_id %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="questions">
+      <% @questions.each do |question| %>
+        <li>
+          <%= link_to question.title, refinery.questions_question_path(question) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

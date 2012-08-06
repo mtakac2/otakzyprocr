@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802121758) do
+ActiveRecord::Schema.define(:version => 20120805204655) do
 
   create_table "election_subject_elections", :force => true do |t|
     t.integer  "subject_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120802121758) do
     t.integer  "position"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "activation_code"
   end
 
   add_index "refinery_keepers", ["email"], :name => "index_refinery_keepers_on_email", :unique => true
@@ -181,6 +182,18 @@ ActiveRecord::Schema.define(:version => 20120802121758) do
   end
 
   add_index "refinery_politicians", ["firstname", "lastname"], :name => "index_refinery_politicians_on_firstname_and_lastname", :unique => true
+
+  create_table "refinery_questions", :force => true do |t|
+    t.string   "title",       :null => false
+    t.text     "content",     :null => false
+    t.integer  "election_id"
+    t.integer  "subject_id"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "refinery_questions", ["title"], :name => "index_refinery_questions_on_title", :unique => true
 
   create_table "refinery_resources", :force => true do |t|
     t.string   "file_mime_type"

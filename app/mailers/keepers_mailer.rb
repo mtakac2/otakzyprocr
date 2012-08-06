@@ -6,8 +6,9 @@ class KeepersMailer < ActionMailer::Base
   #
   #   en.keepers_mailer.registration.subject
   #
-  def registration(keeper)
-    @keeper = keeper    
+  def registration(keeper, password)
+    @keeper = keeper
+    @password = password
 
     mail(to: @keeper.email, subject: 'Registration') do |format|
       format.html

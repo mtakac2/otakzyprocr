@@ -1,0 +1,30 @@
+nl:
+  refinery:
+    plugins:
+      questions:
+        title: Questions
+    questions:
+      admin:
+        questions:
+          actions:
+            create_new: Maak een nieuwe Question
+            reorder: Wijzig de volgorde van de Questions
+            reorder_done: Klaar met het wijzingen van de volgorde van de Questions
+          records:
+            title: Questions
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Questions. Druk op 'Maak een nieuwe Question' om de eerste aan te maken.
+          question:
+            view_live_html: Bekijk deze question op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze question
+            delete: Verwijder deze question voor eeuwig
+      questions:
+        show:
+          other: Andere Questions
+  activerecord:
+    attributes:
+      'refinery/questions/question':
+        title: Title
+        content: Content
+        election_id: Election
+        subject_id: Subject

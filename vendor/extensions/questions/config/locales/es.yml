@@ -1,0 +1,31 @@
+es:
+  refinery:
+    plugins:
+      questions:
+        title: Questions
+#        article: masculino/femenino
+    questions:
+      admin:
+        questions:
+          actions:
+            create_new: Crear nuevo question
+            reorder: Reordenar questions
+            reorder_done: Reordenación de questions completada
+          records:
+            title: Questions
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay questions todavía. Pulsa en "Crear nuevo Question" para crear tu primer question.
+          question:
+            view_live_html: Ver este question como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este question
+            delete: Borrar este question para siempre
+      questions:
+        show:
+          other: Otros questions
+  activerecord:
+    attributes:
+      'refinery/questions/question':
+        title: Title
+        content: Content
+        election_id: Election
+        subject_id: Subject

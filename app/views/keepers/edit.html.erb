@@ -1,0 +1,68 @@
+<%= form_for @keeper do |f| %>
+  <fieldset>
+    <legend>Váš účet</legend>    
+
+    <div class="field">
+      <%= f.label :email, 'Email' %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :old_password, 'Staré heslo' %>
+      <%= f.password_field :old_password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, 'Nové heslo' %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, 'Potvrzení hesla' %>
+      <%= f.password_field :password_confirmation %>
+    </div>    
+  </fieldset>
+
+  <fieldset>
+    <legend>Osobní údaje</legend>
+
+    <div class="field">
+      <%= f.label :firstname, 'Jméno' %>
+      <%= f.text_field :firstname %>
+    </div>
+
+    <div class="field">
+      <%= f.label :lastname, 'Příjmení' %>
+      <%= f.text_field :lastname %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone, 'Telefón' %>
+      <%= f.text_field :phone %>
+    </div>
+
+    <div class="field">
+      <%= f.label :street, 'Ulice' %>
+      <%= f.text_field :street %>
+    </div>
+
+    <div class="field">
+      <%= f.label :street_number, 'Číslo' %>
+      <%= f.number_field :street_number %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postal_code, 'PSČ' %>
+      <%= f.text_field :postal_code %>
+    </div>
+
+    <div class="field">
+      <%= f.label :city, 'Město' %>
+      <%= f.text_field :city %>
+    </div>    
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>  
+<% end %>

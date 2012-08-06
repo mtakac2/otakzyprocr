@@ -25,3 +25,6 @@ Refinery::Parties::Engine.load_seed
 
 # Added by Refinery CMS Elections extension
 Refinery::Elections::Engine.load_seed
+
+# Added by Refinery CMS Questions extension
+Refinery::Questions::Engine.load_seed

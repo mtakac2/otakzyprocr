@@ -1,6 +1,22 @@
 Otazkyprocr::Application.routes.draw do  
   
+  get "questions/index"
+
+  get "questions/show"
+
+  get "questions/edit"
+
   resources :sessions
+  resources :keepers do
+    resources :politicians do
+      resources :questions
+    end
+    resources :parties do 
+      resources :questions
+    end
+  end  
+  
+  match 'keepers/activate/:activation_code' => 'keepers#activate'
 
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
@@ -8,6 +24,8 @@ Otazkyprocr::Application.routes.draw do
   #
   # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
   mount Refinery::Core::Engine, :at => '/'
+  resources :politicians
+  resources :parties
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

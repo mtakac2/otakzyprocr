@@ -1,0 +1,15 @@
+<%= form_for @politician do |f| %>
+  <div class="field">
+    <%= f.label :firstname, 'Jmeno' %>
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname, 'Jmeno' %>
+    <%= f.text_field :lastname %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

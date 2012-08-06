@@ -14,7 +14,7 @@ module Refinery
         end
 
         def create
-          @keeper = Keeper.new(params[:keeper])                              
+          @keeper = Keeper.new(params[:keeper])                                   
 
           if @keeper.save            
 
@@ -32,7 +32,9 @@ module Refinery
             @election_subject_election.subject_id = subject_id
             @election_subject_election.save
 
-            KeepersMailer.registration(@keeper).deliver
+            password = @keeper.password
+
+            KeepersMailer.registration(@keeper, password).deliver
             redirect_to  refinery.keepers_admin_keepers_path, :notice => "'#{@keeper.email}' was successfully added."
           else
             render 'new'
@@ -52,7 +54,7 @@ module Refinery
             @party.keeper_id = @keeper.id
             @party.save                            
           end
-      end      
+      end
     end
   end
 end

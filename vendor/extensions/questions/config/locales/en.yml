@@ -1,0 +1,30 @@
+en:
+  refinery:
+    plugins:
+      questions:
+        title: Questions
+    questions:
+      admin:
+        questions:
+          actions:
+            create_new: Add New Question
+            reorder: Reorder Questions
+            reorder_done: Done Reordering Questions
+          records:
+            title: Questions
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Questions yet. Click "Add New Question" to add your first question.
+          question:
+            view_live_html: View this question live <br/><em>(opens in a new window)</em>
+            edit: Edit this question
+            delete: Remove this question forever
+      questions:
+        show:
+          other: Other Questions
+  activerecord:
+    attributes:
+      'refinery/questions/question':
+        title: Title
+        content: Content
+        election_id: Election
+        subject_id: Subject

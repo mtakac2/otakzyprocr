@@ -13,6 +13,8 @@ PATH
       refinerycms-core (~> 2.0.5)
     refinerycms-politicians (1.0)
       refinerycms-core (~> 2.0.5)
+    refinerycms-questions (1.0)
+      refinerycms-core (~> 2.0.5)
 
 GEM
   remote: https://rubygems.org/
@@ -330,6 +332,7 @@ DEPENDENCIES
   refinerycms-keepers!
   refinerycms-parties!
   refinerycms-politicians!
+  refinerycms-questions!
   roadie
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)

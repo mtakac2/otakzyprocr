@@ -1,0 +1,29 @@
+<h1>Muj ucet</h1>
+
+<%= link_to 'Upravit', main_app.edit_keeper_path(@keeper) %>
+
+<h2>Politici</h2>
+<ul>
+<% @politicians.each do |politician| %>
+  <li>
+    <%= link_to politician.firstname, edit_keeper_politician_path(@keeper, politician) %>
+    <%= politician.elections.last.election_type.name %>
+    <%= link_to 'Pridat otazku', main_app.new_keeper_politician_questions_path(@keeper, politician) %>
+    <ul>
+      <% politician.questions.each do |question| %>
+        <li>
+          <b><%= question.title %></b><br>
+          <span><%= question.content %></span>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<h2>Strany</h2>
+<ul>
+<% @parties.each do |party| %>
+  <li><%= party.name %></li>
+<% end %>
+</ul>

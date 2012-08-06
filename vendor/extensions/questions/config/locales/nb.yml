@@ -1,0 +1,30 @@
+nb:
+  refinery:
+    plugins:
+      questions:
+        title: Questions
+    questions:
+      admin:
+        questions:
+          actions:
+            create_new: Lag en ny Question
+            reorder: Endre rekkefølgen på Questions
+            reorder_done: Ferdig å endre rekkefølgen Questions
+          records:
+            title: Questions
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Questions enda. Klikk på "Lag en ny Question" for å legge til din første question.
+          question:
+            view_live_html: Vis hvordan denne question ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne question
+            delete: Fjern denne question permanent
+      questions:
+        show:
+          other: Andre Questions
+  activerecord:
+    attributes:
+      'refinery/questions/question':
+        title: Title
+        content: Content
+        election_id: Election
+        subject_id: Subject

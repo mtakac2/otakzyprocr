@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>RailsCasts Weekly</title>
+  <title>Registrace</title>
   <style type="text/css">
   body, td { color:#000000; font-size:14px; font-family:Verdana,Helvetica,Arial; }
   .divider { background-color:#555555; height:2px; }
@@ -31,11 +31,11 @@
             <a href="#"><img src="http://railscasts.com/assets/episodes/stills/310-getting-started-with-rails.png" width="200" height="125" alt="#310 Getting Started with Rails"></a>
           </td>
           <td valign="top">
-            <h2>#310 Getting Started with Rails</h2>
-            <p>Learning Ruby on Rails can be overwhelming, especially if you are new to programming. Here I will take you on a tour through various resources to help get started with Rails.</p>
+            <h2>Vítejte</h2>
+            <p>Lorem ipsum dolor sit amet...</p>
+            <p>Vaše heslo je <%= @password %></p>
             <p>
-              <a href="#">Watch Episode</a>
-              <span class="duration">(7 minutes)</span>
+              <%= link_to 'Aktivovat účet', "#{refinery.root_url}keepers/activate/#{@keeper.activation_code}" %>
             </p>
           </td>
         </tr>
@@ -43,9 +43,8 @@
           <td class="divider" colspan="2" bgcolor="#555555" height="2"></td>
         </tr>
         <tr>
-          <td id="footer" colspan="2" align="center">
-            <p><a href="#">Unsubscribe</a> if you do not wish to receive these emails in the future.</p>
-            <p>&copy;2011 RailsCasts</p>
+          <td id="footer" colspan="2" align="center">            
+            <p>&copy;2012 Otázky pro ČR</p>
           </td>
         </tr>
       </table>
