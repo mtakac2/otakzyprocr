@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  keeper_id: 1
-  subtype: MyString
-
-two:
-  keeper_id: 1
-  subtype: MyString
