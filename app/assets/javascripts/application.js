@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require bootstrap-collapse
+//= require bootstrap-alert
 //= require_tree .
+$(".alert").alert()

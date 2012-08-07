@@ -59,6 +59,7 @@ GEM
       activerecord (>= 3.0.0)
     babosa (0.3.7)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.0.4.0)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -310,6 +311,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgres-hstore
   bcrypt-ruby (= 3.0.1)
+  bootstrap-sass (~> 2.0.4.0)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   cucumber-rails (= 1.2.1)

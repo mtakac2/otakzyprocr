@@ -1,16 +1,4 @@
-<h1 id='logo'>
-  <%= link_to 'Strategické otázky pro Českou Republiku', refinery.root_path %>
-</h1>
 <%= render(:partial => "/refinery/menu", :locals => {
              :dom_id => 'menu',
              :css => 'menu'
            }) %>
-<div id="user-panel">
-  <% if current_user %>
-    <%= current_user.email %>
-    <%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %>
-  <% else %>
-    <%= link_to 'Registrovat se', refinery.new_citizens_citizen_path %>
-    <%= link_to 'Přihlásit se', main_app.new_session_path %>
-  <% end %>
-</div>

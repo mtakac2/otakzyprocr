@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_type] = user.class.name
       redirect_to '/', :notice => 'Logged in!'
     else
-      flash.now.alert = "Zadali ste nesprávný email alebo heslo"
+      flash.now[:error] = "Zadali ste nesprávný email nebo heslo,"
       render 'new'
     end
   end

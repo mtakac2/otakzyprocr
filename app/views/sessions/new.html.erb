@@ -1,14 +1,18 @@
-<%= form_tag sessions_path do %>
+<%= form_tag sessions_path, :class => 'well', :id => 'loginForm' do %>
+  <legend>Přihlášení</legend>
   <div class="field">
     <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+    <%= text_field_tag :email, params[:email], :autofocus => :autofocus %>
   </div>
 
   <div class="field">
     <%= label_tag :password, 'Heslo' %>
     <%= password_field_tag :password, params[:password] %>
   </div>
+
+  <span class="help-block "><a href="#">Zapomněli ste své heslo?</a> | <a href="#">Registrovat se</a></span>
+
   <div class="actions">
-    <%= submit_tag "Přihlásit se" %>
+    <%= submit_tag "Přihlásit se", :class => 'btn btn-primary' %>
   </div>
 <% end %>

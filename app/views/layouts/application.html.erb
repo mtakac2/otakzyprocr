@@ -1,26 +1,101 @@
 <!DOCTYPE html>
 <%= render '/refinery/html_tag' %>
-  <% site_bar = render('/refinery/site_bar', :head => true) -%>
-  <%= render '/refinery/head' %>
+  <% site_bar = render('/refinery/site_bar', :head => true) -%>  
+  <%= render '/refinery/head' %>        
+
   <body>
-    <%= site_bar -%>    
+    <%= site_bar -%>
     <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <div id="page_container">
-      <header id="header">
-        <%= render '/refinery/header' -%>         
-      </header>
-      <section id="page">
-        <% if flash.any? %>
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, :id => "flash_#{name}" %>
-          <% end %>
-        <% end %>
-        <%= yield %>
+    <div class="container" id="wrapper">
+    <header>
+      <div class="container" id="header">
+        <div class="row">
+          <div class="span3">            
+            <a href="#"><%= image_tag 'logo.png' %></a>
+          </div>
+          <div class="span9" id="topmenu">              
+            <ul id="nav-links">
+              <% if current_user %>
+                <%= current_user.email %>
+                <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
+              <% else %>
+                <li><%= link_to 'Registrovat se', refinery.new_citizens_citizen_path %></li>
+                <li><%= link_to 'Přihlásit se', main_app.new_session_path %></li>
+              <% end %>
+            </ul>
+            <h1 id='logo'>
+              <%= link_to 'Strategické otázky pro Českou Republiku', refinery.root_path %>
+            </h1>          
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </a>
+            <div class="nav-wrap">
+                  <div class="nav-collapse" id="example-one">
+                    <%= render '/refinery/header' -%>
+                  </div><!-- /.nav-collapse -->
+            </div>
+            </div><!-- /.container -->
+        </div><!-- /.navbar-inner -->
+      </div><!-- /.navbar --> 
+    </header>
+
+    <% if flash.any? %>
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <a class="close" data-dismiss="alert" href="#">×</a>
+          <strong><%= msg %></strong>
+        </div>        
+      <% end %>
+    <% end %>
+
+    <section id="page">                            
+
+      <section class="" id="primary_content">
+        <div class="container">
+          <div class="row">
+            <div class="span4">
+              <div class="content_holder">
+              <!--  <form class=".form-vertical" method="" action="">
+                  </form>
+              -->
+                    
+                <h3>Lorem ipsum</h3>
+                <ul>
+                  <li>Lorem</li>
+                  <li>Lorem</li>
+                  <li>Lorem</li>
+                  <li>Lorem</li>
+                </ul>
+                <h3>Lorem ipsum</h3>
+                <p>Nam tristique justo tortor. Vestibulum facilisis erat in mi vestibulum sagittis. Etiam vitae sem quis nisl volutpat pharetra. Donec ac dui urna, eu venenatis augue. Maecenas tortor augue, vestibulum quis porttitor eu, lobortis et metus. Nam sodales lectus at tellus molestie convallis. Sed egestas, augue in dignissim molestie</p>                  
+              </div>
+
+            </div>
+
+            <div class="span8">
+              <div class="content_holder">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <footer>
-        <%= render '/refinery/footer' -%>
-      </footer>
-    </div>
-    <%= render '/refinery/javascripts' %>
+    </section>                  
+  </div>
+
+  <footer>
+    <%= render '/refinery/footer' -%>          
+  </footer>
+
+  <%= render '/refinery/javascripts' %>
   </body>
 </html>
