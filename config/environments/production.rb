@@ -70,7 +70,7 @@ Otazkyprocr::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
     :authentication => :plain,    
-    :domain => "safe-ocean-7053.herokuapp.com",
+    :domain         => "safe-ocean-7053.herokuapp.com",
     :port           => ENV['MAILGUN_SMTP_PORT'], 
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
