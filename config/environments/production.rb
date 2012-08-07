@@ -76,5 +76,5 @@ Otazkyprocr::Application.configure do
     :user_name => "postmaster@my-mailgun-domain.com",
     :password => "my-password"
   }
-  config.action_mailer.default_url_options = { host: 'http://safe-ocean-7053.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'safe-ocean-7053.herokuapp.com' }
 end
