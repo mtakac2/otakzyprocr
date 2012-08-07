@@ -1,0 +1,28 @@
+nb:
+  refinery:
+    plugins:
+      emails:
+        title: Emails
+    emails:
+      admin:
+        emails:
+          actions:
+            create_new: Lag en ny Email
+            reorder: Endre rekkefølgen på Emails
+            reorder_done: Ferdig å endre rekkefølgen Emails
+          records:
+            title: Emails
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Emails enda. Klikk på "Lag en ny Email" for å legge til din første email.
+          email:
+            view_live_html: Vis hvordan denne email ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne email
+            delete: Fjern denne email permanent
+      emails:
+        show:
+          other: Andre Emails
+  activerecord:
+    attributes:
+      'refinery/emails/email':
+        title: Title
+        content: Content

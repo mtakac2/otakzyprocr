@@ -1,0 +1,28 @@
+nl:
+  refinery:
+    plugins:
+      emails:
+        title: Emails
+    emails:
+      admin:
+        emails:
+          actions:
+            create_new: Maak een nieuwe Email
+            reorder: Wijzig de volgorde van de Emails
+            reorder_done: Klaar met het wijzingen van de volgorde van de Emails
+          records:
+            title: Emails
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Emails. Druk op 'Maak een nieuwe Email' om de eerste aan te maken.
+          email:
+            view_live_html: Bekijk deze email op de website <br/><em>(opent een nieuw venster)</em>
+            edit: Bewerk deze email
+            delete: Verwijder deze email voor eeuwig
+      emails:
+        show:
+          other: Andere Emails
+  activerecord:
+    attributes:
+      'refinery/emails/email':
+        title: Title
+        content: Content

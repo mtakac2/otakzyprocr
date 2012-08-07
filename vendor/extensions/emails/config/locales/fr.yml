@@ -1,0 +1,28 @@
+fr:
+  refinery:
+    plugins:
+      emails:
+        title: Emails
+    emails:
+      admin:
+        emails:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Email
+            reorder: Réordonner les Emails
+            reorder_done: Fin de réordonnancement des Emails
+          records:
+            title: Emails
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Email. Cliquer sur "Créer un(e) nouve(au/l/lle) Email" pour créer votre premi(er/ère) email.'
+          email:
+            view_live_html: Voir ce(t/tte) email <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) email
+            delete: Supprimer définitivement ce(t/tte) email
+      emails:
+        show:
+          other: Autres Emails
+  activerecord:
+    attributes:
+      'refinery/emails/email':
+        title: Title
+        content: Content

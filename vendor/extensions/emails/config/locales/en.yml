@@ -1,0 +1,28 @@
+en:
+  refinery:
+    plugins:
+      emails:
+        title: Emails
+    emails:
+      admin:
+        emails:
+          actions:
+            create_new: Add New Email
+            reorder: Reorder Emails
+            reorder_done: Done Reordering Emails
+          records:
+            title: Emails
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Emails yet. Click "Add New Email" to add your first email.
+          email:
+            view_live_html: View this email live <br/><em>(opens in a new window)</em>
+            edit: Edit this email
+            delete: Remove this email forever
+      emails:
+        show:
+          other: Other Emails
+  activerecord:
+    attributes:
+      'refinery/emails/email':
+        title: Title
+        content: Content

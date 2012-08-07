@@ -7,6 +7,7 @@ class KeepersMailer < ActionMailer::Base
   #   en.keepers_mailer.registration.subject
   #
   def registration(keeper, password)
+    @email = Refinery::Emails::Email.find_by_for('keepers_registration')
     @keeper = keeper
     @password = password
 
