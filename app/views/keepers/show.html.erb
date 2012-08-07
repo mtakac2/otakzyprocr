@@ -8,7 +8,7 @@
   <li>
     <%= link_to politician.firstname, edit_keeper_politician_path(@keeper, politician) %>
     <%= politician.elections.last.election_type.name %>
-    <%= link_to 'Pridat otazku', main_app.new_keeper_politician_questions_path(@keeper, politician) %>
+    <%= link_to 'Pridat otazku', main_app.new_keeper_politician_question_path(@keeper, politician) %>
     <ul>
       <% politician.questions.each do |question| %>
         <li>
