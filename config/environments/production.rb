@@ -69,12 +69,12 @@ Otazkyprocr::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => "app6292357.mailgun.org",
-    :user_name => "postmaster@my-mailgun-domain.com",
-    :password => "my-password"
+    :authentication => :plain,    
+    :domain => "safe-ocean-7053.herokuapp.com",
+    :port           => ENV['MAILGUN_SMTP_PORT'], 
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],    
   }
   config.action_mailer.default_url_options = { host: 'safe-ocean-7053.herokuapp.com' }
 end
