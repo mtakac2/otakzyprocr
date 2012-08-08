@@ -1,11 +1,16 @@
 Otazkyprocr::Application.routes.draw do  
   
+  get "citizens/new"
+
+  get "citizens/create"
+
   get "questions/index"
 
   get "questions/show"
 
   get "questions/edit"
 
+  resources :citizens
   resources :sessions
   resources :keepers do
     resources :politicians do

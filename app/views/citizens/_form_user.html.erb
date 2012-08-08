@@ -1,0 +1,18 @@
+<legend>Přihlasovací údaje</legend>
+<div class="field">
+  <%= f.label :email, 'Email *' %>
+  <%= f.text_field :email %>
+  <span class="fieldWithErrors"><%= @citizen.errors[:email].first %></span>    
+</div>
+
+<div class="field">
+  <%= f.label :password, 'Heslo *' %>
+  <%= f.password_field :password %>
+  <span class="fieldWithErrors"><%= @citizen.errors[:password].first %></span>
+</div>
+
+<div class="field">
+  <%= f.label :password_confirmation, 'Potvrzení hesla *' %>
+  <%= f.password_field :password_confirmation %>
+  <span class="fieldWithErrors"><%= @citizen.errors[:password_confirmation].first %></span>
+</div>

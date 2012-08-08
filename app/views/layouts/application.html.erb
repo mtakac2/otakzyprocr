@@ -19,7 +19,7 @@
                 <%= current_user.email %>
                 <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
               <% else %>
-                <li><%= link_to 'Registrovat se', refinery.new_citizens_citizen_path %></li>
+                <li><%= link_to 'Registrovat se', main_app.new_citizen_path %></li>
                 <li><%= link_to 'Přihlásit se', main_app.new_session_path %></li>
               <% end %>
             </ul>
@@ -90,7 +90,7 @@
         </div>
       </section>
     </section>                  
-  </div>
+  </div>  
 
   <footer>
     <%= render '/refinery/footer' -%>          

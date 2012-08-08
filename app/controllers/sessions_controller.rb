@@ -10,15 +10,15 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       session[:user_type] = user.class.name
-      redirect_to '/', :notice => 'Logged in!'
+      redirect_to '/'
     else
-      flash.now[:error] = "Zadali ste nesprávný email nebo heslo,"
+      flash.now[:error] = "Zadali ste nesprávný email nebo heslo."
       render 'new'
     end
   end
 
   def destroy
     session[:user_id] = session[:user_type] = nil
-    redirect_to '/', :notice => 'Logged out!'
+    redirect_to '/', :notice => 'Vaše odhlášení proběhlo úspěšne.'
   end
 end

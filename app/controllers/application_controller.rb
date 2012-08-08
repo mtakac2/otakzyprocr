@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
       if session[:user_type] == 'Refinery::Keepers::Keeper'
         @current_user ||= Refinery::Keepers::Keeper.find(session[:user_id]) if session[:user_id]
       end
+
+      @current_user
     end
     helper_method :current_user
 

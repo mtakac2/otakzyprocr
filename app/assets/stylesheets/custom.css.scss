@@ -3,7 +3,7 @@
 
 /* ******************** general ******************** */
 html{
-  background-color: blue;
+  background-color: #D1EEFF;
   height:100%;
 }
 
@@ -30,7 +30,8 @@ body{
 
 section .container {
   padding: 20px 0px;
-  border-bottom: 1px solid #E5E5E5;  
+  border-bottom: 1px solid #E5E5E5;
+  min-height: 536px;
 }
 
 
@@ -128,14 +129,37 @@ body form legend{
 }
 
 
-#loginForm button{
+form button{
   display: block;
   margin:auto;
 }
 
-#loginForm a{
+form a{
   margin: 0px;
   display: inline-block;
+}
+
+div.alert ul {  
+  text-align: left;
+}
+
+div.alert ul i {
+ vertical-align: middle;
+ margin-right: 6px;
+}
+
+.fieldWithErrors {
+  color: #B94A48;
+  vertical-align: top;
+}
+
+.fieldWithErrors input {
+  border-color: #B94A48;
+  color: #B94A48;
+}
+
+.buttons label {
+  display: inline;
 }
 
 /* ******************** header ******************** */

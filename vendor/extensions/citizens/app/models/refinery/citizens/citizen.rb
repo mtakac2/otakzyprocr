@@ -11,14 +11,21 @@ module Refinery
 
       acts_as_indexed :fields => [:firstname, :lastname, :email, :street, :postal_code, :city, :gender]
 
-      validates_presence_of :email, :message => 'Zadejte prosím email',
-            :if => :user_step?
-          validates_uniqueness_of :email, :message => 'Uživatel se zadaným emailem už existuje',
-            :if => :user_step?
-          validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
-            :message => 'Email musí být ve tvaru email@example.com', :if => :user_step?
-          validates_presence_of :password, :message => 'Zadejte prosím heslo',
-            :if => :user_step?
+      validates_uniqueness_of :email, :message => 'uživatel se zadaným emailem už existuje',
+        :if => :user_step?
+      validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
+        :message => 'musí být ve tvaru email@example.com', :if => :user_step?
+      validates_length_of :password, :minimum => 6, :message => 'musí být alespoň 6 znaků dlouhé',
+        :if => :user_step?
+
+      validates_presence_of :county_id, :message => 'je povinný',
+        :if => :personal_step?
+      validates_presence_of :gender, :message => 'výběr pohlaví je povinný',
+        :if => :personal_step?
+      validates_presence_of :age, :message => 'je povinný',
+        :if => :personal_step?
+      validates_numericality_of :age, :message => 'musí být číslo',
+        :if => :personal_step?
 
       def steps
         %w[user personal]

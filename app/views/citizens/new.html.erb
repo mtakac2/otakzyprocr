@@ -1,0 +1,15 @@
+<%= form_for @citizen, :html => { :class => 'well', :id => 'registration_form' } do |f| %>
+  <% if @citizen.errors.any? %>
+    <div class="error_messages">
+      <div class="alert alert-error">
+        <strong>Formulář byl vyplněn chybně. Opravte prosím následujíci chyby:</strong>
+      </div>      
+    </div>
+  <% end %>
+
+  <%= render "form_#{@citizen.current_step}", :f => f %>
+
+  <div class="actions">
+    <%= f.submit 'Registrovat se', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
