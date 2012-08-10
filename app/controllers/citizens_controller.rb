@@ -1,6 +1,10 @@
 # encoding: UTF-8
 
 class CitizensController < ApplicationController
+  def show
+
+  end
+
   def new
     @counties = Refinery::Counties::County.order(:name)
     @years = [13]

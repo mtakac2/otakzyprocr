@@ -2,24 +2,42 @@
 
 <%= link_to 'Upravit', main_app.edit_keeper_path(@keeper) %>
 
-<h2>Politici</h2>
-<ul>
-<% @politicians.each do |politician| %>
-  <li>
-    <%= link_to politician.firstname, edit_keeper_politician_path(@keeper, politician) %>
-    <%= politician.elections.last.election_type.name %>
-    <%= link_to 'Pridat otazku', main_app.new_keeper_politician_question_path(@keeper, politician) %>    
-      <% politician.questions.each do |question| %>        
-          <h3><%= question.title %></h3>
-          <article><%= question.content %></article>        
-      <% end %>    
-  </li>
+<% if @politicians.any? %>
+  <h2>Politici</h2>
+  <table>
+    <tr>
+      <th>Jméno</th>
+      <th>Kandiduje v</th>
+      <th>Otázky</th>
+      <th> </th>
+    </tr>
+  <% @politicians.each do |politician| %>
+    <tr>
+      <td>
+        <%= link_to "#{politician.firstname} #{politician.lastname}", edit_keeper_politician_path(@keeper, politician) %>
+      </td>
+      <td>
+        <%= "#{politician.elections.last.election_type.name} 
+             #{politician.elections.last.held}" %>
+      </td>
+      <td>
+        <% politician.questions.each do |question| %>        
+          <%= link_to question.title, 
+              main_app.keeper_politician_question_path(@keeper, politician, question) %><br>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to 'Pridat otazku', main_app.new_keeper_politician_question_path(@keeper, politician) %>
+      </td>
+    </tr>                                        
+  <% end %>
+    </table>
+<% end %>  
+<% if @parties.any? %>
+  <h2>Strany</h2>
+  <ul>
+  <% @parties.each do |party| %>
+    <li><%= party.name %></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
-
-<h2>Strany</h2>
-<ul>
-<% @parties.each do |party| %>
-  <li><%= party.name %></li>
-<% end %>
-</ul>

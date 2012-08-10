@@ -24,7 +24,12 @@
                     <%= current_user.email %>
                   <% end %>
                 </li>
-                <li><%= link_to 'Správa účtu', '#' %></li>
+                <% if session[:user_type] == 'Refinery::Keepers::Keeper' %>
+                  <li><%= link_to 'Správa účtu', main_app.keeper_path(current_user) %></li>
+                <% end %>
+                <% if session[:user_type] == 'Refinery::Citizens::Citizen' %>
+                  <li><%= link_to 'Správa účtu', main_app.citizen_path(current_user) %></li>
+                <% end %>
                 <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
               <% else %>
                 <li><%= link_to 'Registrovat se', main_app.new_citizen_path %></li>

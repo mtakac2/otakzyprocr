@@ -1,2 +1,7 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<article class="question">
+  <h1><%= @question.title %></h1>
+
+  <section class="question-body">
+    <%= raw @question.content %>
+  </section>
+</article>
