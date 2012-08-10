@@ -28,7 +28,7 @@ en:
         lastname: Lastname
         string: String
         email: Email
-        password_hash: Password Hash
+        password_hash: Password Hash                    
         street: Street
         street_number: Street Number
         postal_code: Postal Code
@@ -36,3 +36,6 @@ en:
         county_id: County
         gender: Gender
         age: Age
+    errors:
+      'refinery/citizens/citizen':
+        doesn't match confirmation: 'Hesla se '

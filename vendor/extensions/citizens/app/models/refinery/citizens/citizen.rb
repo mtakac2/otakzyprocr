@@ -11,12 +11,11 @@ module Refinery
 
       acts_as_indexed :fields => [:firstname, :lastname, :email, :street, :postal_code, :city, :gender]
 
-      validates_uniqueness_of :email, :message => 'uživatel se zadaným emailem už existuje',
-        :if => :user_step?
+      validate :email_availability, :if => :user_step?
       validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
         :message => 'musí být ve tvaru email@example.com', :if => :user_step?
       validates_length_of :password, :minimum => 6, :message => 'musí být alespoň 6 znaků dlouhé',
-        :if => :user_step?
+        :if => :user_step?      
 
       validates_presence_of :county_id, :message => 'je povinný',
         :if => :personal_step?
@@ -63,6 +62,12 @@ module Refinery
         steps.all? do |step|
           self.current_step = step
           valid?
+        end
+      end
+
+      def email_availability
+        if Citizen.find_by_email(email) || Refinery::Keepers::Keeper.find_by_email(email)
+          errors.add(:email, 'uživatel se zadaným emailem už existuje')
         end
       end
     end

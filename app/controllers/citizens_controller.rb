@@ -38,7 +38,7 @@ class CitizensController < ApplicationController
       session[:citizen_step] = session[:citizen_params] = nil
       session[:user_id] = @citizen.id
       session[:user_type] = @citizen.class.name
-      redirect_to '/', :notice => 'Vaše registrace proběhla úspěšne.'
+      redirect_to '/', :flash => { :success => 'Vítejte. Vaše registrace proběhla úspěšne. Dekujeme za Váš zájem.' }
     end
   end
 end

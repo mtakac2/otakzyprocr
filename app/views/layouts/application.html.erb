@@ -16,7 +16,15 @@
           <div class="span9" id="topmenu">              
             <ul id="nav-links">
               <% if current_user %>
-                <%= current_user.email %>
+                <li>
+                  Jste přihlášen jako: 
+                  <% if current_user.firstname && current_user.lastname %>
+                    <%= current_user.firstname %> <%= current_user.lastname %>
+                  <% else %>
+                    <%= current_user.email %>
+                  <% end %>
+                </li>
+                <li><%= link_to 'Správa účtu', '#' %></li>
                 <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
               <% else %>
                 <li><%= link_to 'Registrovat se', main_app.new_citizen_path %></li>

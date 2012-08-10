@@ -16,4 +16,4 @@
 //= require bootstrap-collapse
 //= require bootstrap-alert
 //= require_tree .
-$(".alert").alert()
+

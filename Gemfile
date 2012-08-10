@@ -30,13 +30,15 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-
 gem 'jquery-rails',     '2.0.2'
 gem 'bcrypt-ruby',      '3.0.1'
 gem 'activerecord-postgres-hstore'
 gem 'multiple_table_inheritance', '~> 0.2.1'
 gem 'roadie'
 gem 'bootstrap-sass', '~> 2.0.4.0'
+gem 'rails-i18n'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 gem 'refinerycms',      '2.0.5'
 gem 'refinerycms-i18n'

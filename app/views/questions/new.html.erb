@@ -1,3 +1,6 @@
+<%= tinymce_assets %>
+<script type="text/javascript" src="/assets/tinymce.js"></script>
+
 <%= form_for @question, :url => keeper_politician_questions_path(@keeper.id, @subject, @question) do |f| %>
   <div class="field">
     <%= f.label :title %>
@@ -6,7 +9,8 @@
 
   <div class="field">
     <%= f.label :content, 'Otazka' %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content, :class => 'tinymce', :rows => 40, :cols => 120 %>
+    <%= tinymce :theme => "simple" %>
   </div>
 
   <div class="actions">

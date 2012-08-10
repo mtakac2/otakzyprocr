@@ -13,7 +13,7 @@
 
 <div class="select">
   <%= f.label :county_id, 'Okres *' %>
-  <%= f.collection_select :county_id, @counties, :id, :name, :include_blank => true %>
+  <%= f.collection_select :county_id, @counties, :id, :name, :prompt => 'Prosím vyberte ...' %>
   <span class="fieldWithErrors"><%= @citizen.errors[:county_id].first %></span>
 </div>
 

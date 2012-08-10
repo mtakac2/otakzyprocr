@@ -1,8 +1,8 @@
 <legend>Přihlasovací údaje</legend>
 <div class="field">
   <%= f.label :email, 'Email *' %>
-  <%= f.text_field :email %>
-  <span class="fieldWithErrors"><%= @citizen.errors[:email].first %></span>    
+  <%= f.text_field :email, :autofocus => :autofocus %>
+  <span class="fieldWithErrors"><%= @citizen.errors[:email].first %></span>
 </div>
 
 <div class="field">

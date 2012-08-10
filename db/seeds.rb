@@ -31,3 +31,5 @@ Refinery::Questions::Engine.load_seed
 
 # Added by Refinery CMS Emails extension
 Refinery::Emails::Engine.load_seed
+
+Refinery::Counties::County.create([{ name: 'Brno' }, {name: 'Praha' }])
