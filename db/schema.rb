@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811120913) do
+ActiveRecord::Schema.define(:version => 20120811210953) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120811120913) do
     t.integer  "position"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "activation_code"
   end
 
   add_index "refinery_citizens", ["county_id"], :name => "index_refinery_citizens_on_county_id"

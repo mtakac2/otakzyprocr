@@ -5,7 +5,7 @@ module Refinery
     class Citizen < Refinery::Core::BaseModel
       self.table_name = 'refinery_citizens'
       has_secure_password
-      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position      
+      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position, :activation_code
 
       attr_writer :current_step
 
@@ -25,6 +25,8 @@ module Refinery
         :if => :personal_step?
       validates_numericality_of :age, :message => 'musí být číslo',
         :if => :personal_step?
+
+      before_create :create_activation_code
 
       def steps
         %w[user personal question]
@@ -74,6 +76,10 @@ module Refinery
           errors.add(:email, 'uživatel se zadaným emailem už existuje')
         end
       end
+
+      def create_activation_code
+        self.activation_code = SecureRandom.urlsafe_base64(64)
+      end 
     end
   end
 end

@@ -50,9 +50,9 @@ class CitizensController < ApplicationController
       render 'new'
     else
       session[:citizen_step] = session[:citizen_params] = nil
-      session[:user_id] = @citizen.id
-      session[:user_type] = @citizen.class.name
-      redirect_to '/', :flash => { :success => 'Vítejte. Vaše registrace proběhla úspěšne. Dekujeme za Váš zájem.' }
+      CitizensMailer.registration(@citizen).deliver
+      redirect_to '/', :flash => { :success => 'Vítejte. Vaše registrace proběhla úspěšne. Dekujeme za Váš zájem. Na Vaši 
+        emailovou adresu byla odoslána správa. Pomocí odkazu v ní si můžete Váš účet aktivovat.' }
     end
   end
 
@@ -80,5 +80,22 @@ class CitizensController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def activate    
+    @citizen = Refinery::Citizens::Citizen.find_by_activation_code(params[:activation_code])
+
+    if @citizen.nil?
+      redirect_to '/'
+    end    
+    
+    @citizen.next_step
+    @citizen.next_step
+
+    if @citizen.update_attributes(:activation_code => nil)
+      session[:user_id] = @citizen.id
+      session[:user_type] = @citizen.class.name
+      redirect_to '/', :notice => 'Váš účet byl úspěšne aktivován. Prosím vyberte si otázku.'      
+    end    
   end
 end
