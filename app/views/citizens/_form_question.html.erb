@@ -1,0 +1,12 @@
+<legend>Výběr otázky</legend>
+<% @elections.each do |election| %>
+
+  <h2><%= election.election_type.name %> <%= election.held %></h2>
+  <% election.questions.each do |question| %>
+  <article class="question">
+    <h3><%= question.title %></h3>    
+    <%= label_tag '', 'Vybrat' %> 
+    <%= check_box_tag 'question_id', question.id %>
+  </article>
+  <% end %>
+<% end %>

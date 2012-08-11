@@ -6,6 +6,8 @@ class CitizensController < ApplicationController
   end
 
   def new
+    @elections = Refinery::Elections::Election.order(:held)
+    @questions = Refinery::Questions::Question.order(:name)
     @counties = Refinery::Counties::County.order(:name)
     @years = [13]
     86.times do
@@ -16,7 +18,8 @@ class CitizensController < ApplicationController
     @citizen.current_step = session[:citizen_step]
   end
 
-  def create
+  def create    
+    @elections = Refinery::Elections::Election.order(:held)    
     @counties = Refinery::Counties::County.order(:name)
     @years = [13]
     86.times do
@@ -28,7 +31,14 @@ class CitizensController < ApplicationController
 
     if @citizen.valid?
       if @citizen.last_step?
-        @citizen.save if @citizen.all_valid?
+        if @citizen.all_valid?
+          @citizen.save
+          @question = Refinery::Questions::Question.find(params[:question_id])
+          @citizens_question = CitizensQuestion.new
+          @citizens_question.citizen_id = @citizen.id
+          @citizens_question.question_id = @question.id
+          @citizens_question.save
+        end        
       else
         @citizen.next_step
       end

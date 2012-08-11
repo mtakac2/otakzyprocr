@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807151806) do
+ActiveRecord::Schema.define(:version => 20120811120913) do
+
+  create_table "citizens_questions", :force => true do |t|
+    t.integer  "citizen_id"
+    t.integer  "question_id"
+    t.integer  "hours"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "citizens_questions", ["citizen_id", "question_id"], :name => "index_citizens_questions_on_citizen_id_and_question_id", :unique => true
+  add_index "citizens_questions", ["citizen_id"], :name => "index_citizens_questions_on_citizen_id"
+  add_index "citizens_questions", ["question_id"], :name => "index_citizens_questions_on_question_id"
 
   create_table "election_subject_elections", :force => true do |t|
     t.integer  "subject_id"

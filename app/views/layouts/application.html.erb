@@ -18,7 +18,7 @@
               <% if current_user %>
                 <li>
                   Jste přihlášen jako: 
-                  <% if current_user.firstname && current_user.lastname %>
+                  <% if !current_user.firstname.blank? && !current_user.lastname.blank? %>
                     <%= current_user.firstname %> <%= current_user.lastname %>
                   <% else %>
                     <%= current_user.email %>

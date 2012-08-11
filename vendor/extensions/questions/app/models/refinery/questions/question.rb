@@ -4,6 +4,7 @@ module Refinery
       self.table_name = 'refinery_questions'
       belongs_to :election, :class_name => 'Refinery::Elections::Election'
       belongs_to :subject
+  
 
       attr_accessible :title, :content, :election_id, :subject_id, :position
 

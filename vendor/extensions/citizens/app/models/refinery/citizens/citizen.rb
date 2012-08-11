@@ -5,7 +5,7 @@ module Refinery
     class Citizen < Refinery::Core::BaseModel
       self.table_name = 'refinery_citizens'
       has_secure_password
-      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position
+      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position      
 
       attr_writer :current_step
 
@@ -27,7 +27,7 @@ module Refinery
         :if => :personal_step?
 
       def steps
-        %w[user personal]
+        %w[user personal question]
       end
 
       def current_step
@@ -56,6 +56,10 @@ module Refinery
 
       def personal_step?
         current_step == 'personal'
+      end
+
+      def question_step?
+        current_step == 'question'
       end
 
       def all_valid?
