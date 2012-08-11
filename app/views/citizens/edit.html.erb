@@ -1,0 +1,46 @@
+<%= form_for @citizen, :html => { :class => 'well' } do |f| %>
+  <% if @citizen.errors.any? %>
+    <div class="error_messages">
+      <div class="alert alert-error">
+        <strong>Formulář byl vyplněn chybně. Opravte prosím následujíci chyby:</strong>
+      </div>      
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Osobní údaje</legend>
+    <div class="field">
+      <%= f.label :firstname, 'Jméno' %>
+      <%= f.text_field :firstname %>
+      <span class="fieldWithErrors"><%= @citizen.errors[:firstname].first %></span>
+    </div>
+
+    <div class="field">
+      <%= f.label :lastname, 'Přijmení' %>
+      <%= f.text_field :lastname %>
+      <span class="fieldWithErrors"><%= @citizen.errors[:lastname].first %></span>
+    </div>
+
+    <div class="select">
+      <%= f.label :county_id, 'Okres *' %>
+      <%= f.collection_select :county_id, @counties, :id, :name, :prompt => 'Prosím vyberte ...' %>
+      <span class="fieldWithErrors"><%= @citizen.errors[:county_id].first %></span>
+    </div>
+
+    <div class="buttons">
+      <%= f.label :gender, 'Muž' %> <%= f.radio_button :gender, 'male' %> |
+      <%= f.label :gender, 'Žena' %> <%= f.radio_button :gender, 'female' %>
+      <span class="fieldWithErrors"><%= @citizen.errors[:gender].first %></span>
+    </div>
+
+    <div class="select">
+      <%= f.label :age, 'Věk *' %>
+      <%= f.select :age, @years %>
+      <span class="fieldWithErrors"><%= @citizen.errors[:age].first %></span>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit 'Upravit', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
