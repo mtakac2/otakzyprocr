@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :block_citizen_without_question
+
+  protected
+
+    def block_citizen_without_question
+      if session[:user_type] == 'Refinery::Citizens::Citizen' && current_user.questions.empty?
+        redirect_to main_app.questions_path, :notice => 'Veberte otazku!!!'
+      end
+    end
+
   private
 
     def current_user
@@ -28,5 +38,5 @@ class ApplicationController < ActionController::Base
         redirect_to '/', :notice => 'Unauthorized access'
       end
     end
-    helper_method :authorize_citizen_access?
+    helper_method :authorize_citizen_access?    
 end

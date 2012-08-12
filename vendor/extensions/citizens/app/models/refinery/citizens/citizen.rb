@@ -6,6 +6,9 @@ module Refinery
       self.table_name = 'refinery_citizens'
       has_secure_password
       attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position, :activation_code
+      has_many :citizens_questions, :class_name => 'CitizensQuestion'
+      has_many :questions, :through => :citizens_questions
+      has_many :elections, :through => :election_subject_elections
 
       attr_writer :current_step
 

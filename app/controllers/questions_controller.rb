@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  skip_filter :block_citizen_without_question
+
   def index
   end
 
