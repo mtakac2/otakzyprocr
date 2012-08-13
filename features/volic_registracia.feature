@@ -1,13 +1,20 @@
 # language: sk
 
 Požiadavka: Registrácia voliča
+  Systém umožnuje Voličovi registráciu dvoma spôsobmi
+  1. Volič si na úvodnej stránke vyberie jednu z otázok
+  2. Volič zvolí možnosť 'Registrovat se' a otázku si vyberie počas registrácie
+  V systéme mǒze existovať Volič bez vybratej otázky, ale len s obmedzeným prístupom
  
   Pozadie:
-    Pokiaľ je zaregistrovaný admin
-    A nie je prihlásený
+    Pokiaľ existuje Admin
 
-  Scenár: Úspešná registrácia
-    Keď sa volič zaregistruje
+  Scenár: Úspešná registrácia s výberom otázky cez odkaz 'Registrovat se'
+    Pokiaľ existuje otazka
+    Keď volič vyplní svoje uživateľské registračné údaje
+    A volič vyplní svoje osobné registračné údaje
+    A volič si pri registrácii vyberie otázku
+    A "user@mail.com" by mal dostať email
     Tak je prihlásený do systému
     A vidí správu "Vaše registrace proběhla úspěšne."
 

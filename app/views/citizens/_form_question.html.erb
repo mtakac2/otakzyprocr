@@ -1,12 +1,18 @@
 <legend>Výběr otázky</legend>
-<% @elections.each do |election| %>
 
-  <h2><%= election.election_type.name %> <%= election.held %></h2>
-  <% election.questions.each do |question| %>
-  <article class="question">
-    <h3><%= question.title %></h3>    
-    <%= label_tag '', 'Vybrat' %> 
-    <%= check_box_tag 'question_id', question.id %>
-  </article>
-  <% end %>
+<% if @questions.nil? %>
+  <h3>Litujeme, momentálně nejsou k dispozici žádne otázky. Vraťte se prosím pozděj.</h3>
+<% else %>
+  <ul>
+    <% @questions.each do |question| %>
+      <li>
+        <strong>
+          <%= truncate(question.title, length: 150, separator: ' ') %>
+        </strong>
+        <div class="buttons">
+           <%= label_tag "question_id_#{question.id}", 'Vybrat' %> <%= radio_button_tag "question_id", question.id %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

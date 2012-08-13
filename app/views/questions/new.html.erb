@@ -3,12 +3,12 @@
 
 <%= form_for @question, :url => keeper_politician_questions_path(@keeper.id, @subject, @question) do |f| %>
   <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title, 'Záhlaví' %>
+    <%= f.text_area :title, :rows => 3, :cols => 220 %>
   </div>
 
   <div class="field">
-    <%= f.label :content, 'Otazka' %>
+    <%= f.label :content, 'Otázka' %>
     <%= f.text_area :content, :class => 'tinymce', :rows => 40, :cols => 120 %>
     <%= tinymce %>
   </div>

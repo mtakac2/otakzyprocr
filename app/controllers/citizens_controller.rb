@@ -5,26 +5,21 @@ class CitizensController < ApplicationController
     @citizen = Refinery::Citizens::Citizen.find(current_user)
   end
 
-  def new
-    @elections = Refinery::Elections::Election.order(:held)
-    @questions = Refinery::Questions::Question.order(:name)
+  def new    
+    @questions = Refinery::Questions::Question.order(:created_at)
     @counties = Refinery::Counties::County.order(:name)
-    @years = [13]
-    86.times do
-      @years << @years.last + 1
-    end
+    @years = 13 .. 99
     session[:citizen_params] ||= {}
     @citizen = Refinery::Citizens::Citizen.new(session[:citizen_params])
     @citizen.current_step = session[:citizen_step]
   end
 
   def create    
-    @elections = Refinery::Elections::Election.order(:held)    
+    # @elections = Refinery::Elections::Election.order(:held)    
+    @questions = Refinery::Questions::Question.order(:created_at)
     @counties = Refinery::Counties::County.order(:name)
-    @years = [13]
-    86.times do
-      @years << @years.last + 1
-    end
+    @years = 13 .. 99
+
     session[:citizen_params].deep_merge!(params[:citizen]) if params[:citizen]
     @citizen = Refinery::Citizens::Citizen.new(session[:citizen_params])
     @citizen.current_step = session[:citizen_step]
@@ -33,11 +28,14 @@ class CitizensController < ApplicationController
       if @citizen.last_step?
         if @citizen.all_valid?
           @citizen.save
-          @question = Refinery::Questions::Question.find(params[:question_id])
-          @citizens_question = CitizensQuestion.new
-          @citizens_question.citizen_id = @citizen.id
-          @citizens_question.question_id = @question.id
-          @citizens_question.save
+          if params[:question_id]
+            @question = Refinery::Questions::Question.find(params[:question_id])
+
+            @citizens_question = CitizensQuestion.new
+            @citizens_question.citizen_id = @citizen.id
+            @citizens_question.question_id = @question.id
+            @citizens_question.save
+          end
         end        
       else
         @citizen.next_step

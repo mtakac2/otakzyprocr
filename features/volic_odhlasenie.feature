@@ -7,6 +7,8 @@ Požiadavka: Odhlásenie voliča
     A nie je prihlásený
     Keď sa volič prihlási do systému
 
+  @javascript
+
   Scenár: Odhlásenie
     Keď sa volič odhlási zo systému
     Tak vidí odkaz "Registrovat se"

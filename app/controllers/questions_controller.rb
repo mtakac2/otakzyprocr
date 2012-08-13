@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
   skip_filter :block_citizen_without_question
 
   def index
+    @questions = Refinery::Questions::Question.order(:created_at)
   end
 
   def show

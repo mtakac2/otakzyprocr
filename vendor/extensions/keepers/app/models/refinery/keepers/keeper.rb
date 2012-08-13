@@ -14,7 +14,7 @@ module Refinery
 
       has_many :subjects
 
-      before_save :create_activation_code
+      before_create :create_activation_code
 
       def create_activation_code
         self.activation_code = SecureRandom.urlsafe_base64(64)

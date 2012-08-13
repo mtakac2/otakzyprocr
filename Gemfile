@@ -28,6 +28,7 @@ group :test do
   gem 'cucumber-rails',   '1.2.1'
   gem 'database_cleaner', '0.8.0'
   gem 'factory_girl_rails'
+  gem 'email_spec'
 end
 
 gem 'jquery-rails',     '2.0.2'

@@ -7,11 +7,7 @@ module Refinery
       has_many :subjects, :through => :election_subject_elections
       has_many :questions, :class_name => 'Refinery::Questions::Question'
 
-      attr_accessible :election_type_id, :held, :description, :position
-
-      acts_as_indexed :fields => [:description]
-
-      validates :description, :presence => true, :uniqueness => true
+      attr_accessible :election_type_id, :held, :description, :position            
     end
   end
 end

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -31,5 +33,13 @@ Refinery::Questions::Engine.load_seed
 
 # Added by Refinery CMS Emails extension
 Refinery::Emails::Engine.load_seed
+
+Refinery::Elections::ElectionType.create([{ name: 'Prezidentské volby' }, 
+  { name: 'Senátní volby' }, { name: 'Krajské volby' }])
+
+Refinery::Emails::Email.create([
+  { title: 'Keepers Registration Subject', content: 'Message', for: 'keepers_registration' }, 
+  { title: 'Citizens Registration Subject', content: 'Message', for: 'citizens_registration' }
+])
 
 Refinery::Counties::County.create([{ name: 'Brno' }, {name: 'Praha' }])

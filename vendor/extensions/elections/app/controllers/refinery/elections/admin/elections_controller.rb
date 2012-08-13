@@ -4,7 +4,7 @@ module Refinery
       class ElectionsController < ::Refinery::AdminController
 
         crudify :'refinery/elections/election',
-          :title_attribute => 'description', :xhr_paging => true
+          :title_attribute => 'election_type', :xhr_paging => true
 
         def new
           @election = Election.new
