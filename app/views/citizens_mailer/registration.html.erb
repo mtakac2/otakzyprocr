@@ -33,6 +33,10 @@
               Prosím aktivujte si svůj účet kliktnutím na odkaz:
               <%= link_to 'Aktivovat účet', "#{refinery.root_url}citizens/activate/#{@citizen.activation_code}" %>
             </p>
+            <p>
+              Člen týmu (pro spolupráci):
+              <%= @random_team_member.email %>
+            </p>
           </td>                  
         </tr>
         <tr>

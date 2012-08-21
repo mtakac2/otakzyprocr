@@ -14,6 +14,7 @@ Otazkyprocr::Application.routes.draw do
     end
   end
 
+  match 'stats' => 'stats#index'
   match 'solve-question/:question_id' => 'citizens_questions#new'
   match 'keepers/activate/:activation_code' => 'keepers#activate'
   match 'citizens/activate/:activation_code' => 'citizens#activate'

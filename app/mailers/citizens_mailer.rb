@@ -6,9 +6,10 @@ class CitizensMailer < ActionMailer::Base
   #
   #   en.citizens_mailer.registraion.subject
   #
-  def registration(citizen)
+  def registration(citizen, question)
     @email = Refinery::Emails::Email.find_by_for('citizens_registration')
-    @citizen = citizen
+    @citizen = citizen    
+    @random_team_member = Refinery::Citizens::Citizen.find(@citizen.get_random_team_member_id(question.id))
 
     mail(to: @citizen.email, subject: 'Registration') do |format|
       format.html

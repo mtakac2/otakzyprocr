@@ -1,0 +1,30 @@
+<table>
+	<tr>
+		<th>Otázek celkem</th>
+		<td><%= @stats.questions_count %></td>
+	</tr>
+	<tr>
+		<th>Politiků celkem</th>
+		<td><%= @stats.politicians_count %></td>
+	</tr>
+	<tr>
+		<th>Voličů celkem</th>
+		<td><%= @stats.citizens_count %></td>
+	</tr>
+	<tr>
+		<th>Žen</th>
+		<td><%= @stats.citizens_women_count %></td>
+	</tr>
+	<tr>
+		<th>Mužů</th>
+		<td><%= @stats.citizens_men_count %></td>
+	</tr>
+	<tr>
+		<th>Průměrný věk voličů</th>
+		<td><%= @stats.citizens_average_age %></td>
+	</tr>
+	<tr>
+		<th>Přislíbených hodin</th>
+		<td><%= @stats.payed_workhours_sum %></td>
+	</tr>
+</table>

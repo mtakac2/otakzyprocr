@@ -94,6 +94,18 @@ module Refinery
         CitizensQuestion.select('id').where("citizen_id = ? AND question_id = ?",
           id, question_id).first.id
       end
+
+      def get_random_team_member_id(question_id)
+        team = Citizen.find_by_sql("
+          SELECT c.id 
+          FROM refinery_citizens AS c 
+          JOIN citizens_questions AS q 
+          ON c.id = q.citizen_id 
+          WHERE q.question_id = #{question_id}"
+        )
+
+        team.shuffle.first.id
+      end
     end
   end
 end

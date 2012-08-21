@@ -33,7 +33,7 @@
               Vaše přihlašovací údaje:<br />
               <strong>Email:</strong> <%= @keeper.email %><br />
               <strong>Heslo:</strong> <%= @password %>
-            </p>
+            </p>            
             <p>
               Prosím aktivujte si svůj účet kliktnutím na odkaz:
               <%= link_to 'Aktivovat účet', "#{refinery.root_url}keepers/activate/#{@keeper.activation_code}" %>

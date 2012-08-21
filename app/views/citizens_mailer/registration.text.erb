@@ -2,5 +2,8 @@
 
 <%= @email.content %>
 
+Člen týmu (pro spolupráci):
+<%= @random_team_member.email %>
+
 Prosím aktivujte si svůj účet kliktnutím na odkaz:
 <%= "#{refinery.root_url}citizens/activate/#{@citizen.activation_code}" %>
