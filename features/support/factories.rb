@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'factory_girl'
 
 FactoryGirl.define do
@@ -44,5 +46,21 @@ FactoryGirl.define do
     politician_keeper.city                  'London'
     politician_keeper.phone                 '+100 20 56 98'
     politician_keeper.activation_code       '0OfSJUAkNyIj-ce8CSrrX7cieCFDHAc1EPjMBM-dsxRtS9PGlORiVoc-bsyf5Up4TogrZWu8MVNNzkW346Vuag'
+  end
+
+  factory :county, class: 'Refinery::Counties::County' do |county|
+    county.name 'Hradec Králové'
+  end
+
+  factory :citizen, class: 'Refinery::Citizens::Citizen' do |citizen|
+    citizen.firstname             'Joe'
+    citizen.lastname              'Avarege'
+    citizen.email                 'joe@mail.com'
+    citizen.password              'password'
+    citizen.password_confirmation 'password'
+    citizen.gender                'male'
+    citizen.age                   '33'
+
+    county
   end
 end

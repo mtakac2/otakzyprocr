@@ -75,30 +75,15 @@
       <section class="" id="primary_content">
         <div class="container">
           <div class="row">
-            <div class="span4">
+            <div class="span12">
               <div class="content_holder">
-              <!--  <form class=".form-vertical" method="" action="">
-                  </form>
-              -->
-                    
-                <h3>Lorem ipsum</h3>
-                <ul>
-                  <li>Lorem</li>
-                  <li>Lorem</li>
-                  <li>Lorem</li>
-                  <li>Lorem</li>
-                </ul>
-                <h3>Lorem ipsum</h3>
-                <p>Nam tristique justo tortor. Vestibulum facilisis erat in mi vestibulum sagittis. Etiam vitae sem quis nisl volutpat pharetra. Donec ac dui urna, eu venenatis augue. Maecenas tortor augue, vestibulum quis porttitor eu, lobortis et metus. Nam sodales lectus at tellus molestie convallis. Sed egestas, augue in dignissim molestie</p>                  
-              </div>
 
-            </div>
+                <% if request.fullpath == refinery.root_path %>
+                <%= render 'layouts/questions' %>
+                <% end %>
 
-            <div class="span8">
-              <div class="content_holder">
                 <%= yield %>
               </div>
-            </div>
           </div>
         </div>
       </section>

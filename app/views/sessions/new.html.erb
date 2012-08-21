@@ -10,7 +10,10 @@
     <%= password_field_tag :password, params[:password] %>
   </div>
 
-  <span class="help-block "><a href="#">Zapomněli ste své heslo?</a> | <a href="#">Registrovat se</a></span>
+  <span class="help-block ">
+    <a href="#">Zapomněli ste své heslo?</a> | 
+    <%= link_to 'Registrovat se', main_app.new_citizen_path %>
+  </span>
 
   <div class="actions">
     <%= submit_tag "Přihlásit se", :class => 'btn btn-primary' %>

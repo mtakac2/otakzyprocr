@@ -6,8 +6,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @keeper = Refinery::Keepers::Keeper.find(params[:keeper_id])
-    @subject = Subject.find(params[:politician_id])    
+    # @keeper = Refinery::Keepers::Keeper.find(params[:keeper_id])
+    # @subject = Subject.find(params[:politician_id])    
     @question = Refinery::Questions::Question.find(params[:id])
   end
 

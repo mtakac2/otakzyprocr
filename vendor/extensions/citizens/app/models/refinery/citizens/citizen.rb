@@ -9,6 +9,7 @@ module Refinery
       has_many :citizens_questions, :class_name => 'CitizensQuestion'
       has_many :questions, :through => :citizens_questions
       has_many :elections, :through => :election_subject_elections
+      belongs_to :county, class_name: 'Refinery::Counties::County'
 
       attr_writer :current_step
 
@@ -82,7 +83,17 @@ module Refinery
 
       def create_activation_code
         self.activation_code = SecureRandom.urlsafe_base64(64)
-      end 
+      end
+
+      def hours_on_question(question_id)
+        CitizensQuestion.select('hours').where("citizen_id = ? AND question_id = ?",
+          id, question_id).first.hours     
+      end
+
+      def get_citizen_question_by_id(question_id)
+        CitizensQuestion.select('id').where("citizen_id = ? AND question_id = ?",
+          id, question_id).first.id
+      end
     end
   end
 end

@@ -1,17 +1,23 @@
 <legend>Výběr otázky</legend>
 
-<% if @questions.nil? %>
+<% if @questions.empty? %>
   <h3>Litujeme, momentálně nejsou k dispozici žádne otázky. Vraťte se prosím pozděj.</h3>
 <% else %>
+  
+  <div class="field">
+    <%= label_tag "question_hours", 'Hodiny' %>
+    <%= number_field_tag 'hours' %>
+  </div>
+
   <ul>
     <% @questions.each do |question| %>
       <li>
         <strong>
-          <%= truncate(question.title, length: 150, separator: ' ') %>
+          <%= truncate(question.title, length: 40, separator: ' ') %>
         </strong>
         <div class="buttons">
            <%= label_tag "question_id_#{question.id}", 'Vybrat' %> <%= radio_button_tag "question_id", question.id %>
-        </div>
+        </div>        
       </li>
     <% end %>
   </ul>

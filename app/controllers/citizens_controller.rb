@@ -34,6 +34,7 @@ class CitizensController < ApplicationController
             @citizens_question = CitizensQuestion.new
             @citizens_question.citizen_id = @citizen.id
             @citizens_question.question_id = @question.id
+            @citizens_question.hours = params[:hours]
             @citizens_question.save
           end
         end        
@@ -93,7 +94,13 @@ class CitizensController < ApplicationController
     if @citizen.update_attributes(:activation_code => nil)
       session[:user_id] = @citizen.id
       session[:user_type] = @citizen.class.name
-      redirect_to '/', :notice => 'Váš účet byl úspěšne aktivován. Prosím vyberte si otázku.'      
+      if session[:return_url]
+          return_url = session[:return_url]
+          session[:return_url] = nil
+          redirect_to return_url, :notice => 'Váš účet byl úspěšne aktivován.'
+      else
+        redirect_to '/', :notice => 'Váš účet byl úspěšne aktivován.'
+      end
     end    
   end
 end

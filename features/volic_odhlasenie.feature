@@ -3,11 +3,9 @@
 Požiadavka: Odhlásenie voliča
 
   Pozadie: 
-    Pokiaľ je zaregistrovaný admin
-    A nie je prihlásený
+    Pokiaľ existuje Admin
+    A existuje Volič
     Keď sa volič prihlási do systému
-
-  @javascript
 
   Scenár: Odhlásenie
     Keď sa volič odhlási zo systému

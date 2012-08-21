@@ -1,160 +1,33 @@
-# encoding: utf-8
-require 'cucumber/formatter/unicode'
+# encoding: UTF-8
 
-Pokiaľ /^je zaregistrovaný admin$/ do
+Pokiaľ /^je uživateľ na domovskej stránke$/ do
   visit '/'
-  fill_in 'Username',              :with => 'admin'
-  fill_in 'Email',                 :with => 'admin@mail.com'
-  fill_in 'Password',              :with => 'password'
-  fill_in 'Password confirmation', :with => 'password'
-  click_button 'Sign up'  
 end
 
-Pokiaľ /^nie je prihlásený$/ do
-  click_link 'logout'
+Pokiaľ /^klikne na odkaz "(.*?)"$/ do |link|
+  click_link link
 end
 
-Keď /^sa volič zaregistruje$/ do  
-  click_link 'Registrovat'
-  fill_in 'Email',           :with => 'jirka@slaby.cz'
-  fill_in 'Heslo',           :with => 'password'
-  fill_in 'Potvrzení hesla', :with => 'password'
-  click_button 'Registrovat'
-
-  fill_in 'Jméno',           :with => 'Jirka'
-  fill_in 'Přijmení',        :with => 'Slabý'
-  select 'Brno',             :from => 'Okres'
-  choose 'citizen_gender_male'
-  select '32',               :from => 'Věk'
-  click_button 'Registrovat'
-
-  @user = Refinery::Citizens::Citizen.last
-end
-
-Tak /^je prihlásený do systému$/ do
-  page.should have_content 'Odhlásit se'
-  if @user.firstname && @user.lastname
-    page.should have_content "#{@user.firstname} #{@user.lastname}"
-  else
-    page.should have_content @user.email  
-  end   
-  page.should_not have_content 'Registrovat se'
-  page.should_not have_content 'Přihlásit se'
+Pokiaľ /^klikne na tlačítko "(.*?)"$/ do |button|
+  click_button button
 end
 
 Tak /^vidí správu "(.*?)"$/ do |msg|
-  page.should have_content msg
+  page.should have_content(msg)
 end
 
-Keď /^sa volič pokúsi zaregistrovať a pole "(.*?)" vyplní hodnotou "(.*?)"$/ do |field, value|
-  click_link 'Registrovat'
-  fill_in field,             :with => value
-  fill_in 'Potvrzení hesla', :with => '12345'
-  click_button 'Registrovat'
-end
-
-Keď /^sa volič pokúsi zaregistrovať bez výberu okresu a pohlavia$/ do
-  click_link 'Registrovat'
-  fill_in 'Email',           :with => 'user@test.cz'
-  fill_in 'Heslo',           :with => 'password'
-  fill_in 'Potvrzení hesla', :with => 'password'    
-  click_button 'Registrovat'
-
-   click_button 'Registrovat'
-end
-
-
-Tak /^vidí registračný formulár a pole "(.*?)" ma hodnotu "(.*?)"$/ do |field, value|
-  page.should have_content 'Přihlasovací údaje'
-  find_field(field).value.should eq(value)
-end
-
-Pokiaľ /^v systéme už existuje účet voliča s emailom "(.*?)"$/ do |email|
-  @citizen = Refinery::Citizens::Citizen.create(:email => email, :password => '123456', 
-    :password_confirmation => '123456', :county_id => 1, :gender => 'female', :age => 18)
-end
-
-Pokiaľ /^v systéme už existuje účet politika s emailom "(.*?)"$/ do |email|
-  @keeper = Refinery::Keepers::Keeper.create(:firstname => 'Bill', :lastname => 'Clinton',
-    :email => email, :password => '123456', :password_confirmation => '123456')
-end
-
-Keď /^sa volič prihlási do systému$/ do
-  @user = Refinery::Citizens::Citizen.create(:email => 'user@example.com',
-    :password => '123456', :password_confirmation => '123456',
-    :county_id => 1, :gender => 'female', :age => 32)
-
-  click_link 'Přihlásit se'
-  fill_in 'Email', :with => @user.email
-  fill_in 'Heslo', :with => '123456'
-  click_button 'Přihlásit se'
+Tak /^nevidí správu "(.*?)"$/ do |msg|
+  page.should_not have_content(msg)
 end
 
 Tak /^vidí odkaz "(.*?)"$/ do |link|
-  find_link link
+  page.should have_content(link)
 end
 
 Tak /^nevidí odkaz "(.*?)"$/ do |link|
-  page.should_not have_content link
+  page.should_not have_content(link)
 end
 
-Keď /^sa pokúsi prihlásiť nezaregistrovaný volič$/ do
-  @user = Refinery::Citizens::Citizen.new(:email => 'user@example.com',
-    :password => '123456', :password_confirmation => '123456')
-
-  click_link 'Přihlásit se'
-  fill_in 'Email', :with => @user.email
-  fill_in 'Heslo', :with => '123456'
-  click_button 'Přihlásit se'
-end
-
-Keď /^sa volič odhlási zo systému$/ do
-  click_link 'Odhlásit se'
-end
-
-Keď /^admin vytvorí voľby typu "(.*?)"$/ do |election_type|
-  click_link 'Elections'
-  click_link 'Add New Election'
-  fill_in 'Election Type', :with => election_type
-  select '2012', :from => 'election_held_1i'
-  fill_in 'election_notes', :with => 'Lorem ipsum dolor sit amet...'
-  click_button 'Save'
-end
-
-Tak /^vidí zoznam všetkých volieb$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Tak /^vidí práve vytvorené voľby$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Pokiaľ /^v systéme existujú prezidentské volby pre rok (\d+)$/ do |year|
-  Refinery::Elections::ElectionType.create(:name => 'Prezidentské volby')
-  Refinery::Elections::Election.create(:election_type_id => 1, :held => '2012-08-09',
-    :description => 'Lorem ipsum dolor sit amet.')
-end
-
-Keď /^admin vytvorí nového keepera pre politika do prez\. volieb (\d+)$/ do |arg1|
-  click_link 'Keepers'
-  click_link 'Add New Keeper'
-  click_button 'Add politician'
-  fill_in 'Candidate firstname', :with => 'Gregor'
-  fill_in 'Candidate lastname', :with => 'Kyslý'
-  select 'Prezidentské volby', :from => 'election_subject_election_election_id'
-  fill_in 'Firstname', :with => 'John'
-  fill_in 'Lastname', :with => 'Sheppard'
-  fill_in 'Email', :with => 'shep@mail.com'
-  fill_in 'Password', :with => 'q98FerD'
-  fill_in 'Password confirmation', :with => 'q98FerD'
-  fill_in 'Phone', :with => '+420 77 66 59'
-  click_button 'Save'
-end
-
-Tak /^vidí zoznam politikov$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Tak /^vidí v ňom novovytvoreného politika$/ do
-  pending # express the regexp above with the code you wish you had
+Keď /^pole "(.*?)" vyplní hodnotou "(.*?)"$/ do |field, value|
+  fill_in field, with: value
 end

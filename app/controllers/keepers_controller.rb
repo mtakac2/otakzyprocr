@@ -25,7 +25,7 @@ class KeepersController < ApplicationController
     end
 
     if @keeper.update_attributes(params[:keeper])
-      redirect_to main_app.keeper_path @keeper, :notice => 'Updated!!!'
+      redirect_to main_app.keeper_path(@keeper), :notice => 'Updated!!!'
     else
       render 'edit'
     end

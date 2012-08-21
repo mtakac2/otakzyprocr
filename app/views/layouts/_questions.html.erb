@@ -1,0 +1,13 @@
+<section id="questions">
+
+  <h1>Přehled otázek</h1>  
+  <ul>
+    <% @questions.each do |question| %>
+    <li>
+      <%= truncate(question.title, length: 150, separator: ' ') %> <br>
+      <%= link_to 'Řešit otázku', "/solve-question/#{question.id}" %> |
+      <%= link_to 'Zobrazit otázku >>', main_app.question_path(question) %>
+    </li>
+    <% end %>
+  </ul>
+</section>

@@ -1,2 +1,8 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <%= link_to truncate(question.title, length: 40, separator: ' '), 
+        main_app.question_path(question) %>
+    </li>
+  <% end %>
+</ul>

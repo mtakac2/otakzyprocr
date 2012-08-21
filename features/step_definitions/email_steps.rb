@@ -50,7 +50,7 @@ end
 # Check how many emails have been sent/received
 #
 
-Then /^"(.*?)" by mal dostať email$/ do |address|
+Tak /^"(.*?)" by mal dostať email$/ do |address|
   unread_emails_for(address).size.should == parse_email_count(1)
 end
 
@@ -75,7 +75,7 @@ end
 #
 
 # Opens the most recently received email
-When /^(?:I|they|"([^"]*?)") opens? the email$/ do |address|
+Keď /^Volič otvorí email "(.*?)"$/ do |address|
   open_email(address)
 end
 
@@ -177,7 +177,7 @@ end
 # Interact with Email Contents
 #
 
-When /^(?:I|they) follow "([^"]*?)" in the email$/ do |link|
+Keď /^klikne na emailový odkaz "(.*?)"$/ do |link|
   visit_in_email(link)
 end
 

@@ -10,8 +10,15 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       if is_active?(user)
         session[:user_id] = user.id
-        session[:user_type] = user.class.name                
-        redirect_to '/'
+        session[:user_type] = user.class.name
+
+        if session[:return_url]
+          return_url = session[:return_url]
+          session[:return_url] = nil
+          redirect_to return_url
+        else
+          redirect_to '/'
+        end        
       else
         redirect_to '/', :notice => 'Váš účet nebyl aktivován.'
       end        

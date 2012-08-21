@@ -1,3 +1,14 @@
 <h1>Můj účet</h1>
 
 <%= link_to 'Upravit', main_app.edit_citizen_path(@citizen) %>
+
+<h2>Moje otázky</h2>
+<ul>
+<% @citizen.questions.each do |question| %>
+  <%= @citizen.hours_on_question(question.id) %> hodin
+  <%= truncate(question.title, length: 40, separator: ' ') %>
+  <%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)) %>
+  <%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move" %>
+  <br>
+<% end %>
+</ul>

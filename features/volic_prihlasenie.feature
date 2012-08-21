@@ -3,8 +3,8 @@
 Požiadavka: Prihlásenie sa voliča
  
   Pozadie:
-    Pokiaľ je zaregistrovaný admin
-    A nie je prihlásený
+    Pokiaľ existuje Admin
+    A existuje Volič
 
   Scenár: Úspešný login
     Keď sa volič prihlási do systému

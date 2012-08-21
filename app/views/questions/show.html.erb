@@ -4,4 +4,6 @@
   <section class="question-body">
     <%= raw @question.content %>
   </section>
+
+  <%= link_to 'Řešit otázku', "/solve-question/#{@question.id}" %>
 </article>

@@ -1,0 +1,15 @@
+<h1><%= @question.title %></h1>
+
+<%= form_for @citizenQuestion do |f| %>
+  <%= f.hidden_field :citizen_id %>
+  <%= f.hidden_field :question_id %>
+
+  <div class="field">
+    <%= f.label :hours, 'Hodiny' %>
+    <%= f.number_field :hours %>
+  </div>  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
