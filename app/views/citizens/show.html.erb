@@ -9,6 +9,7 @@
   <%= truncate(question.title, length: 40, separator: ' ') %>
   <%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)) %>
   <%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move" %>
+  <%= link_to 'Přidelit úlohy', '#' if @citizen.is_team_manager_for?(question.id)%>
   <br>
 <% end %>
 </ul>
