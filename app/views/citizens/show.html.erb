@@ -1,15 +1,71 @@
-<h1>Můj účet</h1>
+<section id="account">
+	<h1>Můj účet</h1>
 
-<%= link_to 'Upravit', main_app.edit_citizen_path(@citizen) %>
+	<section id="account_personal">
+		<h2>Osobní údaje</h2>
+		<table id="account_personal_table">
+			<tr>
+				<th>Jméno:</th>
+				<td><%= @citizen.firstname.capitalize %></td>
+			</tr>
+			<tr>
+				<th>Příjmení:</th>
+				<td><%= @citizen.lastname.capitalize %></td>
+			</tr>
+			<tr>
+				<th>Okres:</th>
+				<td><%= @citizen.county.name %></td>
+			</tr>
+			<tr>
+				<th>Pohlaví:</th>
+				<td>
+					<%= 'Muž' if @citizen.gender == 'male' %>
+					<%= 'Žena' if @citizen.gender == 'female' %>
+				</td>
+			</tr>
+			<tr>
+				<th>Věk:</th>
+				<td><%= @citizen.age %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= link_to 'Upravit', main_app.edit_citizen_path(@citizen), class: 'btn btn-default' %>
+				</td>
+			</tr>
+		</table>
+	</section>
 
-<h2>Moje otázky</h2>
-<ul>
-<% @citizen.questions.each do |question| %>
-  <%= @citizen.hours_on_question(question.id) %> hodin
-  <%= truncate(question.title, length: 40, separator: ' ') %>
-  <%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)) %>
-  <%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move" %>
-  <%= link_to 'Přidelit úlohy', '#' if @citizen.is_team_manager_for?(question.id)%>
-  <br>
-<% end %>
-</ul>
+	<section id="account_questions">
+		<h2>Strategické otázky</h2>
+
+		<% @citizen.questions.each do |question| %>
+			<article id="question_<%= question.id %>">
+				<h3>
+					<%= truncate(question.title, length: 100, separator: ' ') %>
+					<%= link_to 'Přidelit úlohy', '#', class: 'btn btn-default' if @citizen.is_team_manager_for?(question.id) %>
+				</h3>				
+				<h4><%= question.subject.firstname %> <%= question.subject.lastname %></h4>
+				<table id="account_question_table">
+					<tr>
+						<th>Přislíbených hodin:</th>
+						<td><%= @citizen.hours_on_question(question.id) %>
+						<td>
+							<%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)), class: 'btn btn-default' %>
+							<%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move", class: 'btn btn-default' %>
+						</td>
+					</tr>
+					<tr>
+						<th>Odpracovaných hodin:</th>
+						<td><%= @citizen.hours_done_on_question(question.id) %>
+						<td> </td>
+					</tr>
+					<tr>
+						<td colspan="2">							
+							<%= link_to 'Opustit otázku', '#', class: 'btn btn-danger' %>
+						</td>
+					</tr>
+				</table>
+			</article>
+		<% end %>	
+	</section>
+</section>  

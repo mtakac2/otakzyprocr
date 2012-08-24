@@ -6,7 +6,7 @@ Požiadavka: Odhlásenie voliča
     Pokiaľ existuje Admin
     A existuje Volič
     Keď sa volič prihlási do systému
-
+  
   Scenár: Odhlásenie
     Keď sa volič odhlási zo systému
     Tak vidí odkaz "Registrovat se"

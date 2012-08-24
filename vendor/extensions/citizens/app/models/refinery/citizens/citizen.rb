@@ -87,7 +87,12 @@ module Refinery
 
       def hours_on_question(question_id)
         CitizensQuestion.select('hours').where("citizen_id = ? AND question_id = ?",
-          id, question_id).first.hours     
+          id, question_id).first.hours
+      end
+
+      def hours_done_on_question(question_id)
+        CitizensQuestion.select('hours_done').where("citizen_id = ? AND question_id = ?",
+          id, question_id).first.hours_done
       end
 
       def get_citizen_question_by_id(question_id)
