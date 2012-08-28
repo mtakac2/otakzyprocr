@@ -5,8 +5,7 @@ class CitizensController < ApplicationController
     @citizen = Refinery::Citizens::Citizen.find(current_user)
   end
 
-  def new    
-    @questions = Refinery::Questions::Question.order(:created_at)
+  def new        
     @counties = Refinery::Counties::County.order(:name)
     @years = 13 .. 99
     session[:citizen_params] ||= {}
@@ -15,8 +14,7 @@ class CitizensController < ApplicationController
   end
 
   def create    
-    # @elections = Refinery::Elections::Election.order(:held)    
-    @questions = Refinery::Questions::Question.order(:created_at)
+    # @elections = Refinery::Elections::Election.order(:held)        
     @counties = Refinery::Counties::County.order(:name)
     @years = 13 .. 99
 
@@ -27,16 +25,7 @@ class CitizensController < ApplicationController
     if @citizen.valid?
       if @citizen.last_step?
         if @citizen.all_valid?
-          @citizen.save
-          if params[:question_id]
-            @question = Refinery::Questions::Question.find(params[:question_id])
-
-            @citizens_question = CitizensQuestion.new
-            @citizens_question.citizen_id = @citizen.id
-            @citizens_question.question_id = @question.id
-            @citizens_question.hours = params[:hours]
-            @citizens_question.save
-          end
+          @citizen.save          
         end        
       else
         @citizen.next_step
@@ -88,8 +77,7 @@ class CitizensController < ApplicationController
       redirect_to '/'
     end    
     
-    @citizen.next_step
-    @citizen.next_step
+    @citizen.next_step    
 
     if @citizen.update_attributes(:activation_code => nil)
       session[:user_id] = @citizen.id
@@ -99,8 +87,8 @@ class CitizensController < ApplicationController
           session[:return_url] = nil
           redirect_to return_url, :notice => 'Váš účet byl úspěšne aktivován.'
       else
-        redirect_to '/', :notice => 'Váš účet byl úspěšne aktivován.'
+        redirect_to questions_path, :notice => 'Váš účet byl úspěšne aktivován. Vyberte otazku.'
       end
     end    
-  end
+  end  
 end

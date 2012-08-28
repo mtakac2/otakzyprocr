@@ -33,7 +33,7 @@ module Refinery
       before_create :create_activation_code
 
       def steps
-        %w[user personal question]
+        %w[user personal]
       end
 
       def current_step

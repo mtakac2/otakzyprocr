@@ -10,7 +10,7 @@
   <%= render "form_#{@citizen.current_step}", :f => f %>
 
   <div class="actions">
-    <% submit_text = (@citizen.current_step == 'question') ? 'Registrovat se' 
+    <% submit_text = (@citizen.current_step == 'personal') ? 'Registrovat se' 
       : 'Pokračovat' %>
     <%= f.submit submit_text, :class => 'btn btn-primary' %>
   </div>

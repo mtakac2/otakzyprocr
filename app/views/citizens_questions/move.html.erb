@@ -1,14 +1,24 @@
-Přenášíte <strong><%= @current_citizens_question.hours %></strong> hodin z otázky <strong><%= @current_question.title %></strong>
+<section id="move_question">
+  <p>
+    Zde můžete přenést <strong><%= @current_citizens_question.hours %></strong> hodin z otázky <strong><%= @current_question.title %></strong> na jinou otázku.
+  </p>
 
-<%= form_for @new_citizens_question, url: "/citizens_question/#{@current_citizens_question.id}/relocate_hours" do |f| %>
-  <%= hidden_field_tag 'citizen_id', @current_citizens_question.citizen_id %>
-  <%= hidden_field_tag 'question_id', @current_citizens_question.question_id %>
+  <%= form_for @new_citizens_question, url: "/citizens_question/#{@current_citizens_question.id}/relocate_hours" do |f| %>
+    <%= hidden_field_tag 'citizen_id', @current_citizens_question.citizen_id %>
+    <%= hidden_field_tag 'question_id', @current_citizens_question.question_id %>
+    
+    <div class="field">
+      <%= f.label :hours, 'Vyberte kolik hodin chcete přenést' %>
+      <%= f.select :hours, (1..@current_citizens_question.hours) %>
+    </div>
 
-  <%= label_tag 'asdf', 'Vyberte prosím na ktorú otázku chcete hodiny přenést' %>
-  <%= collection_select(:citizens_question, :question_id, Refinery::Questions::Question.all, :id, :title) %>
+    <div class="select">
+      <%= label_tag 'asdf', 'Vyberte prosím na ktorú otázku chcete hodiny přenést' %>
+      <%= collection_select(:citizens_question, :question_id, Refinery::Questions::Question.all, :id, :title) %>    
+    </div>    
 
-  <%= f.label :hours, 'Vyberte kolik hodin chcete přenést' %>
-  <%= f.select :hours, (1..@current_citizens_question.hours) %>
-
-  <%= f.submit %>
-<% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>    
+  <% end %>
+</section>

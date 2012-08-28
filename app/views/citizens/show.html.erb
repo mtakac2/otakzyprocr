@@ -50,7 +50,7 @@
 						<th>Přislíbených hodin:</th>
 						<td><%= @citizen.hours_on_question(question.id) %>
 						<td>
-							<%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)), class: 'btn btn-default' %>
+							<%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)), class: 'btn btn-default' if @citizen.hours_on_question(question.id) == 0 %>
 							<%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move", class: 'btn btn-default' %>
 						</td>
 					</tr>

@@ -1,10 +1,16 @@
+<section id="add_hours">	
+<p>
+	Zde si můžete navýšit počet hodin pro otázku.
+</p>
+</section>
+
 <%= form_for @citizens_question do |f| %>
   <%= f.hidden_field :citizen_id %>
   <%= f.hidden_field :question_id %>
 
   <div class="field">
-    <%= f.label :hours, 'Hodiny' %>
-    <%= f.number_field :hours %>
+    <%= f.label :hours, 'Hodiny (zadejte kolik hodin chcete přidat)' %>
+    <%= f.number_field :hours, value: '' %>    
   </div>  
 
   <div class="actions">

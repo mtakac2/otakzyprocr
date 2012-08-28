@@ -6,4 +6,19 @@ class CitizensQuestion < ActiveRecord::Base
   def can_add_hours?
   	return true if self.hours == self.hours_done
   end
+
+  def paypal_url(return_url)
+    values = {
+      :business => '&rsquo;seller_1234111143_biz@asciicasts.com&rsquo;',
+      :cmd => '&rsquo;_cart&rsquo;',
+      :upload => 1,
+      :return => return_url,
+      :invoice => id,
+      :amount => 5,
+      :item_name => 'hours',
+      :item_quantity => self.hours
+    }      
+   
+    "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazkyprocr@mail.com&item_name=Hours&amount=5&quantity=50&currency_code=CZK&return_url=www.google.com"
+  end
 end
