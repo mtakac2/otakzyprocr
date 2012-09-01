@@ -8,7 +8,7 @@ module Refinery
 
       acts_as_indexed :fields => [:firstname, :lastname]
       
-      validates_presence_of :firstname, :lastname, :election_id
+      validates_presence_of :firstname, :lastname
     end
   end
 end

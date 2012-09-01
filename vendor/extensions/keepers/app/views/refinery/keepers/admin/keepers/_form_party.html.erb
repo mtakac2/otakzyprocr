@@ -6,6 +6,6 @@
 </div>
 
 <div class="select">
-  <%= label_tag 'election_subject_election_election_id', 'Volby' %>
+  <%= label_tag 'election_subject_election', 'Volby' %>
   <%= select 'election_subject_election', 'election_id', @elections.collect{ |e| [e.election_type.name, e.id] } %>
 </div>
