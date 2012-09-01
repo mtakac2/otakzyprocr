@@ -7,9 +7,7 @@
   <% else %>
     <p>
       <% unless searching? %>
-        <strong>
-          <%= t('.no_items_yet') %>
-        </strong>
+        <strong>No keepers yet</strong>
       <% else %>
         <%= t('no_results', :scope => 'refinery.admin.search') %>
       <% end %>

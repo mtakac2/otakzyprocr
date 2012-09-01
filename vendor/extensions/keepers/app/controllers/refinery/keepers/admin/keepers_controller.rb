@@ -4,7 +4,7 @@ module Refinery
       class KeepersController < ::Refinery::AdminController
 
         crudify :'refinery/keepers/keeper',
-                :title_attribute => 'firstname', :xhr_paging => true
+                :title_attribute => 'email', :xhr_paging => true
 
         def new
           @keeper = Keeper.new
@@ -39,6 +39,14 @@ module Refinery
           else
             render 'new'
           end          
+        end
+
+        def politician_form       
+          @elections = Refinery::Elections::Election.all                 
+        end
+
+        def party_form       
+          @elections = Refinery::Elections::Election.all                 
         end
 
         private

@@ -1,11 +1,5 @@
 # encoding: UTF-8
 
-Pokiaľ /^existuje Admin$/ do
-  @admin = FactoryGirl.create(:admin)
-  @admin.add_role 'refinery'
-  @admin.add_role 'superuser'
-end
-
 Pokiaľ /^existuje otázka$/ do 
   @question = FactoryGirl.create(:question)    
 end

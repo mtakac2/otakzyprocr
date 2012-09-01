@@ -7,8 +7,8 @@ module Refinery
       attr_accessible :firstname, :lastname, :position
 
       acts_as_indexed :fields => [:firstname, :lastname]
-
-      validates :firstname, :presence => true, :uniqueness => true
+      
+      validates_presence_of :firstname, :lastname, :election_id
     end
   end
 end

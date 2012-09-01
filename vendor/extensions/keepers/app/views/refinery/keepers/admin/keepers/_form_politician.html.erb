@@ -1,16 +1,16 @@
-<h2>Politician</h2>
+<legend>Politician</legend>
 
 <div class="field">
-  <%= label_tag 'politician_firstname', 'Candidate firstname' %>
+  <%= label_tag 'politician_firstname', 'Politician firstname' %>
   <%= text_field_tag 'politician[firstname]' %>
 </div>
 
 <div class="field">
-  <%= label_tag 'politician_lastname', 'Candidate lastname' %>
+  <%= label_tag 'politician_lastname', 'Politician lastname' %>
   <%= text_field_tag 'politician[lastname]' %>
 </div>
 
 <div class="select">
-  <%= label_tag 'election_subject_election', 'Volby' %>
+  <%= label_tag 'election_subject_election_election_id', 'Volby' %>
   <%= select 'election_subject_election', 'election_id', @elections.collect{ |e| [e.election_type.name, e.id] } %>
 </div>

@@ -1,3 +1,17 @@
 // Place all the styles related to the keepers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+table#politicians, table#parties {
+  width: 100%;
+  border: 1px solid #ddd;
+
+  tr {
+    border: 1px solid #ddd;
+
+    td {
+      border-right: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      text-align: center;
+    }
+  }  
+}

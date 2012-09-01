@@ -20,11 +20,11 @@ FactoryGirl.define do
   factory :election, class: 'Refinery::Elections::Election' do |election|
     election.held '2012-09-09'
 
-    association :election_type
+    association :election_type, strategy: :build
   end
 
   factory :election_type, class: 'Refinery::Elections::ElectionType' do |et|
-    name 'Prezidentske volby'
+    name 'Prezidentské volby'
   end
 
   factory :politician, class: 'Refinery::Politicians::Politician' do |politician|

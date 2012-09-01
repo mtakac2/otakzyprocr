@@ -1,5 +1,16 @@
 # encoding: UTF-8
 
+Pokiaľ /^existuje Admin$/ do
+  @admin = FactoryGirl.create(:admin, password: 'password', password_confirmation: 'password')
+  @admin.add_role 'refinery'
+  @admin.add_role 'superuser'
+end
+
+Pokiaľ /^existuju volby$/ do  
+  FactoryGirl.create(:election, election_type_id: 1)
+end
+
+
 Pokiaľ /^je uživateľ na domovskej stránke$/ do
   visit '/'
 end
@@ -30,4 +41,11 @@ end
 
 Keď /^pole "(.*?)" vyplní hodnotou "(.*?)"$/ do |field, value|
   fill_in field, with: value
+end
+
+Pokiaľ /^Admin je prihlásený do systému$/ do
+  visit '/refinery'
+  fill_in 'Login',    with: @admin.username
+  fill_in 'Password', with: 'password'
+  click_button 'Sign in'
 end

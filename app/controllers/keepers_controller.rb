@@ -25,7 +25,7 @@ class KeepersController < ApplicationController
     end
 
     if @keeper.update_attributes(params[:keeper])
-      redirect_to main_app.keeper_path(@keeper), :notice => 'Updated!!!'
+      redirect_to main_app.keeper_path(@keeper), :notice => 'Váš účet byl úspěšne upraven.'
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class KeepersController < ApplicationController
     if @keeper.save
       session[:user_id] = @keeper.id
       session[:user_type] = @keeper.class.name
-      redirect_to main_app.edit_keeper_path @keeper, :notice => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.'      
+      redirect_to main_app.edit_keeper_path(@keeper), :notice => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.'      
     end    
   end
 end

@@ -13,7 +13,12 @@ class QuestionsController < ApplicationController
 
   def new
     @keeper = Refinery::Keepers::Keeper.find(params[:keeper_id])
-    @subject = Subject.find(params[:politician_id])    
+    if params[:politician_id]
+      @subject = Subject.find(params[:politician_id])
+    end
+    if params[:party_id]
+      @subject = Subject.find(params[:party_id])
+    end
     @question = Refinery::Questions::Question.new
   end
 

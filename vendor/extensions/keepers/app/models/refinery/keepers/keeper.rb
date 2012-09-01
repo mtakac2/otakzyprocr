@@ -16,9 +16,24 @@ module Refinery
 
       before_create :create_activation_code
 
+      # validate :email_availability
+      validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+      # validates_length_of :password, :minimum => 6
+      validates_presence_of :firstname, :lastname, :email
+
       def create_activation_code
         self.activation_code = SecureRandom.urlsafe_base64(64)
-      end      
+      end
+
+      def email_availability
+        if Refinery::Citizens::Citizen.find_by_email(email) || Keeper.find_by_email(email)
+          errors.add(:email, 'email is taken.')
+        end
+      end
+
+      def has_password?
+        true if self.password_digest        
+      end
     end
   end
 end

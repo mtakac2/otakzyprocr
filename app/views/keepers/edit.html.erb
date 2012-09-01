@@ -1,10 +1,10 @@
-<%= form_for @keeper do |f| %>
+<%= form_for @keeper, html: { class: 'well' } do |f| %>
   <fieldset>
     <legend>Váš účet</legend>    
 
     <div class="field">
       <%= f.label :email, 'Email' %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, autofocus: :autofocus %>
     </div>
 
     <div class="field">
@@ -63,6 +63,6 @@
   </fieldset>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Upravit' %>
   </div>  
 <% end %>

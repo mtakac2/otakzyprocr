@@ -4,7 +4,7 @@
 
 <% if @politicians.any? %>
   <h2>Politici</h2>
-  <table>
+  <table id="politicians">
     <tr>
       <th>Jméno</th>
       <th>Kandiduje v</th>
@@ -35,9 +35,32 @@
 <% end %>  
 <% if @parties.any? %>
   <h2>Strany</h2>
-  <ul>
+  <table id="parties">
+    <tr>
+      <th>Název</th>
+      <th>Kandiduje v</th>
+      <th>Otázky</th>
+      <th> </th>
+    </tr>
   <% @parties.each do |party| %>
-    <li><%= party.name %></li>
+    <tr>
+      <td>
+        <%= link_to "#{party.name}", edit_keeper_party_path(@keeper, party) %>
+      </td>
+      <td>
+        <%= "#{party.elections.last.election_type.name} 
+             #{party.elections.last.held}" %>
+      </td>
+      <td>
+        <% party.questions.each do |question| %>        
+          <%= link_to question.title, 
+              main_app.keeper_party_question_path(@keeper, party, question) %><br>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to 'Pridat otazku', main_app.new_keeper_party_question_path(@keeper, party) %>
+      </td>
+    </tr>                                        
   <% end %>
-  </ul>
+  </table>
 <% end %>
