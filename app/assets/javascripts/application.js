@@ -15,5 +15,4 @@
 //= require bootstrap
 //= require bootstrap-collapse
 //= require bootstrap-alert
-//= require jquery.pjax
 //= require_tree .
