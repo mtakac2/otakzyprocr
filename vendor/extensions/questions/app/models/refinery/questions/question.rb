@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Refinery
   module Questions
     class Question < Refinery::Core::BaseModel
@@ -11,7 +13,18 @@ module Refinery
 
       acts_as_indexed :fields => [:title, :content]
 
-      validates :title, :presence => true, :uniqueness => true
+      validate :permited_question_count
+      validates :title, :presence => true, :uniqueness => true      
+
+      def permited_question_count
+        if (self.election.election_type.name == 'Prezidentské volby' && get_questions_count_for_subject(self.subject_id) >= 2) || (self.election.election_type.name != 'Prezidentské volby' && get_questions_count_for_subject(self.subject_id) >= 1) 
+            errors.add(:count, 'dosáhli ste maximálni počet otázek pro')
+        end
+      end
+
+      def get_questions_count_for_subject(subject_id)
+        Question.where("subject_id = #{subject_id}").count('id')
+      end
     end
   end
 end

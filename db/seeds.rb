@@ -43,3 +43,34 @@ Refinery::Emails::Email.create([
 ])
 
 Refinery::Counties::County.create([{ name: 'Brno' }, {name: 'Praha' }])
+
+# ONLY FOR TESTING
+
+Refinery::Elections::Election.create([
+  { election_type_id: 1, held: '2012-09-21' },
+  { election_type_id: 2, held: '2012-10-12' }
+])
+
+Refinery::Keepers::Keeper.create([
+  { firstname: 'Josef', lastname: 'Dlouhý', email: 'dlouhy@mail.com', password: '123456', password_confirmation: '123456', activation_code: nil },
+  { firstname: 'Anna', lastname: 'Schmidt', email: 'schmidt@mail.com', password: '123456', password_confirmation: '123456', activation_code: nil }
+])
+
+Refinery::Politicians::Politician.create([
+  { firstname: 'George', lastname: 'Vonn', keeper_id: 1 }  
+])
+
+Refinery::Parties::Party.create([
+  { name: 'OBSD', keeper_id: 2 }
+])
+
+ElectionSubjectElection.create([
+  { subject_id: 1, election_id: 1 },
+  { subject_id: 2, election_id: 2 }
+])
+
+Refinery::Questions::Question.create([
+  { title: 'Lorem ipsum', content: 'Dolor sit amet.', election_id: 1, subject_id: 1 },
+  { title: 'Another question', content: 'Lorem ipsum dolor sit consecetur elis.', election_id: 1, subject_id: 1 },
+  { title: 'Otázka do senátnich voleb', content: 'Tělo otázky do senátnich voleb', election_id: 2, subject_id: 2 }
+])

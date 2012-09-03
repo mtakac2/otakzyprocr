@@ -2,15 +2,30 @@
 <script type="text/javascript" src="/assets/tinymce.js"></script>
 
 <%= form_for @question, :url => keeper_politician_questions_path(@keeper.id, @subject, @question) do |f| %>
+
+  <% if @question.errors.any? %>
+    <div class="error_messages">
+      <div class="alert alert-error">
+        <% if @question.errors.include?(:count) %>
+          <strong>Dosáhli ste maximálni možný počet otázek pro dané volby.</strong>
+        <% else %>
+          <strong>Formulář byl vyplněn chybně. Opravte prosím následujíci chyby:</strong>
+        <% end %>            
+      </div>      
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :title, 'Záhlaví' %>
     <%= f.text_area :title, :rows => 3, :cols => 220 %>
-  </div>
+    <span class="fieldWithErrors"><%= @question.errors[:title].first %></span>
+  </div>  
 
   <div class="field">
     <%= f.label :content, 'Otázka' %>
     <%= f.text_area :content, :class => 'tinymce', :rows => 40, :cols => 120 %>
     <%= tinymce %>
+    <span class="fieldWithErrors"><%= @question.errors[:content].first %></span>
   </div>
 
   <div class="actions">
