@@ -1,8 +1,11 @@
 # encoding: UTF-8
 
-class CitizensController < ApplicationController
-  def show
-    @citizen = Refinery::Citizens::Citizen.find(current_user)
+class CitizensController < ApplicationController    
+  before_filter :authorized_user_access?, only: [:show, :edit]
+  before_filter :redirect_logged_in_user, only: :new
+
+  def show     
+    @citizen = Refinery::Citizens::Citizen.find(params[:id])
   end
 
   def new        

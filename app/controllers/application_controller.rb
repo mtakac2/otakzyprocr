@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -31,17 +33,29 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_user
 
-    def authorize_politician_access?
+    def authorized_politician_access?
       unless session[:user_id] && session[:user_type] == 'Refinery::Keepers::Keeper'
         redirect_to '/', :notice => 'Unauthorized access'
       end
     end
-    helper_method :authorize_politician_access?
+    helper_method :authorized_politician_access?
 
-    def authorize_citizen_access?
+    def authorized_citizen_access?
       unless session[:user_id] && session[:user_type] == 'Refinery::Citizens::Citizen'
         redirect_to '/', :notice => 'Unauthorized access'
       end
     end
-    helper_method :authorize_citizen_access?    
+    helper_method :authorize_citizen_access?
+
+    def authorized_user_access?      
+      unless current_user.id == params[:id].to_i
+        redirect_to '/', :notice => 'Na požadovanou akci nemáte oprávnění.'
+      end
+    end
+
+    def redirect_logged_in_user
+      if current_user
+        redirect_to '/'
+      end
+    end
 end
