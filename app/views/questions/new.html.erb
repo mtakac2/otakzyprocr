@@ -1,7 +1,7 @@
 <%= tinymce_assets %>
 <script type="text/javascript" src="/assets/tinymce.js"></script>
 
-<%= form_for @question, :url => keeper_politician_questions_path(@keeper.id, @subject, @question) do |f| %>
+<%= form_for @question, :url => keeper_politician_questions_path(@keeper.id, @subject, @question), html: { class: 'well' } do |f| %>
 
   <% if @question.errors.any? %>
     <div class="error_messages">
@@ -15,20 +15,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title, 'Záhlaví' %>
-    <%= f.text_area :title, :rows => 3, :cols => 220 %>
-    <span class="fieldWithErrors"><%= @question.errors[:title].first %></span>
-  </div>  
+  <fieldset><legend>Vytvořit otázku</legend>
+    <div class="field">
+      <%= f.label :title, 'Záhlaví *' %>
+      <%= f.text_area :title, rows: 3, cols: 220, id: 'question-head' %>
+      <span class="fieldWithErrors"><%= @question.errors[:title].first %></span>
+    </div>  
 
-  <div class="field">
-    <%= f.label :content, 'Otázka' %>
-    <%= f.text_area :content, :class => 'tinymce', :rows => 40, :cols => 120 %>
-    <%= tinymce %>
-    <span class="fieldWithErrors"><%= @question.errors[:content].first %></span>
-  </div>
+    <div class="field">
+      <%= f.label :content, 'Otázka *' %>
+      <%= f.text_area :content, :class => 'tinymce', :rows => 40, :cols => 120 %>
+      <%= tinymce %>
+      <span class="fieldWithErrors"><%= @question.errors[:content].first %></span>
+    </div>
+  </fieldset>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Vytvořit', class: 'btn btn-primary' %>
   </div>
 <% end %>

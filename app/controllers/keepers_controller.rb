@@ -1,6 +1,10 @@
 # encoding: UTF-8
 
 class KeepersController < ApplicationController
+  before_filter :authorized_politician_access?
+  before_filter :authorized_user_access?, only: [:show, :edit, :update]
+  before_filter :redirect_logged_in_user, only: :activate
+
   def show
     @keeper = Refinery::Keepers::Keeper.find(params[:id])
     @politicians = @keeper.subjects.where("subtype = ?", 'Refinery::Politicians::Politician')
@@ -14,18 +18,8 @@ class KeepersController < ApplicationController
   def update
     @keeper = Refinery::Keepers::Keeper.find(params[:id])
 
-    if !@keeper.password.blank?
-      if @keeper.authenticate(params[:old_password])
-        @keeper.password = params[:keeper][:password]
-        @keeper.password_confirmation = params[:keeper][:password_confirmation]
-      else
-        params[:keeper][:password] = nil
-        params[:keeper][:password_confirmation] = nil
-      end
-    end
-
     if @keeper.update_attributes(params[:keeper])
-      redirect_to main_app.keeper_path(@keeper), :notice => 'Váš účet byl úspěšne upraven.'
+      redirect_to main_app.keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne upraven.' }
     else
       render 'edit'
     end
@@ -43,7 +37,7 @@ class KeepersController < ApplicationController
     if @keeper.save
       session[:user_id] = @keeper.id
       session[:user_type] = @keeper.class.name
-      redirect_to main_app.edit_keeper_path(@keeper), :notice => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.'      
+      redirect_to main_app.edit_keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.' }     
     end    
   end
 end

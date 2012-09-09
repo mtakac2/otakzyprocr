@@ -22,12 +22,14 @@
       <ul class="nav pull-right">
         <% if current_user %>
           <li>
-            Jste přihlášen jako: 
-            <% if !current_user.firstname.blank? && !current_user.lastname.blank? %>
-              <%= current_user.firstname %> <%= current_user.lastname %>
-            <% else %>
-              <%= current_user.email %>
-            <% end %>
+            <a href="<%= main_app.keeper_path(current_user) %>">
+              Jste přihlášen jako: <i class="icon-user"></i>
+              <% if !current_user.firstname.blank? && !current_user.lastname.blank? %>
+                <%= current_user.firstname %> <%= current_user.lastname %>
+              <% else %>
+                <%= current_user.email %>
+              <% end %>
+            </a>
           </li>
 
           <% if session[:user_type] == 'Refinery::Keepers::Keeper' %>

@@ -35,21 +35,21 @@ class ApplicationController < ActionController::Base
 
     def authorized_politician_access?
       unless session[:user_id] && session[:user_type] == 'Refinery::Keepers::Keeper'
-        redirect_to '/', :notice => 'Unauthorized access'
+        redirect_to '/', :flash => { :error => 'Na požadovanou akci nemáte oprávnění.' }
       end
     end
     helper_method :authorized_politician_access?
 
     def authorized_citizen_access?
       unless session[:user_id] && session[:user_type] == 'Refinery::Citizens::Citizen'
-        redirect_to '/', :notice => 'Unauthorized access'
+        redirect_to '/', :flash => { :error => 'Na požadovanou akci nemáte oprávnění.' }
       end
     end
     helper_method :authorize_citizen_access?
 
     def authorized_user_access?      
       unless current_user.id == params[:id].to_i
-        redirect_to '/', :notice => 'Na požadovanou akci nemáte oprávnění.'
+        redirect_to '/', :flash => { :error => 'Na požadovanou akci nemáte oprávnění.' }
       end
     end
 

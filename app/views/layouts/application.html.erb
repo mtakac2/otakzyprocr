@@ -75,8 +75,11 @@
                                 <% end %>
                                 
                                 <section id="main-content">
-                                    <%= raw @page.content_for(:body) %>
-                                    
+                                    <% if @page %>
+                                        <%= raw @page.content_for(:body) %>                                        
+                                    <% else %>
+                                        <%= yield %>
+                                    <% end %>
                                 </section>
                             </section>
                         </div>

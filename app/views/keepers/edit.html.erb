@@ -7,20 +7,7 @@
       <%= f.text_field :email, autofocus: :autofocus %>
     </div>
 
-    <div class="field">
-      <%= f.label :old_password, 'Staré heslo' %>
-      <%= f.password_field :old_password %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password, 'Nové heslo' %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation, 'Potvrzení hesla' %>
-      <%= f.password_field :password_confirmation %>
-    </div>    
+    <span class="help-block"><%= link_to 'Zmenit heslo', '/under-construction/' %></span>        
   </fieldset>
 
   <fieldset>
@@ -63,6 +50,6 @@
   </fieldset>
 
   <div class="actions">
-    <%= f.submit 'Upravit' %>
+    <%= f.submit 'Upravit', class: 'btn btn-primary' %>
   </div>  
 <% end %>

@@ -1,66 +1,78 @@
-<h1>Muj ucet</h1>
+<section id="my_account">  
+  <h1 class="pull-left">Můj účet</h1>
 
-<%= link_to 'Upravit', main_app.edit_keeper_path(@keeper) %>
+  <a href="<%= main_app.edit_keeper_path(@keeper) %>" class="btn btn-primary pull-right"><i class="icon-edit icon-white"></i> Upravit</a>  
 
-<% if @politicians.any? %>
-  <h2>Politici</h2>
-  <table id="politicians">
-    <tr>
-      <th>Jméno</th>
-      <th>Kandiduje v</th>
-      <th>Otázky</th>
-      <th> </th>
-    </tr>
-  <% @politicians.each do |politician| %>
-    <tr>
-      <td>
-        <%= link_to "#{politician.firstname} #{politician.lastname}", edit_keeper_politician_path(@keeper, politician) %>
-      </td>
-      <td>
-        <%= "#{politician.elections.last.election_type.name} 
-             #{politician.elections.last.held}" %>
-      </td>
-      <td>
-        <% politician.questions.each do |question| %>        
-          <%= link_to question.title, 
-              main_app.keeper_politician_question_path(@keeper, politician, question) %><br>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to 'Přidat otázku', main_app.new_keeper_politician_question_path(@keeper, politician) %>
-      </td>
-    </tr>                                        
-  <% end %>
+  <br class="clear">
+
+  <% if @politicians.any? %>
+    <h2>Politici</h2>
+    <table id="politicians" class="table striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Jméno</th>
+          <th>Kandiduje v</th>
+          <th>Otázky</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @politicians.each do |politician| %>
+        <tr>
+          <td>
+            <%= link_to "#{politician.firstname} #{politician.lastname}", edit_keeper_politician_path(@keeper, politician) %>
+          </td>
+          <td>
+            <%= "#{politician.elections.last.election_type.name} 
+                 #{politician.elections.last.held}" %>
+          </td>
+          <td>
+            <% politician.questions.each do |question| %>        
+              <%= link_to question.title, 
+                  main_app.keeper_politician_question_path(@keeper, politician, question) %><br>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to 'Přidat otázku', main_app.new_keeper_politician_question_path(@keeper, politician) %>
+          </td>
+        </tr>                                        
+      <% end %>
+      </tbody>
     </table>
-<% end %>  
-<% if @parties.any? %>
-  <h2>Strany</h2>
-  <table id="parties">
-    <tr>
-      <th>Název</th>
-      <th>Kandiduje v</th>
-      <th>Otázky</th>
-      <th> </th>
-    </tr>
-  <% @parties.each do |party| %>
-    <tr>
-      <td>
-        <%= link_to "#{party.name}", edit_keeper_party_path(@keeper, party) %>
-      </td>
-      <td>
-        <%= "#{party.elections.last.election_type.name} 
-             #{party.elections.last.held}" %>
-      </td>
-      <td>
-        <% party.questions.each do |question| %>        
-          <%= link_to question.title, 
-              main_app.keeper_party_question_path(@keeper, party, question) %><br>
-        <% end %>
-      </td>
-      <td>
-        <%= link_to 'Přidat otázku', main_app.new_keeper_party_question_path(@keeper, party) %>
-      </td>
-    </tr>                                        
+  <% end %>  
+  <% if @parties.any? %>
+    <h2>Strany</h2>
+    <table id="parties" class="table striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Název</th>
+          <th>Kandiduje v</th>
+          <th>Otázky</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @parties.each do |party| %>
+        <tr>
+          <td>
+            <%= link_to "#{party.name}", edit_keeper_party_path(@keeper, party) %>
+          </td>
+          <td>
+            <%= "#{party.elections.last.election_type.name} 
+                 #{party.elections.last.held}" %>
+          </td>
+          <td>
+            <% party.questions.each do |question| %>        
+              <%= link_to question.title, 
+                  main_app.keeper_party_question_path(@keeper, party, question) %><br>
+            <% end %>
+          </td>
+          <td>            
+            <a href="<%= main_app.new_keeper_party_question_path(@keeper, party) %>" class="btn btn-primary"><i class="icon-plus icon-white"></i> Přidat otázku</a>
+          </td>
+        </tr>                                        
+      <% end %>
+      </tbody>
+    </table>
   <% end %>
-  </table>
-<% end %>
+</section>

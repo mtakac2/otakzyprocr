@@ -1,0 +1,10 @@
+<%= form_for @party do |f| %>
+  <div class="field">
+    <%= f.label :name, 'Název' %>
+    <%= f.text_field :name %>
+  </div>  
+
+  <div class="actions">
+    <%= f.submit 'Upravit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -1,6 +1,15 @@
+.clear {
+    clear: both;
+}
+
+span.fieldWithErrors {
+    font-size: 12px;
+    color: #B94A48;
+}
+
 a {
     color: #052682;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:visited {
         color: #334D97;
@@ -10,6 +19,21 @@ a {
         color: #610163;
         text-decoration: none;
     }
+}
+
+#main-content {
+    a {
+        text-decoration: underline;
+
+        &:hover, &:active {        
+            text-decoration: none;
+        }
+    }
+
+    a.btn {
+        color: white;
+        text-decoration: none;
+    }  
 }
 
 h1 {
@@ -79,11 +103,11 @@ body {
             top: 110px;
         }
 
-        a#prev {
+        &#prev {
             left: -16px;
         }
 
-        a#next {
+        &#next {
             right: -16px;
         }
     }
@@ -111,7 +135,7 @@ body {
             color: white;
             width: 100%;
 
-            h6, a {
+            h5, a {
                 margin-right: 6px;
                 margin-left: 6px;
             }
@@ -125,6 +149,14 @@ body {
                 background: transparent url('alpha_bg.png') repeat-x;
                 height: 60px;
                 overflow: hidden;
+                a {
+                    color: white;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
             }
 
             &.carousel-question-links {
@@ -137,6 +169,10 @@ body {
 footer {
     padding-top: 40px;
     line-height: 14px;
+
+    img {
+        margin-right: 20px;
+    }
 
     #copyright {
         margin-top: 20px;
@@ -154,6 +190,31 @@ footer {
                 font-size: 11px;
                 text-decoration: none;
             }
+        }
+    }
+}
+
+#main-content {
+
+    table {
+        
+        th {
+            text-align: center;
+        }
+    }
+
+    form {
+
+        .help-block {
+            font-size: 12px;
+        }
+
+        textarea#question-head {
+            width: 600px;
+        }
+
+        textarea.tinymce {
+            width: 100%;
         }
     }
 }
