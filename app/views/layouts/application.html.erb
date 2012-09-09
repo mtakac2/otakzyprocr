@@ -1,100 +1,95 @@
 <!DOCTYPE html>
-<%= render '/refinery/html_tag' %>
-  <% site_bar = render('/refinery/site_bar', :head => true) -%>  
-  <%= render '/refinery/head' %>        
+    <%= render '/refinery/html_tag' %>
+    <% site_bar = render('/refinery/site_bar', :head => true) -%>  
+    <%= render 'refinery/head' %>
+    
+    <body>
+    
+        <%= site_bar -%>
+        <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
 
-  <body>
-    <%= site_bar -%>
-    <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <div class="container" id="wrapper">
-    <header>
-      <div class="container" id="header">
-        <div class="row">
-          <div class="span3">            
-            <a href="#"><%= image_tag 'logo.png' %></a>
-          </div>
-          <div class="span9" id="topmenu">              
-            <ul id="nav-links">
-              <% if current_user %>
-                <li>
-                  Jste přihlášen jako: 
-                  <% if !current_user.firstname.blank? && !current_user.lastname.blank? %>
-                    <%= current_user.firstname %> <%= current_user.lastname %>
-                  <% else %>
-                    <%= current_user.email %>
-                  <% end %>
-                </li>
-                <% if session[:user_type] == 'Refinery::Keepers::Keeper' %>
-                  <li><%= link_to 'Správa účtu', main_app.keeper_path(current_user) %></li>
-                <% end %>
-                <% if session[:user_type] == 'Refinery::Citizens::Citizen' %>
-                  <li><%= link_to 'Správa účtu', main_app.citizen_path(current_user) %></li>
-                <% end %>
-                <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
-              <% else %>
-                <li><%= link_to 'Registrovat se', main_app.new_citizen_path %></li>
-                <li><%= link_to 'Přihlásit se', main_app.new_session_path %></li>
-              <% end %>
-            </ul>
-            <h1 id='logo'>
-              <%= link_to 'Strategické otázky pro Českou Republiku', refinery.root_path %>
-            </h1>          
-          </div>
-        </div>
-      </div>
+        <%= render 'refinery/menu' %>
 
-      <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </a>
-            <div class="nav-wrap">
-                  <div class="nav-collapse" id="example-one">
-                    <%= render '/refinery/header' -%>
-                  </div><!-- /.nav-collapse -->
-            </div>
-            </div><!-- /.container -->
-        </div><!-- /.navbar-inner -->
-      </div><!-- /.navbar -->
-      <%= link_to 'Statistiky', '/stats' %>
-    </header>
-
-    <% if flash.any? %>
-      <% flash.each do |name, msg| %>
-        <div class="alert alert-<%= name %>">
-          <a class="close" data-dismiss="alert" href="#">×</a>
-          <strong><%= msg %></strong>
-        </div>        
-      <% end %>
-    <% end %>
-
-    <section id="page">      
-
-      <section class="" id="primary_content">
-        <div class="container">
-          <div class="row">
-            <div class="span12">
-              <div class="content_holder">
-
-                <% if request.fullpath == refinery.root_path %>
-                <%= render 'layouts/questions' %>
-                <% end %>
-
-                <%= yield %>
+        <div class="container" id="wrapper">
+            
+            <header>
+              <div class="container" id="header">
+                <div class="row">
+                  <div class="span12"> 
+                    <%= link_to(image_tag('logo.png', width: '230', height: '125', alt: 'Otázky pro ČR logo'), refinery.root_path) %>                                            
+                  </div>                
+                </div>
               </div>
-          </div>
-        </div>
-      </section>
-    </section>                  
-  </div>  
+            </header>
 
-  <footer>
-    <%= render '/refinery/footer' -%>          
-  </footer>
+            <% if flash.any? %>
+                <section id="flash-messages">
+                    <div class="row">
+                        <div class="span12">
+                            <% flash.each do |name, msg| %>
+                                <div class="alert alert-<%= name %>">
+                                    <a class="close" data-dismiss="alert" href="#">×</a>
+                                    <strong><%= msg %></strong>
+                                </div>        
+                            <% end %>
+                        </div>
+                    </div>
+                </section>
+            <% end %>
 
-  <%= render '/refinery/javascripts' %>
-  </body>
+            <section>
+                <div class="container" id="holder">                    
+                    <div class="row">
+
+                        <div class="span3" id="left-column">                        
+                            <ul class="nav nav-list well">
+                                <li class="nav-header">Typy voleb</li>
+                                <li><a href="#">Prezidentské volby</a></li>
+                                <li><a href="#">Volby do senátu</a></li>
+                                <li><a href="#">Krajské volby</a></li>
+                                <li class="divider"></li>
+
+                                <li class="nav-header">Kandidáti</li>
+                                <li><a href="#">Zuzana Roithová</a></li>
+                                <li><a href="#">J. Dienstbier ml</a></li>
+                                <li><a href="#">Klára Samková</a></li>
+                                <li><a href="#">Martin Potůček</a></li>
+                                <li><a href="#">Česká pirátská strana</a></li>
+                                <li class="divider"></li>
+
+                                <li class="nav-header">Statistiky</li>
+                                <li><a href="#">Mapa</a></li>
+                                <li><a href="#">Číselné statistiky</a></li>
+                                <li class="divider"></li>
+
+                                <li class="nav-header">Výsledky</li>
+                                <li class="disabled"><a href="#">Zatím nejsou dostupné žádne výsledky</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="span9" id="right-column">
+                            <section id="content">
+                                
+                                <% if request.fullpath == refinery.root_path %>
+                                    <%= render 'layouts/questions' %>
+                                <% end %>
+                                
+                                <section id="main-content">
+                                    <%= raw @page.content_for(:body) %>
+                                    
+                                </section>
+                            </section>
+                        </div>
+
+                    </div>    
+                </div>
+            </section>                  
+        </div>  
+
+        <footer>
+            <%= render '/refinery/footer' -%>          
+        </footer>
+
+        <%= render '/refinery/javascripts' %>
+    </body>
 </html>

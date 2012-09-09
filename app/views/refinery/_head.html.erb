@@ -1,20 +1,22 @@
 <head>
-  <meta charset='<%= Rails.application.config.encoding %>' />
-  <meta name="author" content="Marek Takac http://takacmarek.net/">
-  <meta name="author" content="Ondrej Zvara http://ondrejzvara.net">
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
-  <title>Strategické otázky pro Českou Republiku</title>
-  <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
-  <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
-  <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
-  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
-  <%= yield :meta %>
+    <meta charset='<%= Rails.application.config.encoding %>' />
+    <meta name="author" content="Marek Takac http://takacmarek.net/">
+    <meta name="author" content="Ondrej Zvara http://ondrejzvara.net">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 
-  <%= stylesheet_link_tag "application"%>  
-  <%= yield :stylesheets %>
+    <title>Strategické otázky pro Českou Republiku</title>
 
-  <%= render '/refinery/google_analytics' %>
+    <%= raw %(<meta name="description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+    <%= raw %(<meta name="keywords" content="#{@meta.meta_keywords}">) if @meta.meta_keywords.present? -%>
+    <%= raw %(<link rel="canonical" content="#{@canonical}" />) if @canonical.present? -%>
+    <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
+    <%= yield :meta %>
 
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag 'modernizr-min' %>
+    <%= stylesheet_link_tag "application"%>  
+    <%= yield :stylesheets %>
+
+    <%= render '/refinery/google_analytics' %>
+
+    <%= javascript_include_tag 'application' %>    
 </head>

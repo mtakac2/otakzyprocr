@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="span9">
-      <a href="#"><%= image_tag 'logo_osf_small.png' %></a>
-      <a href="#"><%= image_tag 'cplogo_small.png' %></a>
-      <p>&copy; Strategicke otazky pro CR 2012</p>
-      <p>Neviemaka 94, 000 00 Praha</p>
-      <p>tel.: +420 000 000 000, email: email@example.com</p>
+      <%= link_to(image_tag('logo_osf_small.png', alt: 'Logo Open society fund Praha'), 'http://www.osf.cz/', title: 'Open society fund Praha') %>
+      <%= link_to(image_tag('cplogo_small.png', alt: 'Logo Česká prezidentka'), 'http://ceska-prezidentka.webnode.cz/', title: 'Česká prezidentka') %>
+      <section id="copyright">
+        <span>&copy; Strategicke otazky pro CR 2012<br>
+          Neviemaka 94, 000 00 Praha<br>
+          tel.: +420 000 000 000, email: email@example.com</span>
+      </section>
     </div>
 
     <div class="span3">
-      <ul>
-        <li><a href="#">Link 1</a></li><span>|</span>
-        <li><a href="#">Link 2</a></li><span>|</span>
-        <li><a href="#">Link 3</a></li><span>|</span>
+      <ul id="links">
+        <li><a href="#">Link 1</a></li><span> |</span>
+        <li><a href="#">Link 2</a></li><span> |</span>
+        <li><a href="#">Link 3</a></li><span> |</span>
         <li><a href="#">Link 4</a></li>
       </ul>
     </div>

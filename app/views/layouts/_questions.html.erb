@@ -1,13 +1,22 @@
-<section id="questions">
-
-  <h1>Přehled otázek</h1>  
-  <ul>
-    <% @questions.each do |question| %>
-    <li>
-      <%= truncate(question.title, length: 150, separator: ' ') %> <br>
-      <%= link_to 'Řešit otázku', "/solve-question/#{question.id}" %> |
-      <%= link_to 'Zobrazit otázku >>', main_app.question_path(question) %>
-    </li>
-    <% end %>
-  </ul>
-</section>
+<% if @questions.any? %>
+    <section id="questions-list">    
+        <div id="carousel">
+        <% @questions.each do |question| %>
+            <div class="carousel-item">
+                <%= image_tag "http://placehold.it/218x260" %>
+                <div class="carousel-question-headline">
+                    <h6><%= truncate(question.title, length: 150, separator: ' ') %></h6>
+                </div>
+                
+                <div class="carousel-question-links">                                  
+                    <a href="<%= main_app.question_path(question) %>" class="pull-left"><span class="badge badge-info">Zobrazit otázku</span></a>                                            
+                    <a href="/solve-qustion/<%= question.id %>/" class="pull-right"><span class="badge badge-success">Řešit otázku</span></a>                                            
+                </div>
+            </div>        
+        <% end %>
+        </div>
+            
+        <a class="carousel-control left" href="#" id="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#" id="next">&rsaquo;</a>    
+    </section>
+<% end %>                            

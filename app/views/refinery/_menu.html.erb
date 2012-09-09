@@ -6,15 +6,45 @@
     css = [(css || 'menu clearfix')].flatten.join(' ')
     hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
 -%>
-<nav id='<%= dom_id %>' class='<%= css %>'>
-  <ul class="nav group page_item">
-    <%= render :partial => '/refinery/menu_branch', :collection => roots,
-               :locals => {
-                 :hide_children => hide_children,
-                 :sibling_count => (roots.length - 1),
-                 :menu_levels => local_assigns[:menu_levels],
-                 :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
-               } -%>
-  </ul>
-</nav>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <nav id='<%= dom_id %>' class='container <%= css %>'>
+      <ul class="nav group page_item">
+        <%= render :partial => '/refinery/menu_branch', :collection => roots,
+                   :locals => {
+                     :hide_children => hide_children,
+                     :sibling_count => (roots.length - 1),
+                     :menu_levels => local_assigns[:menu_levels],
+                     :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
+                   } -%>
+      </ul>
+
+      <ul class="nav pull-right">
+        <% if current_user %>
+          <li>
+            Jste přihlášen jako: 
+            <% if !current_user.firstname.blank? && !current_user.lastname.blank? %>
+              <%= current_user.firstname %> <%= current_user.lastname %>
+            <% else %>
+              <%= current_user.email %>
+            <% end %>
+          </li>
+
+          <% if session[:user_type] == 'Refinery::Keepers::Keeper' %>
+            <li><%= link_to 'Správa účtu', main_app.keeper_path(current_user) %></li>
+          <% end %>
+            
+          <% if session[:user_type] == 'Refinery::Citizens::Citizen' %>
+            <li><%= link_to 'Správa účtu', main_app.citizen_path(current_user) %></li>
+          <% end %>
+            <li><%= link_to 'Odhlásit se', main_app.session_path("current"), method: "delete" %></li>
+        <% else %>
+            <li><%= link_to 'Registrovat se', main_app.new_citizen_path %></li>
+            <li><%= link_to 'Přihlásit se', main_app.new_session_path %></li>
+        <% end %>
+      </ul>
+
+    </nav>
+  </div>
+</div>
 <% end -%>
