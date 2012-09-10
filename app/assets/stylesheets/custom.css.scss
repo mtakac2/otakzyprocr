@@ -121,11 +121,24 @@ body {
         width: 218px;
         height: 260px;        
         margin-right: 20px;
-        border: 1px solid #E3E3E3;
+        border: 1px solid #D1EEFF;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.05) inset;
+
+        &:hover {            
+            border: 1px solid #9696FF;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.25) inset;
+        }
 
         img {
             z-index: 1;
+        }
+
+        a.block-link {
+            display: inline-block;
+            width: 218px;
+            border: none;
+            height: 230px;
+            padding: 20px 9px;
         }
 
         div {
@@ -144,23 +157,9 @@ body {
                 margin-bottom: 9px;
             }
 
-            &.carousel-question-headline {
-                top: 0;                                
-                background: transparent url('alpha_bg.png') repeat-x;
-                height: 60px;
-                overflow: hidden;
-                a {
-                    color: white;
-                    text-decoration: underline;
-
-                    &:hover {
-                        text-decoration: none;
-                    }
-                }
-            }
 
             &.carousel-question-links {
-                bottom: 0;                               
+                bottom: 0;                
             }
         }
     }

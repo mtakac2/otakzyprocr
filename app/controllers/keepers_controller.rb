@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class KeepersController < ApplicationController
-  before_filter :authorized_politician_access?
+  before_filter :authorized_politician_access?, only: [:show, :edit, :update]
   before_filter :authorized_user_access?, only: [:show, :edit, :update]
   before_filter :redirect_logged_in_user, only: :activate
 
@@ -37,7 +37,7 @@ class KeepersController < ApplicationController
     if @keeper.save
       session[:user_id] = @keeper.id
       session[:user_type] = @keeper.class.name
-      redirect_to main_app.edit_keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.' }     
+      redirect_to main_app.edit_keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.' }
     end    
   end
 end

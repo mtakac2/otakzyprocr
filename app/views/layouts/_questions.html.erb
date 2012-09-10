@@ -3,11 +3,11 @@
         <div id="carousel">
         <% @questions.each do |question| %>
             <div class="carousel-item">
-                <%= image_tag 'question_mark.jpg' %>
-                <div class="carousel-question-headline">
-                    <h5><a href="<%= main_app.question_path(question) %>"><%= truncate(question.title, length: 150, separator: ' ') %></a></h5>
-                </div>
-                
+                <a href="<%= main_app.question_path(question) %>" class="block-link">
+                    <h4>
+                        <%= truncate(question.title, length: 300, separator: ' ') %>
+                    </h4>
+                </a>
                 <div class="carousel-question-links">                                  
                     <a href="<%= main_app.question_path(question) %>" class="pull-left"><span class="badge badge-info">Zobrazit otázku</span></a>                                            
                     <a href="/solve-question/<%= question.id %>/" class="pull-right"><span class="badge badge-success">Řešit otázku</span></a>                                            
