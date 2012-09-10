@@ -88,9 +88,9 @@ class CitizensController < ApplicationController
       if session[:return_url]
           return_url = session[:return_url]
           session[:return_url] = nil
-          redirect_to return_url, :notice => 'Váš účet byl úspěšne aktivován.'
+          redirect_to return_url, :flash => { :success => 'Váš účet byl úspěšne aktivován.' }
       else
-        redirect_to questions_path, :notice => 'Váš účet byl úspěšne aktivován. Vyberte otazku.'
+        redirect_to questions_path, :flash => { :success => 'Váš účet byl úspěšne aktivován. Vyberte si prosím otázku, na které budete pracovat.' }
       end
     end    
   end  

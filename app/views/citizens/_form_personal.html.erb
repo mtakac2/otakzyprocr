@@ -1,7 +1,7 @@
 <legend>Osobní údaje</legend>
 <div class="field">
   <%= f.label :firstname, 'Jméno' %>
-  <%= f.text_field :firstname %>
+  <%= f.text_field :firstname, :autofocus => :autofocus %>
   <span class="fieldWithErrors"><%= @citizen.errors[:firstname].first %></span>
 </div>
 

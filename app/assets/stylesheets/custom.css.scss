@@ -215,5 +215,12 @@ footer {
         textarea.tinymce {
             width: 100%;
         }
+
+        div.buttons {
+
+            label {
+                display: inline-block;
+            }
+        }
     }
 }

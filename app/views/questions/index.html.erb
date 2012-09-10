@@ -1,8 +1,8 @@
-<ul>
+<h2>Seznam strategických otázek</h2>
+<ol>
   <% @questions.each do |question| %>
     <li>
-      <%= link_to truncate(question.title, length: 40, separator: ' '), 
-        main_app.question_path(question) %>
+      <%= link_to question.title, main_app.question_path(question) %>
     </li>
   <% end %>
-</ul>
+</ol>

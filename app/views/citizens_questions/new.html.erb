@@ -1,15 +1,45 @@
-<h1><%= @question.title %></h1>
-
-<%= form_for @citizens_question do |f| %>
-  <%= f.hidden_field :citizen_id %>
-  <%= f.hidden_field :question_id %>
-
-  <div class="field">
-    <%= f.label :hours, 'Hodiny' %>
-    <%= f.number_field :hours %>
-  </div>  
-
-  <div class="actions">
-    <%= f.submit 'Vytvořit' %>
+<div class="row">
+  <div class="span9">
+    <h1><%= @question.title %></h1>
   </div>
-<% end %>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <%= form_for @citizens_question, html: { class: 'well' } do |f| %>
+      <%= f.hidden_field :citizen_id %>
+      <%= f.hidden_field :question_id %>
+
+      <div class="field">
+        <%= f.label :hours, 'Kolik hodin chcete řešení otázky věnovat?' %> 
+        <%= f.text_field :hours, value: 0 %>
+      </div>
+
+      <div class="price">
+        Cena: <span id="price">0.00</span> Kč
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'Vytvořit', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span5">
+    <h4>Ceny přislíbených hodin</h4>
+    <table>
+      <tr>
+        <th>1 - 3 hodiny</th>
+        <td>bez poplatku</td>
+      </tr>
+      <tr>
+        <th>4 - 10 hodin</th>
+        <td>minimálni rovná částka 50.00 Kč</td>
+      </tr>
+      <tr>
+        <th>11 a více hodin</th>
+        <td>5 Kč za hodinu</td>
+      </tr>
+    </table>
+  </div>
+</div>

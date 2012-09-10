@@ -1,5 +1,5 @@
 class CitizensMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "admin@otazkyprocr.cz"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
