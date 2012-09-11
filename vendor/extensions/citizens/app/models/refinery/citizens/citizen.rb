@@ -5,7 +5,7 @@ module Refinery
     class Citizen < Refinery::Core::BaseModel
       self.table_name = 'refinery_citizens'
       has_secure_password
-      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position, :activation_code
+      attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :street, :street_number, :postal_code, :city, :county_id, :gender, :age, :position, :activation_code, :password_reset_token, :password_reset_sent_at
       has_many :citizens_questions, :class_name => 'CitizensQuestion'
       has_many :questions, :through => :citizens_questions
       has_many :elections, :through => :election_subject_elections
@@ -30,7 +30,7 @@ module Refinery
       validates_numericality_of :age, :message => 'musí být číslo',
         :if => :personal_step?
 
-      before_create :create_activation_code
+      before_create :create_activation_code      
 
       def steps
         %w[user personal]
@@ -115,7 +115,7 @@ module Refinery
       def is_team_manager_for?(question_id)
         citizens_question = CitizensQuestion.where("question_id = #{question_id}").order('hours DESC').first
         return true if self.id == citizens_question.citizen_id
-      end
+      end      
     end
   end
 end

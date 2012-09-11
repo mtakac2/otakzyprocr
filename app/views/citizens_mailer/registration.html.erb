@@ -31,12 +31,8 @@
             <p><%= raw(@email.content) %></p>  
             <p>
               Prosím aktivujte si svůj účet kliktnutím na odkaz:
-              <%= link_to 'Aktivovat účet', "#{refinery.root_url}citizens/activate/#{@citizen.activation_code}" %>
-            </p>
-            <p>
-              Člen týmu (pro spolupráci):
-              
-            </p>
+              <%= link_to 'Založit účet', "#{refinery.root_url}citizens/activate/#{@citizen.activation_code}" %>
+            </p>            
           </td>                  
         </tr>
         <tr>

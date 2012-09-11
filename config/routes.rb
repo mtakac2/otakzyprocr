@@ -1,11 +1,14 @@
 Otazkyprocr::Application.routes.draw do  
   
+  get "password_resets/new"
+
   resources :questions
 
   resources :citizens
   resources :sessions
   resources :citizens_questions
   resources :elections
+  resources :password_resets
   resources :keepers do
     resources :politicians do
       resources :questions

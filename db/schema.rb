@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910215259) do
+ActiveRecord::Schema.define(:version => 20120911115157) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -36,19 +36,22 @@ ActiveRecord::Schema.define(:version => 20120910215259) do
   create_table "refinery_citizens", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
+    t.string   "email",                  :null => false
+    t.string   "password_digest",        :null => false
     t.string   "street"
     t.integer  "street_number"
     t.string   "postal_code"
     t.string   "city"
-    t.integer  "county_id",       :null => false
-    t.string   "gender",          :null => false
-    t.integer  "age",             :null => false
+    t.integer  "county_id",              :null => false
+    t.string   "gender",                 :null => false
+    t.integer  "age",                    :null => false
     t.integer  "position"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "activation_code"
+    t.string   "string"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "refinery_citizens", ["county_id"], :name => "index_refinery_citizens_on_county_id"

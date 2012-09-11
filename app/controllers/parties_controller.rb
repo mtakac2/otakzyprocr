@@ -9,6 +9,13 @@ class PartiesController < ApplicationController
   end
 
   def update
+    @keeper = Refinery::Keepers::Keeper.find(params[:keeper_id])
+    @party = @keeper.subjects.find(params[:id])
 
+    if @party.update_attributes(params[:party])
+      redirect_to main_app.keeper_path(@keeper), flash: { notice: 'Údaje strany byli úspěšne upraveny.'}
+    else
+      render 'edit'
+    end
   end
 end

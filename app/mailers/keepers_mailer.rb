@@ -11,7 +11,7 @@ class KeepersMailer < ActionMailer::Base
     @keeper = keeper
     @password = password
 
-    mail(to: @keeper.email, subject: 'Registration') do |format|
+    mail(to: @keeper.email, subject: @email.title) do |format|
       format.html
       format.text
     end

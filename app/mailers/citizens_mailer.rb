@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class CitizensMailer < ActionMailer::Base
   default from: "admin@otazkyprocr.cz"
 
@@ -10,9 +12,14 @@ class CitizensMailer < ActionMailer::Base
     @email = Refinery::Emails::Email.find_by_for('citizens_registration')
     @citizen = citizen        
 
-    mail(to: @citizen.email, subject: 'Registration') do |format|
+    mail(to: @citizen.email, subject: @email.title) do |format|
       format.html
       format.text
     end
+  end
+
+  def password_reset(citizen)
+    @citizen = citizen
+    mail :to => @citizen.email, :subject => "Změna hesla"
   end
 end

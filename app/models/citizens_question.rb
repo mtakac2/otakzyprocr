@@ -19,6 +19,7 @@ class CitizensQuestion < ActiveRecord::Base
   belongs_to :question, :class_name => 'Refinery::Questions::Question'
 
   validate :format_of_promised_hours
+  validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }
 
   def can_add_hours?
   	return true if self.hours == self.hours_done
@@ -63,4 +64,5 @@ class CitizensQuestion < ActiveRecord::Base
       errors.add(:hours, 'hodnota musí být kladné číslo')
     end    
   end
+
 end

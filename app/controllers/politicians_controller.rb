@@ -9,6 +9,13 @@ class PoliticiansController < ApplicationController
   end
 
   def update
+    @keeper = Refinery::Keepers::Keeper.find(params[:keeper_id])
+    @politician = @keeper.subjects.find(params[:id])
 
+    if @politician.update_attributes(params[:politician])
+      redirect_to main_app.keeper_path(@keeper), flash: { notice: 'Údaje politika byli úspěšne upraveny.'}
+    else
+      render 'edit'
+    end
   end
 end
