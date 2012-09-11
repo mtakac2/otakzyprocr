@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class PartiesController < ApplicationController
   def show
     @party = Refinery::Parties::Party.find(params[:id])

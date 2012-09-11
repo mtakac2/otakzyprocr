@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class PoliticiansController < ApplicationController
   def show
     @politician = Refinery::Politicians::Politician.find(params[:id])
