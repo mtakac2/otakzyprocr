@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />    
+
+      <title>Symbol Map</title>
+
+      <%= stylesheet_link_tag "map"%>
+      <%= javascript_include_tag "protovis-r3.2"%>
+      <%= javascript_include_tag "jquery-1.7.2.min.js"%>
+      <%= javascript_include_tag "jquery-ui-1.8rc3.custom.min.js"%>
+      <%= javascript_include_tag "centroid"%>
+      <%= javascript_include_tag "okresyCoord"%>
+              
+      <script>
+        var us_stats ={
+          <% counter = 1 %>
+          <% @counties.each do |county| %>
+            <% counter = counter + 1 %>
+            <% if counter < @counties.count + 1 %>
+              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[10], q3:[11], q4:[14], q5:[15], q6:[12], total:[5000]},") %>
+            <% else %>            
+              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[10], q3:[11], q4:[14], q5:[15], q6:[12], total:[5000]}") %>
+            <% end %>
+          <% end %>
+        };
+        us_stats.maxYear = 2008;
+        us_stats.minYear = 1995;
+        us_stats.yearIdx = function(year) { return 2008-year; }
+      </script>
+      <script type="text/javascript">var isDefault = true;</script>
+
+  <!--info window functions-->
+  <script type="text/javascript">
+      $(document).ready(function($) {
+        $(function(){
+          var link = $('g>a');
+          link.live('mouseover', function(e) {
+              var x = e.pageX;
+              var y = e.pageY;
+
+                var titleValue = $(this).attr("title");
+                var titleValue = titleValue.split(',');
+                var count = titleValue.length;
+                $('#infoHead').append('<h3>Okres: ' + titleValue[count-1] + '</h3>');
+                for(var i=0;i<count-1;i++)
+                {
+                  $('#infoHead').append('<p>Otazka: ' + titleValue[i] + '</p>');
+                }
+                $('#infoHead').css('display',"inline");
+                //$('#infoHead').css('height',"150px");
+                $('#infoHead').css('position',"absolute");
+                $('#infoHead').css('left',x+10);
+                $('#infoHead').css('top',y+5);
+              return false;
+          })
+        })
+      });
+
+      $(document).ready(function($) {
+        $(function(){
+          $('a').live('mouseout', function() {
+              $('#infoHead').css('display',"block");
+              $('#infoHead').css('position',"fixed");
+              //$('#infoHead').css('height',0);
+                $('#infoHead').css('left',-200);
+                $('#infoHead').css('top',-200);
+                $('#infoHead').empty();
+                return false;
+          })
+        })
+      });
+  </script>
+  <!--end of info window functions-->
+  </head>
+
+  <body >
+    <div id="wrapper">      
+      <header>
+        <div id="heading">                  
+                 <h1>Pocet prislubenych hodin na otazku podla okresov</h1>
+              </div>
+        <nav id="topMenu">
+          <ul>
+            <li><a href="#">Pocet volicov</a></li>
+            <li><a href="#">Pocet prislubnych hodin</a></li>
+            <li><a href="#">Pocet odrobenych hodin</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section>
+        <nav id="sideMenu">
+          <ul>
+            
+          </ul>
+        </nav>
+        <div id="infoHead">
+        </div>
+        <div id="map">
+        
+        <!--generating pies, single-question markers-->
+        <script type="text/javascript+protovis">
+
+          var qTitle = new Array();
+          var qData = new Array();
+            var qid = 1;
+            //GLOBAL VARIABLES
+            
+            if (isDefault == true){
+            var questions = [
+                {number_of_q: 6},
+                {q_id: 0, q_color: "rgba(42, 11, 239,0.7)"},
+                {q_id: 1, q_color: "rgba(239, 11, 197,0.7)"},
+                {q_id: 2, q_color: "rgba(36, 229, 6,0.7)"},
+                {q_id: 3, q_color: "rgba(229, 170, 6,0.7)"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)"},
+                {q_id: 5, q_color: "rgba(0, 0, 0)"}
+              ]
+          }
+          else
+          {
+            if(qid == 1)
+            {
+              var questions = [
+                  {number_of_q: 1},
+                  {q_id: qid, q_color: "rgba(00, 255, 00,0.7)"}]
+            }
+            if(qid == 2)
+            {
+              var questions = [
+                  {number_of_q: 1},
+                  {q_id: qid, q_color: "rgba(00, 00, 255,0.7)"}]
+            }
+            if(qid == 3)
+            {
+              var questions = [
+                  {number_of_q: 1},
+                  {q_id: qid, q_color: "rgba(255, 00, 00,0.7)"}]
+            }
+            if(qid == 4)
+            {
+              var questions = [
+                  {number_of_q: 1},
+                  {q_id: qid, q_color: "rgba(150, 255, 00,0.7)"}]
+            }
+          }
+
+            var a = questions[0].number_of_q;  //NUM OG QUESTIONS
+                
+              var w = 900,
+                  h = 500,
+                  yearsMargin = 100,
+                  rScale = 1 / 5;
+
+              var scale = pv.Geo.scale()
+                  .domain({lng: 12, lat: 48.5}, {lng: 19, lat: 51})
+                  .range({x: 0, y: 0}, {x: w, y: h});
+
+              var colors = Array();
+              if(isDefault == true)
+              {
+                for(var i=0;i< a;i++)
+                  colors[i] = questions[i+1].q_color;
+              }
+              else
+              {
+                colors[0] = questions[1].q_color
+              }
+
+              okresyShapes.forEach(function(c) {
+                c.code = c.code.toUpperCase();
+                c.centLatLon = centroid(c.borders[0]);
+              });
+
+              // Add the main panel for the visualization
+              var vis = new pv.Panel()
+                  .width(w)
+                  .height(h)
+                  .top(30);
+            
+              // Add a panel for each state
+              var state = vis.add(pv.Panel)
+                .data(okresyShapes);
+
+            // Add a panel for each state land mass
+              state.add(pv.Panel)
+                  .data(function(c) c.borders)
+                .add(pv.Line)
+                  .data(function(l) l)
+                  .left(scale.x)
+                  .top(scale.y)
+                  .fillStyle("#eee")
+                  .lineWidth(1)
+                  .strokeStyle("#ccc")
+                  .antialias(false);
+
+              // Add the pie chart
+              var pie = vis.add(pv.Panel)
+                    .data(okresyShapes)
+                    .left(function(c) scale(c.centLatLon).x)
+                    .top(function(c) scale(c.centLatLon).y)
+                 .add(pv.Label)
+              .left(0)
+              .top(function(d, c) Math.sqrt(us_stats[c.code].total)*rScale+10)
+              .textAlign("center")
+              .font("bold 10px sans-serif")
+              .textStyle("#848484")
+              .textShadow("5px 5px 5px rgba(0,0,0,0.5)")
+              .text(function(d, c) 
+                            {
+                              var label = [c.name];
+                                return label;
+                          })
+
+                .add(pv.Wedge)
+                    .data(
+                        function(c){
+                          if(isDefault == true)
+                          {
+                                var sum = new Array();
+                                var q = "q";
+                                for(var j=0;j<a;j++)
+                                {
+                                  var k = j + 1;
+                                  if(j==(a-1))
+                                  {
+                                      for(var l=0;l<j;l++)
+                                      {   
+                                          sum += qData[l][0];
+                                          sum = parseFloat(sum);
+                                      } 
+                                      qData[j] = (100 - sum);
+                                  }
+                                  else{
+                                      qData[j] = us_stats[c.code]["q" + k];
+                                  }
+                                }
+                                return qData;
+                             }
+                             else
+                             {
+                              qData[0] = us_stats[c.code]["q" + qid];
+                                return qData;
+                             }
+                        })
+                    .left(0)
+                    .top(0)
+                      .outerRadius(function(d, c) Math.sqrt(us_stats[c.code].total)*rScale)
+                    .angle(function(d) d /100 * 2 * Math.PI)
+                      .fillStyle(function() colors[this.index])
+                    .title(function(d, c)
+                            {
+                              if(isDefault == true)
+                            {
+                                  var sum = new Array();
+                                  var q = "q";
+                                  for(var j=0;j<a;j++)
+                                  {
+                                    var k = j + 1;
+                                    if(j==(a-1))
+                                    {
+                                        for(var l=0;l<j;l++)
+                                        {   
+                                            sum += qTitle[l][0];
+                                            sum = parseFloat(sum);
+                                          } 
+                                        qTitle[j] = (100 - sum);
+                                        qTitle[j+1] = [c.name];
+                                    }
+                                    else{
+                                        qTitle[j] = us_stats[c.code]["q" + k];
+                                    }
+                                  }
+                                  return qTitle;
+                              }
+                              else
+                              {
+                                qTitle[1] = [c.name];
+                                qTitle[0] = us_stats[c.code]["q" + qid];
+                                  return qTitle;
+                              }
+                        });
+
+              // Add the legend
+              vis.add(pv.Dot)
+                  .data(function()
+                  {
+                      var qLegend = new Array(a);
+                      var q = "q";
+                      for(var i=0;i<a;i++)
+                      {
+                          var k = i+1;
+                          qLegend[i] = "q" + k;
+                      }
+                      return qLegend;
+                  })
+                  .left(10)
+                  .bottom(function() this.index * 12 + 10)
+                  .strokeStyle(null)
+                  .fillStyle(function()
+                       colors[this.index]) //need to be done!!
+                  .anchor("right").add(pv.Label);
+  
+                vis.render();
+                ge = null;
+
+          </script>
+          <!--generating pies, single-question markers-->
+            </div>
+      </section>
+
+      <footer>
+      </footer>
+
+  </body>
+</html>

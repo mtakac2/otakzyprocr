@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id         :integer          not null, primary key
+#  keeper_id  :integer          not null
+#  subtype    :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Subject < ActiveRecord::Base
   acts_as_superclass
   attr_accessible :keeper_id, :subtype

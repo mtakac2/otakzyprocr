@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # before_filter :block_citizen_without_question
-  before_filter :find_all_questions
+  before_filter :get_all_questions, :get_all_elections
 
   protected
 
@@ -14,8 +14,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def find_all_questions
+    def get_all_questions
       @questions = Refinery::Questions::Question.order(:created_at)
+    end
+
+    def get_all_elections
+      @elections = Refinery::Elections::Election.order(:created_at)
     end
 
   private

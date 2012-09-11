@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823202535) do
+ActiveRecord::Schema.define(:version => 20120910215259) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20120823202535) do
     t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "code"
+    t.text     "borders"
   end
 
   add_index "refinery_counties", ["name"], :name => "index_refinery_counties_on_name", :unique => true

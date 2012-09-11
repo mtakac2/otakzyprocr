@@ -54,6 +54,8 @@ GEM
       multi_json (~> 1.0)
     acts_as_indexed (0.7.8)
     addressable (2.3.2)
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     awesome_nested_set (2.1.4)
       activerecord (>= 3.0.0)
@@ -310,6 +312,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore
+  annotate (>= 2.5.0)
   bcrypt-ruby (= 3.0.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)

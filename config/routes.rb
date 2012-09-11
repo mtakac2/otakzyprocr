@@ -5,6 +5,7 @@ Otazkyprocr::Application.routes.draw do
   resources :citizens
   resources :sessions
   resources :citizens_questions
+  resources :elections
   resources :keepers do
     resources :politicians do
       resources :questions
@@ -19,7 +20,8 @@ Otazkyprocr::Application.routes.draw do
   match 'keepers/activate/:activation_code' => 'keepers#activate'
   match 'citizens/activate/:activation_code' => 'citizens#activate'
   match 'citizens_questions/:id/move' => 'citizens_questions#move'
-  match 'citizens_question/:id/relocate_hours' => 'citizens_questions#relocate_hours', via: :post  
+  match 'citizens_question/:id/relocate_hours' => 'citizens_questions#relocate_hours', via: :post
+  match 'map/' => 'map#index'
 
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.

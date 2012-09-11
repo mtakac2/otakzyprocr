@@ -23,15 +23,29 @@ $(document).ready(function() {
   $(function() {
     $('#citizens_question_hours').change(function() {
       var promisedHours = $('#citizens_question_hours').val();
-      var pricePerHour = 5.00;
+      var pricePerHour = 0.00;
       var priceTotal = 0.00;
 
-      if (promisedHours > 3 && promisedHours <= 10) {
-        priceTotal = 50.00;
+      if (promisedHours > 3) {
+                
+        switch(promisedHours) {
+          case "4": pricePerHour = 12.50;            
+          break;
+          case "5": pricePerHour = 10.00;
+          break;
+          case "6": pricePerHour = 8.50;
+          break;
+          case "7": pricePerHour = 7.50;
+          break;
+          case "8": pricePerHour = 6.50;
+          break;
+          case "9": pricePerHour = 6.00;
+          break;
+          default: pricePerHour = 5.00;
+        }        
       } 
-      else if (promisedHours > 10) { 
-        priceTotal = pricePerHour * promisedHours;
-      }
+      
+      priceTotal = pricePerHour * promisedHours;      
 
       $('span#price').html(priceTotal.toFixed(2));
     });

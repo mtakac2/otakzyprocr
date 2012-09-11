@@ -7,13 +7,18 @@ class CitizensQuestionsController < ApplicationController
       redirect_to main_app.new_session_path, notice: 'Pro řešení otázky musíte být přihlášen.'
     else
       @question = Refinery::Questions::Question.find(params[:question_id])
-      @citizens_question = CitizensQuestion.new(citizen_id: current_user.id, question_id: params[:question_id])    
+      @citizens_question = CitizensQuestion.new(citizen_id: current_user.id, question_id: @question.id)    
     end      
   end
 
-  def create
+  def create    
     @citizens_question = CitizensQuestion.new(params[:citizens_question])
-    redirect_to @citizens_question.paypal_url('www.google.com')
+    @question = Refinery::Questions::Question.find(@citizens_question.question_id)
+    if @citizens_question.valid?      
+      redirect_to @citizens_question.paypal_url('www.google.com')
+    else
+      render 'new'
+    end
 
 """
     if @citizens_question.save
