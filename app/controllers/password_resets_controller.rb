@@ -12,7 +12,7 @@ class PasswordResetsController < ApplicationController
         CitizensMailer.password_reset(user).deliver
       end
     end    
-    redirect_to '/', flash: { message: "Na Váš email byli zaslány instrukce pro změnu hesla." }
+    redirect_to '/', flash: { message: "Na Váš email byly zaslány instrukce pro změnu hesla." }
   end
 
   def edit
@@ -26,7 +26,7 @@ class PasswordResetsController < ApplicationController
     if @user.password_reset_sent_at < 2.hours.ago
       redirect_to main_app.new_password_reset_path, :alert => "Platnost žádosti o změnu hesla vypršela."
     elsif @user.update_attributes(params[:citizen])
-      redirect_to '/', :notice => "Vaše heslo bylo úspěšne změnené."
+      redirect_to '/', :notice => "Vaše heslo bylo úspěšně změněno."
     else
       render :edit
     end

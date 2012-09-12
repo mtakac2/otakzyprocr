@@ -18,10 +18,20 @@
           <% counter = 1 %>
           <% @counties.each do |county| %>
             <% counter = counter + 1 %>
+
+            <% question_counter = 1 %>
+            <% question_data = '' %>
+            <% @questions.each do |question| %>
+              <% @question_total = 0 %>
+              <% question_data = question_data + "q#{question_counter}:[#{county.get_percents_for_question(question.id)}]," %>
+              <% @question_total = 5000 if county.get_percents_for_question(question.id) > 0 %>
+              <% question_counter += 1 %>
+            <% end %>
+
             <% if counter < @counties.count + 1 %>
-              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[10], q3:[11], q4:[14], q5:[15], q6:[12], total:[5000]},") %>
+              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{@question_total}]},") %>
             <% else %>            
-              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[10], q3:[11], q4:[14], q5:[15], q6:[12], total:[5000]}") %>
+              <%= raw("'"+county.code.upcase+"'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[0], q3:[11], total:[5000]}") %>
             <% end %>
           <% end %>
         };
@@ -43,10 +53,16 @@
                 var titleValue = $(this).attr("title");
                 var titleValue = titleValue.split(',');
                 var count = titleValue.length;
+                var qNames = new Array();
+                for(var i=0;i<a;i++)
+                {
+                  //var k = i+1;
+                  qNames[i] = questions[i+1].q_name;
+                }
                 $('#infoHead').append('<h3>Okres: ' + titleValue[count-1] + '</h3>');
                 for(var i=0;i<count-1;i++)
                 {
-                  $('#infoHead').append('<p>Otazka: ' + titleValue[i] + '</p>');
+                  $('#infoHead').append('<p>' + qNames[i] + ': ' + titleValue[i] + '</p>');
                 }
                 $('#infoHead').css('display',"inline");
                 //$('#infoHead').css('height',"150px");
@@ -78,7 +94,7 @@
   <body >
     <div id="wrapper">      
       <header>
-        <div id="heading">                  
+        <div id="heading">                     
                  <h1>Pocet prislubenych hodin na otazku podla okresov</h1>
               </div>
         <nav id="topMenu">
@@ -109,42 +125,47 @@
             
             if (isDefault == true){
             var questions = [
-                {number_of_q: 6},
-                {q_id: 0, q_color: "rgba(42, 11, 239,0.7)"},
-                {q_id: 1, q_color: "rgba(239, 11, 197,0.7)"},
-                {q_id: 2, q_color: "rgba(36, 229, 6,0.7)"},
-                {q_id: 3, q_color: "rgba(229, 170, 6,0.7)"},
-                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)"},
-                {q_id: 5, q_color: "rgba(0, 0, 0)"}
+                {number_of_q: <%= @questions.count %>},
+                {q_id: 0, q_color: "rgba(42, 11, 239,0.7)", q_name: "<%= @questions[0].title unless @questions[0].nil? %>"},
+                {q_id: 1, q_color: "rgba(239, 11, 197,0.7)", q_name: "<%= @questions[1].title unless @questions[1].nil? %>"},
+                {q_id: 2, q_color: "rgba(36, 229, 6,0.7)", q_name: "<%= @questions[2].title unless @questions[2].nil? %>"},
+                {q_id: 3, q_color: "rgba(229, 170, 6,0.7)", q_name: "<%= @questions[3].title unless @questions[3].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[4].title unless @questions[4].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[5].title unless @questions[5].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[6].title unless @questions[6].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[7].title unless @questions[7].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[8].title unless @questions[8].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[9].title unless @questions[9].nil? %>"},
+                {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[10].title unless @questions[10].nil? %>"}
               ]
-          }
-          else
-          {
-            if(qid == 1)
-            {
-              var questions = [
-                  {number_of_q: 1},
-                  {q_id: qid, q_color: "rgba(00, 255, 00,0.7)"}]
             }
-            if(qid == 2)
+            else
             {
-              var questions = [
-                  {number_of_q: 1},
-                  {q_id: qid, q_color: "rgba(00, 00, 255,0.7)"}]
+              if(qid == 1)
+              {
+                var questions = [
+                    {number_of_q: 1},
+                    {q_id: qid, q_color: "rgba(00, 255, 00,0.7)", q_name: "Otazka AA"}]
+              }
+              if(qid == 2)
+              {
+                var questions = [
+                    {number_of_q: 1},
+                    {q_id: qid, q_color: "rgba(00, 00, 255,0.7)", q_name: "Otazka AB"}]
+              }
+              if(qid == 3)
+              {
+                var questions = [
+                    {number_of_q: 1},
+                    {q_id: qid, q_color: "rgba(255, 00, 00,0.7)", q_name: "Otazka AC"}]
+              }
+              if(qid == 4)
+              {
+                var questions = [
+                    {number_of_q: 1},
+                    {q_id: qid, q_color: "rgba(150, 255, 00,0.7)", q_name: "Otazka AD"}]
+              }
             }
-            if(qid == 3)
-            {
-              var questions = [
-                  {number_of_q: 1},
-                  {q_id: qid, q_color: "rgba(255, 00, 00,0.7)"}]
-            }
-            if(qid == 4)
-            {
-              var questions = [
-                  {number_of_q: 1},
-                  {q_id: qid, q_color: "rgba(150, 255, 00,0.7)"}]
-            }
-          }
 
             var a = questions[0].number_of_q;  //NUM OG QUESTIONS
                 
@@ -287,13 +308,21 @@
                   .data(function()
                   {
                       var qLegend = new Array(a);
-                      var q = "q";
-                      for(var i=0;i<a;i++)
-                      {
-                          var k = i+1;
-                          qLegend[i] = "q" + k;
-                      }
-                      return qLegend;
+                      //var q = "q";
+                      if(isDefault == true)
+                        {
+                        for(var i=0;i<a;i++)
+                        {
+                           // var k = i+1;
+                            qLegend[i] = questions[i+1].q_name;
+                        }
+                        return qLegend;
+                }
+                else
+                {
+                  qLegend[0]=questions[1].q_name;
+                  return qLegend;
+                }
                   })
                   .left(10)
                   .bottom(function() this.index * 12 + 10)

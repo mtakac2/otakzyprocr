@@ -42,8 +42,7 @@ class CitizensController < ApplicationController
     else
       session[:citizen_step] = session[:citizen_params] = nil
       CitizensMailer.registration(@citizen, @question).deliver
-      redirect_to '/', :flash => { :success => 'Vítejte. Vaše registrace proběhla úspěšne. Dekujeme za Váš zájem. Na Vaši 
-        emailovou adresu byla odoslána správa. Pomocí odkazu v ní si můžete Váš účet aktivovat.' }
+      redirect_to '/', :flash => { :success => 'Vítejte. Vaše registrace proběhla úspěšně. Děkujeme za Váš zájem. Na Vaši emailovou adresu byla odeslána zpráva. Pomocí odkazu v ní si můžete Váš účet aktivovat.' }
     end
   end
 

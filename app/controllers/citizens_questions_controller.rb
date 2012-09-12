@@ -4,7 +4,7 @@ class CitizensQuestionsController < ApplicationController
   def new
     if !current_user
       session[:return_url] = request.fullpath
-      redirect_to main_app.new_session_path, notice: 'Pro řešení otázky musíte být přihlášen.'
+      redirect_to main_app.new_session_path, notice: 'Pro řešení otázky musíte být přihlášen(a).'
     else
       @question = Refinery::Questions::Question.find(params[:question_id])
       @citizens_question = CitizensQuestion.new(citizen_id: current_user.id, question_id: @question.id)    
