@@ -5,11 +5,11 @@
   <ul>
     <% @election.subjects.each do |subject| %>
       <% if subject.subtype == "Refinery::Parties::Party" %>
-        <li><%= link_to subject.name, subject %></li>
+        <li><%= link_to subject.name, main_app.party_path(subject.id) %></li>
       <% end %>
 
       <% if subject.subtype == "Refinery::Politicians::Politician" %>
-        <li><%= link_to subject.firstname + ' ' + subject.lastname, subject %></li>
+        <li><%= link_to subject.firstname + ' ' + subject.lastname, main_app.politician_path(subject.id) %></li>
       <% end %>
     <% end %>
   </ul>
