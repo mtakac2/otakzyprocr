@@ -9,6 +9,8 @@ Otazkyprocr::Application.routes.draw do
   resources :citizens_questions
   resources :elections
   resources :password_resets
+  resources :parties
+  resources :politicians
   resources :keepers do
     resources :politicians do
       resources :questions
