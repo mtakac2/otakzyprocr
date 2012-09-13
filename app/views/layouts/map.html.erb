@@ -28,10 +28,12 @@
               <% question_counter += 1 %>
             <% end %>
 
+            <% county_code = county.code %>
+
             <% if counter < @counties.count + 1 %>
-              <%= raw("'" + county.code.upcase + "'"+": {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{@question_total}]},") %>
+              <%= raw("'#{county_code.upcase}': {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{@question_total}]},") %>
             <% else %>            
-              <%= raw("'" + county.code.upcase + "'"+": {name:'#{county.name}', land:0, water:0, q1:[17], q2:[0], q3:[11], total:[5000]}") %>
+              <%= raw("'#{county_code.upcase}': {name:'#{county.name}', land:0, water:0, q1:[17], q2:[0], q3:[11], total:[5000]}") %>
             <% end %>
           <% end %>
         };
