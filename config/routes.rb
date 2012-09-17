@@ -1,6 +1,7 @@
 Otazkyprocr::Application.routes.draw do  
   
   get "password_resets/new"
+  match 'payments/paypal' => 'payments#paypal'
 
   resources :questions
 

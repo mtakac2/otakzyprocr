@@ -18,12 +18,9 @@ class CitizensQuestion < ActiveRecord::Base
   belongs_to :citizen, :class_name => 'Refinery::Citizens::Citizen'
   belongs_to :question, :class_name => 'Refinery::Questions::Question'
 
-  validate :format_of_promised_hours
+  validate :format_of_promised_hours, :allowed_time_before_elections
+  validate :no_more_promised_hours, on: :update
   validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }
-
-  def can_add_hours?
-  	return true if self.hours == self.hours_done
-  end
 
   def paypal_url(return_url)
     values = {
@@ -56,7 +53,7 @@ class CitizensQuestion < ActiveRecord::Base
       end
     end
 
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347306141_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=www.google.com"
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347886840_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.herokuapp.com/payments/paypal/"
   end
 
   def format_of_promised_hours    
@@ -65,4 +62,22 @@ class CitizensQuestion < ActiveRecord::Base
     end    
   end
 
+  def no_more_promised_hours
+    hours_old = CitizensQuestion.find(id).hours
+
+    if hours_old > hours_done
+      errors.add(:hours, "ostáva Vám ješte #{hours - hours_done} přislíbených hodin.")
+    end
+  end
+
+  def allowed_time_before_elections
+    question = Refinery::Questions::Question.find(question_id)
+    election = question.election
+    time_to_election = (election.held.to_time - Time.now().to_time) / 60 / 60 / 24
+    allowed_hours = (time_to_election * 4).round
+
+    if allowed_hours < hours
+      errors.add(:hours, "pro danou otázku je k dispozici maximálne #{allowed_hours} hodin.")
+    end
+  end
 end

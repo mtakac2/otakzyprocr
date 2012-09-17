@@ -46,18 +46,30 @@ class Stat
     Refinery::Citizens::Citizen.where("gender = 'female'").count
   end
 
-  def payed_workhours_sum
+  def promised_workhours_sum
     CitizensQuestion.sum('hours')
   end
 
-  def teams_on_questions
-    CitizensQuestion.find_by_sql("
-      SELECT question_idCOUNT(DISTINCT question_id)
-      FROM citizens_questions"      
-    )
+  def done_workhours_sum
+    CitizensQuestion.sum('hours_done')
   end
 
   def citizens_average_age
-    Refinery::Citizens::Citizen.average('age')
+    Refinery::Citizens::Citizen.average('age').round(2)
+  end
+
+  def team_count
+    CitizensQuestion.find_by_sql("
+      SELECT COUNT (DISTINCT question_id)
+      FROM citizens_questions"      
+    ).first.count
+  end
+
+  def questions_without_team_count
+    Refinery::Questions::Question.count - self.team_count.to_i
+  end
+
+  def percent_of_citizens
+    (Refinery::Citizens::Citizen.count('id') / (8415892 / 100)).round(2)
   end
 end

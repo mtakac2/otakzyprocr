@@ -40,7 +40,8 @@ module Refinery
 
       def get_percents_for_question(question_id)
         if self.count_all_questions_in_county > 0
-          x = (self.count_citizens_solving_question(question_id) / self.count_all_questions_in_county) * 100
+          x = (self.count_citizens_solving_question(question_id).to_f / self.count_all_questions_in_county) * 100
+          return x
         end
         0        
       end
