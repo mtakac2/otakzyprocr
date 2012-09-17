@@ -22,12 +22,11 @@ class CitizensQuestion < ActiveRecord::Base
   validate :no_more_promised_hours, on: :update
   validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }
 
-  def paypal_url(return_url)
+  def paypal_url
     values = {
       :business => '&rsquo;seller_1234111143_biz@asciicasts.com&rsquo;',
       :cmd => '&rsquo;_cart&rsquo;',
-      :upload => 1,
-      :return => return_url,
+      :upload => 1,      
       :invoice => id,
       :amount => 5,
       :item_name => Rack::Utils.escape('Pocet hodin'),
@@ -53,7 +52,7 @@ class CitizensQuestion < ActiveRecord::Base
       end
     end
 
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347886840_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.herokuapp.com/payments/paypal/"
+    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347886840_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.herokuapp.com/paymentspaypal/"
   end
 
   def format_of_promised_hours    

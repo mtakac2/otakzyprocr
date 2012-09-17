@@ -14,8 +14,15 @@ class CitizensQuestionsController < ApplicationController
   def create    
     @citizens_question = CitizensQuestion.new(params[:citizens_question])
     @question = Refinery::Questions::Question.find(@citizens_question.question_id)
-    if @citizens_question.valid?      
-      redirect_to @citizens_question.paypal_url('www.google.com')
+    
+    if @citizens_question.valid?
+      if @citizens_question.hours <= 3
+        @citizens_question.save
+        redirect_to '/', flash: { notice: 'Ok' }
+      else
+        session[:citizen_question] = @citizens_question
+        redirect_to @citizens_question.paypal_url
+      end
     else
       render 'new'
     end

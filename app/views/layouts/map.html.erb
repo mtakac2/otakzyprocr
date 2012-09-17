@@ -18,11 +18,11 @@
           <% counter = 1 %>
           <% @counties.each do |county| %>
             <% counter = counter + 1 %>
-
+            <% @question_total = 0 %>
             <% question_counter = 1 %>
             <% question_data = '' %>
             <% @questions.each do |question| %>
-              <% @question_total = 0 %>
+              
               <% question_data = question_data + "q#{question_counter}:[#{county.get_percents_for_question(question.id)}]," %>
               <% @question_total = 5000 if county.get_percents_for_question(question.id) > 0 %>
               <% question_counter += 1 %>
