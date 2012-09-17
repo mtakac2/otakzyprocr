@@ -14,12 +14,12 @@
 #
 
 class CitizensQuestion < ActiveRecord::Base
-  attr_accessible :citizen_id, :hours, :hours_done, :question_id
+  attr_accessible :citizen_id, :hours, :hours_done, :question_id, :teamleader
   belongs_to :citizen, :class_name => 'Refinery::Citizens::Citizen'
   belongs_to :question, :class_name => 'Refinery::Questions::Question'
 
   validate :format_of_promised_hours, :allowed_time_before_elections
-  validate :no_more_promised_hours, on: :update
+  # validate :no_more_promised_hours, on: :update
   validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }
 
   def paypal_url

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917145018) do
+ActiveRecord::Schema.define(:version => 20120917155951) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120917145018) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "hours_done",  :default => 0
+    t.integer  "teamleader",  :default => 0
   end
 
   add_index "citizens_questions", ["citizen_id", "question_id"], :name => "index_citizens_questions_on_citizen_id_and_question_id", :unique => true

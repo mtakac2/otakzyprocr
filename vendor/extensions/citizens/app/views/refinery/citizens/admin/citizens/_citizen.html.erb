@@ -1,14 +1,9 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(citizen) -%>">
   <span class='title'>
-    <%= citizen.firstname %>
+    <b><%= citizen.email %></b> <%= citizen.firstname %> <%= citizen.lastname %>
 
   </span>
-  <span class='actions'>
-    
-    <%= link_to refinery_icon_tag("application_go.png"), refinery.citizens_citizen_path(citizen),
-        :title => t('.view_live_html'),
-        :target => "_blank" %>
-    
+  <span class='actions'>    
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_citizens_admin_citizen_path(citizen),
          :title => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.citizens_admin_citizen_path(citizen),

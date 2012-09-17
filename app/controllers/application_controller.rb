@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forger
 
   # before_filter :block_citizen_without_question
   before_filter :get_all_questions, :get_all_elections

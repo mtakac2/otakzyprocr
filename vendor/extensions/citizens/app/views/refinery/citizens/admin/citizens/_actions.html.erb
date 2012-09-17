@@ -4,10 +4,6 @@
       <%= render '/refinery/admin/search', :url => refinery.citizens_admin_citizens_path %>
     </li>
   <% end %>
-  <li>
-    <%= link_to t('.create_new'), refinery.new_citizens_admin_citizen_path,
-                 :class => "add_icon" %>
-  </li>
 <% if !searching? && ::Refinery::Citizens::Admin::CitizensController.sortable? && ::Refinery::Citizens::Citizen.any? %>
   <li>
     <%= link_to t('.reorder', :what => "Citizens"),
