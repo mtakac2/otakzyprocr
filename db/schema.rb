@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917155951) do
+ActiveRecord::Schema.define(:version => 20120920083726) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -224,13 +224,14 @@ ActiveRecord::Schema.define(:version => 20120917155951) do
   add_index "refinery_politicians", ["firstname", "lastname"], :name => "index_refinery_politicians_on_firstname_and_lastname", :unique => true
 
   create_table "refinery_questions", :force => true do |t|
-    t.string   "title",       :null => false
-    t.text     "content",     :null => false
+    t.string   "title",                          :null => false
+    t.text     "content",                        :null => false
     t.integer  "election_id"
     t.integer  "subject_id"
     t.integer  "position"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "done",        :default => false
   end
 
   add_index "refinery_questions", ["title"], :name => "index_refinery_questions_on_title", :unique => true
@@ -305,5 +306,14 @@ ActiveRecord::Schema.define(:version => 20120917155951) do
   end
 
   add_index "subjects", ["keeper_id"], :name => "index_subjects_on_keeper_id"
+
+  create_table "tasks", :force => true do |t|
+    t.text     "content"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tasks", ["question_id"], :name => "index_tasks_on_question_id"
 
 end

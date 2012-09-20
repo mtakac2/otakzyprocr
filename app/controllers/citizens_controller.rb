@@ -5,7 +5,7 @@ class CitizensController < ApplicationController
   before_filter :redirect_logged_in_user, only: :new
 
   def show     
-    @citizen = Refinery::Citizens::Citizen.find(params[:id])
+    @citizen = Refinery::Citizens::Citizen.find(params[:id])    
   end
 
   def new        
@@ -92,5 +92,15 @@ class CitizensController < ApplicationController
         redirect_to questions_path, :flash => { :success => 'Váš účet byl úspěšne aktivován. Vyberte si prosím otázku, na které budete pracovat.' }
       end
     end    
-  end  
+  end
+
+  def mark_question_as_solved    
+    @citizen = Refinery::Citizens::Citizen.find(params[:citizen_id])
+    @question = Refinery::Questions::Question.find(params[:question_id])
+    if @question.update_attributes(done: true)    
+      redirect_to @citizen, flash: { success: 'Otázka byla označená za vyřešenou.' }
+    else
+      render 'show'
+    end
+  end
 end

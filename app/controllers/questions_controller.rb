@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class QuestionsController < ApplicationController
   skip_filter :block_citizen_without_question
 
@@ -39,5 +41,5 @@ class QuestionsController < ApplicationController
   end
 
   def edit    
-  end
+  end  
 end

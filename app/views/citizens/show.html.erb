@@ -2,8 +2,11 @@
 	<h1>Můj účet</h1>
 
 	<section id="account_personal">
-		<h2>Osobní údaje</h2>
-		<table id="account_personal_table">
+		<h2 class="pull-left">Osobní údaje</h2>
+		<div class="pull-right">
+			<%= link_to 'Upravit', main_app.edit_citizen_path(@citizen), class: 'btn btn-primary' %>
+		</div>
+		<table id="account_personal_table" class="clear">
 			<tr>
 				<th>Jméno:</th>
 				<td><%= @citizen.firstname.capitalize %></td>
@@ -26,45 +29,57 @@
 			<tr>
 				<th>Věk:</th>
 				<td><%= @citizen.age %></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<%= link_to 'Upravit', main_app.edit_citizen_path(@citizen), class: 'btn btn-default' %>
-				</td>
-			</tr>
+			</tr>			
 		</table>
 	</section>
+
+	<hr>
 
 	<section id="account_questions">
 		<h2>Strategické otázky</h2>
 
 		<% @citizen.questions.each do |question| %>
 			<article id="question_<%= question.id %>">
-				<h3>
-					<%= truncate(question.title, length: 100, separator: ' ') %>
-					<%= link_to 'Přidelit úlohy', '#', class: 'btn btn-default' if @citizen.is_team_manager_for?(question.id) %>
+				<h3 class="pull-left">
+					<%= truncate(question.title, length: 100, separator: ' ') %>					
 				</h3>				
-				<h4><%= question.subject.firstname %> <%= question.subject.lastname %></h4>
+				<div class="pull-right">
+					<% if @citizen.is_team_manager_for?(question.id) %>
+						<%= form_tag(refinery.root_path+'mark-question-as-solved/'+question.id.to_s+'/') %>						
+							<%= hidden_field_tag 'citizen_id', @citizen.id %>
+							<%= submit_tag 'Označit za vyřešenou', class: 'btn btn-success' if question.done != true %>
+						<% end %>
+						<%= link_to 'Přidat úkol', main_app.new_citizen_question_task_path(@citizen, question), class: 'btn btn-primary' %>
+					</form>
+				</div>
+				<h4 class="clear"><%= question.subject.firstname %> <%= question.subject.lastname %></h4>
 				<table id="account_question_table">
 					<tr>
 						<th>Přislíbených hodin:</th>
 						<td><%= @citizen.hours_on_question(question.id) %>
 						<td>
-							<%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)), class: 'btn btn-default' if @citizen.hours_on_question(question.id) == 0 %>
-							<%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move", class: 'btn btn-default' %>
+							<%= link_to 'Navýšit hodiny', edit_citizens_question_path(@citizen.get_citizen_question_by_id(question.id)), class: 'btn btn-primary' if @citizen.hours_on_question(question.id) == 0 %>
+							<%= link_to 'Přenést hodiny', "/citizens_questions/#{@citizen.get_citizen_question_by_id(question.id)}/move", class: 'btn btn-primary' %>
 						</td>
 					</tr>
 					<tr>
 						<th>Odpracovaných hodin:</th>
 						<td><%= @citizen.hours_done_on_question(question.id) %>
 						<td> </td>
-					</tr>
-					<tr>
-						<td colspan="2">							
-							<%= link_to 'Opustit otázku', '#', class: 'btn btn-danger' %>
-						</td>
-					</tr>
+					</tr>					
 				</table>
+
+				<% if question.tasks.any? %>
+					<h5>Úkoly</h5>
+					<ul id="question_tasks">
+					<% question.tasks.each do |task| %>
+						<li>
+							<%= task.content %>
+							<%= link_to('Odstránit', [@citizen, question, task], method: :delete, confirm: 'Jste si jistý(á)?') if @citizen.is_team_manager_for?(question.id) %>
+						</li>
+					<% end %>
+					</ul>
+				<% end %>
 			</article>
 		<% end %>	
 	</section>

@@ -10,7 +10,7 @@ Refinery::Core::Engine.routes.append do
     namespace :admin, :path => 'refinery' do
       resources :questions, :except => :show do
         collection do
-          post :update_positions
+          post :update_positions          
         end
       end
     end

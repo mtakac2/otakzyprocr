@@ -1,11 +1,29 @@
 Otazkyprocr::Application.routes.draw do  
   
+  get "tasks/index"
+
+  get "tasks/new"
+
+  get "tasks/edit"
+
   get "password_resets/new"
   match 'payments/paypal' => 'payments#paypal'
+  match 'map/promised-hours' => 'map#promised_hours'
+  match 'map/worked-hours' => 'map#worked_hours'
+
+  namespace :map do
+    resources :citizens,       only: [:index, :show]
+    resources :promised_hours, only: [:index, :show]
+    resources :worked_hours,   only: [:index, :show]
+  end
 
   resources :questions
 
-  resources :citizens
+  resources :citizens do
+    resources :questions do
+      resources :tasks
+    end
+  end
   resources :sessions
   resources :citizens_questions
   resources :elections
@@ -28,6 +46,7 @@ Otazkyprocr::Application.routes.draw do
   match 'citizens_questions/:id/move' => 'citizens_questions#move'
   match 'citizens_question/:id/relocate_hours' => 'citizens_questions#relocate_hours', via: :post
   match 'map/' => 'map#index'
+  match '/mark-question-as-solved/:question_id' => 'citizens#mark_question_as_solved', via: :post
 
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.

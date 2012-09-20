@@ -1,0 +1,22 @@
+<%= form_for([@citizen, @question, @task], url: citizen_question_tasks_path, html: { class: 'well' }) do |f| %>
+  <% if @task.errors.any? %>
+    <div class="error_messages">
+      <div class="alert alert-error">
+        <strong>Formulář byl vyplněn chybně. Opravte prosím následujíci chyby:</strong>
+      </div>      
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Přidat úkol</legend>
+    <div class="field">
+      <%= f.label :content, 'Zadání' %>
+      <%= f.text_field :content %>
+      <span class="fieldWithErrors"><%= @task.errors[:content].first %></span>
+    </div>    
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit 'Přidat', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

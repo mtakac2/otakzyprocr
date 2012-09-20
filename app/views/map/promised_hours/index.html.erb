@@ -1,0 +1,7 @@
+<nav id="sideMenu">
+  <ul>
+    <% @questions.each do |question| %>
+      <li><%= link_to question.title, "/map/promised_hours/#{question.id}/" %></li>
+    <% end %>
+  </ul>
+</nav>

@@ -29,17 +29,10 @@
     </div>
 
   </div>
-  
-  <div class='field'>
-    <%= f.label :election_id -%>
-    <%= f.number_field :election_id  -%>
 
-  </div>
-  
-  <div class='field'>
-    <%= f.label :subject_id -%>
-    <%= f.number_field :subject_id  -%>
-
+  <div class="field">
+    <%= label_tag 'citizens_question_teamleader', 'Vyberte teamleadera' %>
+    <%= select 'citizens_question', 'teamleader', @citizens.collect { |c| [c.email, c.id] }, { :include_blank => true } %>    
   </div>
   
   <%= render '/refinery/admin/form_actions', :f => f,

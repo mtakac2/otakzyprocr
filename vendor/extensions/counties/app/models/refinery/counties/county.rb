@@ -8,44 +8,75 @@ module Refinery
 
       acts_as_indexed :fields => [:name]
 
-      validates :name, :presence => true, :uniqueness => true
-      
-      def count_all_questions_in_county
-        citizens = self.citizens
+      validates :name, :presence => true, :uniqueness => true      
+
+      def count_citizens        
+        self.citizens.count
+      end
+
+      def count_citizens_for(question_id)
         count = 0
-
-        citizens.each do |citizen|
-          count = count + citizen.questions.count
+        self.citizens.each do |citizen|
+          count += citizen.questions.where('question_id = ?', question_id).count
         end
-
-        return count
+        count.to_f
       end
 
-      def count_citizens_solving_question(question_id)
-        citizens = self.citizens
+      def percentage_of_citizens_for(question_id)
+        percentage = 0
+        if self.count_citizens > 0
+          percentage = (self.count_citizens_for(question_id) / self.count_citizens) * 100
+        end
+        percentage.round(2)
+      end
+
+      def count_promised_hours
         count = 0
-
-        citizens.each do |citizen|
-          questions = citizen.questions
-
-          questions.each do |question|
-            if question.id == question_id
-              count = count + 1
-            end
-          end
+        self.citizens.each do |citizen|
+          count += CitizensQuestion.where('citizen_id = ?', citizen.id).sum(:hours) 
         end
-
-        return count
+        count
       end
 
-      def get_percents_for_question(question_id)
-        if self.count_all_questions_in_county > 0
-          x = (self.count_citizens_solving_question(question_id).to_f / self.count_all_questions_in_county) * 100
-          return x
+      def count_promised_hours_for(question_id)
+        count = 0
+        self.citizens.each do |citizen|
+          count += CitizensQuestion.where('citizen_id = ? AND question_id = ?', citizen.id, question_id).sum(:hours)
         end
-        0        
+        count.to_f
       end
 
+      def percentage_of_promised_hours_for(question_id)
+        percentage = 0
+        if self.count_promised_hours > 0
+          percentage = (self.count_promised_hours_for(question_id) / self.count_promised_hours) * 100          
+        end
+        percentage.round(2)
+      end
+
+      def count_worked_hours
+        count = 0
+        self.citizens.each do |citizen|
+          count += CitizensQuestion.where('citizen_id = ?', citizen.id).sum(:hours_done) 
+        end
+        count
+      end
+
+      def count_worked_hours_for(question_id)
+        count = 0
+        self.citizens.each do |citizen|
+          count += CitizensQuestion.where('citizen_id = ? AND question_id = ?', citizen.id, question_id).sum(:hours_done)
+        end
+        count.to_f
+      end
+
+      def percentage_of_worked_hours_for(question_id)
+        percentage = 0
+        if self.count_promised_hours > 0
+          percentage = (self.count_worked_hours_for(question_id) / self.count_worked_hours) * 100          
+        end
+        percentage.round(2)
+      end
     end
   end
 end

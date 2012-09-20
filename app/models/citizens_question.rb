@@ -79,4 +79,12 @@ class CitizensQuestion < ActiveRecord::Base
       errors.add(:hours, "pro danou otázku je k dispozici maximálne #{allowed_hours} hodin.")
     end
   end
+
+  def teamleader_id
+    if self.teamleader == 1
+      self.citizen_id
+    else
+      nil
+    end
+  end
 end

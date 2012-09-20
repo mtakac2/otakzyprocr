@@ -9,7 +9,7 @@ module Refinery
       has_many :citizens_questions, :class_name => 'CitizensQuestion'
       has_many :questions, :through => :citizens_questions
       has_many :elections, :through => :election_subject_elections
-      belongs_to :county, class_name: 'Refinery::Counties::County'
+      belongs_to :county, class_name: 'Refinery::Counties::County'      
 
       attr_writer :current_step
 

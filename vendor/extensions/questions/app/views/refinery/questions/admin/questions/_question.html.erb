@@ -1,7 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(question) -%>">
   <span class='title'>
     <%= question.title %>
-
   </span>
   <span class='actions'>
     
@@ -15,6 +14,19 @@
         :class => "cancel confirm-delete",
         :title => t('.delete'),
         :confirm => t('message', :scope => 'refinery.admin.delete', :title => question.title),
-        :method => :delete %>
+        :method => :delete %>    
   </span>
+  <div>
+    <% @citizens_questions.each do |c| %>
+      <% if c.question_id == question.id && c.teamleader_id != nil %>
+        <% @teamleader = Refinery::Citizens::Citizen.find(c.teamleader_id) %>
+      <% end %>
+    <% end %>
+    Teamleader: 
+    <% if @teamleader %>
+      <%= @teamleader.email %>          
+    <% else %>
+      Žádný
+    <% end %>
+  </div>
 </li>
