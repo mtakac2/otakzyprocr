@@ -47,11 +47,10 @@ HEREDOC
 
       county_code = county.code
       
-
       if counties_counter < Refinery::Counties::County.count
-        populate += "'#{county_code.upcase}': {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{question_total}]},\n"
+        populate += "'#{county_code}': {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{question_total}]},\n"
       else
-        populate += "'#{county_code.upcase}': {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{question_total}]}"
+        populate += "'#{county_code}': {name:'#{county.name}', land:0, water:0, #{question_data} total:[#{question_total}]}"
       end
       
       counties_counter += 1
