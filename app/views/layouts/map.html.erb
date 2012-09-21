@@ -66,17 +66,17 @@
             
             var questions = [
               {number_of_q: <%= number_of_q %>},
-                  {q_id: 0, q_color: "rgba(42, 11, 239,0.7)", q_name: "<%= @questions[0].title unless @questions[0].nil? %>"},
-                  {q_id: 1, q_color: "rgba(239, 11, 197,0.7)", q_name: "<%= @questions[1].title unless @questions[1].nil? %>"},
-                  {q_id: 2, q_color: "rgba(36, 229, 6,0.7)", q_name: "<%= @questions[2].title unless @questions[2].nil? %>"},
-                  {q_id: 3, q_color: "rgba(229, 170, 6,0.7)", q_name: "<%= @questions[3].title unless @questions[3].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[4].title unless @questions[4].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[5].title unless @questions[5].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[6].title unless @questions[6].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[7].title unless @questions[7].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[8].title unless @questions[8].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[9].title unless @questions[9].nil? %>"},
-                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[10].title unless @questions[10].nil? %>"}
+                  {q_id: 0, q_color: "rgba(42, 11, 239,0.7)", q_name: "<%= @questions[0].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[0].nil? %>"},
+                  {q_id: 1, q_color: "rgba(239, 11, 197,0.7)", q_name: "<%= @questions[1].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[1].nil? %>"},
+                  {q_id: 2, q_color: "rgba(36, 229, 6,0.7)", q_name: "<%= @questions[2].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[2].nil? %>"},
+                  {q_id: 3, q_color: "rgba(229, 170, 6,0.7)", q_name: "<%= @questions[3].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[3].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[4].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[4].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[5].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[5].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[6].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[6].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[7].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[7].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[8].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[8].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[9].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[9].nil? %>"},
+                  {q_id: 4, q_color: "rgba(229, 32, 6,0.7)", q_name: "<%= @questions[10].title.gsub(/\r/, ' ').gsub(/\n/, ' ') unless @questions[10].nil? %>"}
                 ]
               
 
