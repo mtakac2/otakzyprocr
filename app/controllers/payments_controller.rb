@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
     
     if @citizens_question.save
       @status = 'Vaše platba proběhla úspěšne. Doklad o platbě byl zaslán na Váš email. Pro více detailů se múžete přihlásit do svého
-        paypal účtu: www.sandbox.paypal.com/. Děkujeme.'
+        paypal účtu: www.paypal.com/us. Děkujeme.'
     else
       @status = 'Byli zaznamenány problémy s platbou. Prosím kontaktujte administrátora.'
     end    
