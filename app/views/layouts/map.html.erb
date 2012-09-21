@@ -13,8 +13,16 @@
       <%= javascript_include_tag "map/centroid"%>
       <%= javascript_include_tag "map/okresyCoord"%>
       <%= javascript_include_tag "map/map"%>
-              
-      <%= populate_map(@map_data, @question) %>
+      
+      <script>
+        var us_stats = {
+          <%= populate_map(@map_data, @question) %>
+        };
+
+        us_stats.maxYear = 2008;
+        us_stats.minYear = 1995;
+        us_stats.yearIdx = function(year) { return 2008-year; }
+      </script>
 
       <script type="text/javascript">var isDefault = true;</script>      
   </head>

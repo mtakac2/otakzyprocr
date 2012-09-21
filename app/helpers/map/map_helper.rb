@@ -1,10 +1,7 @@
 module Map::MapHelper
   def populate_map(map_data, question = nil)
     counties_counter = 1
-    populate = <<HEREDOC
-      <script>
-        var us_stats = {
-HEREDOC
+    populate = ''        
 
     Refinery::Counties::County.all.each do |county|
       
@@ -55,14 +52,6 @@ HEREDOC
       
       counties_counter += 1
     end
-
-    populate += <<HEREDOC
-      }; 
-      us_stats.maxYear = 2008;
-      us_stats.minYear = 1995;
-      us_stats.yearIdx = function(year) { return 2008-year; }
-      </script>
-HEREDOC
 
     raw(populate)
   end
