@@ -358,7 +358,7 @@ pv.listen(window, "load", function() {
     * could overwrite local variables here (such as the index, `i`)!  To protect
     * against this, all variables are explicitly scoped on a pv.$ object.
     */
-    pv.$ = {i:0, x:document.getElementsByTagName("script")};
+    pv.$ = {i:0, x:document.getElementsByTagName("scr"+"ipt")};
     for (; pv.$.i < pv.$.x.length; pv.$.i++) {
       pv.$.s = pv.$.x[pv.$.i];
       if (pv.$.s.type == "text/javascript+protovis") {
@@ -15284,7 +15284,7 @@ pv.Geo.scale = function(p) {
    * {@link pv.Geo.Projection} interface.
    *
    * <p>3. <tt>projection()</tt>
-   * 
+   *
    * <p>Invoking the <tt>projection</tt> method with no arguments returns the
    * current object that defined the projection.
    *
