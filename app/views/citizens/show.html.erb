@@ -44,13 +44,13 @@
 					<%= truncate(question.title, length: 100, separator: ' ') %>					
 				</h3>				
 				<div class="pull-right">
-					<% if @citizen.is_team_manager_for?(question.id) %>
+					<% if @citizen.is_team_manager_for?(question.id) == true %>
 						<%= form_tag(refinery.root_path+'mark-question-as-solved/'+question.id.to_s+'/') %>						
 							<%= hidden_field_tag 'citizen_id', @citizen.id %>
 							<%= submit_tag 'Označit za vyřešenou', class: 'btn btn-success' if question.done != true %>
-						<% end %>
+						</form>
 						<%= link_to 'Přidat úkol', main_app.new_citizen_question_task_path(@citizen, question), class: 'btn btn-primary' %>
-					</form>
+					<% end %>
 				</div>
 				<h4 class="clear"><%= question.subject.firstname %> <%= question.subject.lastname %></h4>
 				<table id="account_question_table">

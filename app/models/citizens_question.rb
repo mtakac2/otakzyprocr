@@ -20,7 +20,7 @@ class CitizensQuestion < ActiveRecord::Base
 
   validate :format_of_promised_hours, :allowed_time_before_elections
   # validate :no_more_promised_hours, on: :update
-  validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }
+  validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }, on: :create
 
   def paypal_url
     values = {

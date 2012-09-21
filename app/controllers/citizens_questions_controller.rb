@@ -60,12 +60,10 @@ class CitizensQuestionsController < ApplicationController
     @new_citizens_question = CitizensQuestion.new    
   end
 
-  def relocate_hours
-    @from_citizens_question = CitizensQuestion.find(params[:id])
-    @to_citizens_question = CitizensQuestion.new
-    @to_citizens_question.citizen_id = params[:citizen_id]
-    @to_citizens_question.question_id = params[:citizens_question][:question_id]
-    @to_citizens_question.hours = params[:citizens_question][:hours]
+  def relocate_hours  
+    @from_citizens_question = CitizensQuestion.find(params[:id])    
+    @to_citizens_question = CitizensQuestion.new(citizen_id: params[:citizen_id], question_id: params[:citizens_question][:question_id],
+      hours: params[:citizens_question][:hours])
 
     from_question_hours = @from_citizens_question.hours - @to_citizens_question.hours    
     
@@ -73,7 +71,7 @@ class CitizensQuestionsController < ApplicationController
       @to_citizens_question.save
       redirect_to citizen_path(@to_citizens_question.citizen_id)
     else
-      render 'move'
+      redirect_to citizen_path(@to_citizens_question.citizen_id)
     end
   end
 
