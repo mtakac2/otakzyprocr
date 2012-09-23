@@ -34,6 +34,10 @@ module Refinery
           def find_citizens_questions
             @citizens_questions = CitizensQuestion.order('created_at')
           end
+
+          def find_citizens
+            @citizens = Refinery::Citizens::Citizen.all
+          end
       end
     end
   end
