@@ -30,8 +30,12 @@
     <% end %>
   </div>
   <div>
-    Nejvíc přislíbených hodin:    
-      <%= question.citizens.first.get_most_hours_count_for(question.id) %> -
-      <%= question.citizens.first.get_citizen_with_most_hours_for(question.id).email %>
+    Nejvíc přislíbených hodin:
+      <% if question.citizens.any? %>    
+        <%= question.citizens.first.get_most_hours_count_for(question.id) %> -
+        <%= question.citizens.first.get_citizen_with_most_hours_for(question.id).email %>
+      <% else %>
+        - 
+      <% end %>
   </div>
 </li>
