@@ -76,5 +76,5 @@ Otazkyprocr::Application.configure do
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
   }
-  config.action_mailer.default_url_options = { host: 'otazkyprocr.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'otazkyprocr.cz' }
 end
