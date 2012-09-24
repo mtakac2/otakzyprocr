@@ -1,72 +1,117 @@
 <section id="stats">
+
 	<table>
-		<tr>
-			<th>Otázek celkem</th>
-			<td><%= @stats.questions_count %></td>
-		</tr>
-		<tr>
-			<th>Politiků celkem</th>
-			<td><%= @stats.politicians_count %></td>
-		</tr>
-		<tr>
-			<th>Počet týmů</th>
-			<td><%= @stats.team_count %></td>
-		</tr>
-		<tr>
-			<th>Počet otázek bez týmů</th>
-			<td><%= @stats.questions_without_team_count %></td>
-		</tr>
-		<tr>
-			<th>Odchody z týmů</th>
-			<td> - </td>
-		</tr>
-		<tr>
-			<th>Voličů celkem</th>
-			<td><%= @stats.citizens_count %></td>
-		</tr>
-		<tr>
-			<th>Žen</th>
-			<td><%= @stats.citizens_women_count %></td>
-		</tr>
-		<tr>
-			<th>Mužů</th>
-			<td><%= @stats.citizens_men_count %></td>
-		</tr>
-		<tr>
-			<th>Průměrný věk voličů</th>
-			<td><%= @stats.citizens_average_age %></td>
-		</tr>
-		<tr>
-			<th>Přislíbených hodin</th>
-			<td><%= @stats.promised_workhours_sum %></td>
-		</tr>
-		<tr>
-			<th>Odpracovaných hodin</th>
-			<td><%= @stats.done_workhours_sum %></td>
-		</tr>
-		<tr>
-			<th>Politik s nejvyšší přidanou občanskou hodnotou </th>
-			<td> - </td>
-		</tr>
-		<tr>
-			<th>Nejaktivnější města</th>
-			<td> - </td>
-		</tr>
-		<tr>
-			<th>% na "webu" aktivních vzhledem k celkovémi počtu právoplatných voličů (8 415 892 ke dni 1.9. 2013)</th>
-			<td><%= @stats.percent_of_citizens %> %</td>
-		</tr>
-		<tr>
-			<th>Počet publikovaných řešení</th>
-			<td> - </td>
-		</tr>
-		<tr>
-			<th>Stav fondu pro odměny nejaktivnějším voličům</th>
-			<td> - </td>
-		</tr>
-		<tr>
-			<th>Zatímní adepti na získání 1/5 podílu z fondu</th>
-			<td> - </td>
-		</tr>
+		<thead>
+			<tr>
+				<th colspan="2">ZÁKLADNÍ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Otázek celkem</th>
+				<td><%= @stats.questions_count %></td>
+			</tr>
+
+			<tr>
+				<th>Politiků celkem</th>
+				<td><%= @stats.politicians_count %></td>
+			</tr>
+
+			<tr>
+				<th>Voličů celkem</th>
+				<td><%= @stats.citizens_count %></td>
+			</tr>
+
+			<tr>
+				<th>Žen</th>
+				<td><%= @stats.citizens_women_count %></td>
+			</tr>
+
+			<tr>
+				<th>Mužů</th>
+				<td><%= @stats.citizens_men_count %></td>
+			</tr>
+
+			<tr>
+				<th>Průměrný věk voličů</th>
+				<td><%= @stats.citizens_average_age %></td>
+			</tr>
+
+			<tr>
+				<th>Přislíbených hodin</th>
+				<td><%= @stats.promised_workhours_sum %></td>
+			</tr>
+
+			<tr>
+				<th>% zde aktivních k počtu právopl. voličů (8 415 892 k 1.9. 2013)</th>
+				<td><%= @stats.percent_of_citizens %> %</td>
+			</tr>
+		</tbody>
 	</table>
-</section>
+
+	<hr>
+
+	<table>
+		<thead>
+			<tr>
+				<th>2)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Počet týmů</th>
+				<td><%= @stats.team_count %></td>
+			</tr>
+
+			<tr>
+				<th>Počet otázek bez týmů</th>
+				<td><%= @stats.questions_without_team_count %></td>
+			</tr>
+
+			<tr>
+				<th>Nejaktivnější města</th>
+				<td> - </td>
+			</tr>
+
+			<tr>
+				<th>Odpracovaných hodin</th>
+				<td><%= @stats.done_workhours_sum %></td>
+			</tr>
+
+			<tr>
+				<th>Odchody z týmů</th>
+				<td> - </td>
+			</tr>			
+
+			<tr>
+				<th>Otázka s největším počtem odchodů</th>
+				<td> - </td>
+			</tr>
+
+			<tr>
+				<th>Počet publikovaných řešení</th>
+				<td> - </td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr>
+
+	<table>
+		<thead>
+			<tr>
+				<th>3)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Stav fondu pro odměny nejaktivnějším voličům</th>
+				<td> - </td>
+			</tr>
+
+			<tr>
+				<th>Adepti na získání odměny z fondu</th>
+				<td> - </td>
+			</tr>
+		</tbody>
+	</table>
