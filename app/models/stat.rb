@@ -66,10 +66,14 @@ class Stat
   end
 
   def questions_without_team_count
-    Refinery::Questions::Question.count - self.team_count.to_i
+    result = Refinery::Questions::Question.count - self.team_count.to_i
+    if Refinery::Questions::Question.count - self.team_count.to_i < 0
+      result = 0
+    end
+    result
   end
 
   def percent_of_citizens
-    (Refinery::Citizens::Citizen.count('id') / (8415892 / 100)).round(2)
+    (Refinery::Citizens::Citizen.count('id') / (8415892 / 100)).round(5)
   end
 end
