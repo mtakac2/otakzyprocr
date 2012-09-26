@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />    
 
-      <title>Symbol Map</title>
+      <title>Strategické otázky pro ČR - Mapa</title>
 
-      <%= stylesheet_link_tag "map"%>
+      <%= stylesheet_link_tag "bootstrap"%>
+      <%= stylesheet_link_tag "map"%>      
       <%= javascript_include_tag "map/protovis-r3.2"%>
       <%= javascript_include_tag "map/jquery-1.7.2.min"%>
       <%= javascript_include_tag "map/jquery-ui-1.8rc3.custom.min"%>
@@ -28,30 +29,43 @@
   </head>
 
   <body >
-    <div id="wrapper">
+    <div class="container">
 
-      <header>
-        <div id="heading">                     
-          <h1><%= @title %></h1>
+      <div class="row">
+        <div class="span12">
+          <header id="header">
+            <h1>Strategické otázky pro ČR - Mapa</h1>
+          </header>
         </div>
-                
-        <nav id="topMenu">
-          <ul>
-            <li><%= link_to 'Voliči', '/map/citizens/' %></li>
-            <li><%= link_to 'Přislíbené hodiny', '/map/promised_hours' %></li>
-            <li><%= link_to 'Odrobené hodiny', '/map/worked_hours' %></li>
-          </ul>
-        </nav>
-      </header>
+      </div>
 
-      <section>
-        
-        <%= yield %>
-
-        <div id="infoHead">
+      <div class="row">
+        <div class="span12">
+          <nav id="top-menu">
+            <ul class="nav nav-tabs">
+              <li class="active"><%= link_to 'Voliči', '/map/citizens/' %></li>
+              <li><%= link_to 'Přislíbené hodiny', '/map/promised_hours' %></li>
+              <li><%= link_to 'Odrobené hodiny', '/map/worked_hours' %></li>
+            </ul>
+          </nav>
         </div>
+      </div>
 
-        <div id="map">        
+      <div class="row">
+        <div class="span12">
+          <nav id="side-menu">
+            <ul class="nav nav-tabs nav-stacked">              
+              <%= yield %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <div id="infoHead"></div>
+
+          <div id="map">        
           <!--generating pies, single-question markers-->
           <script>
             var qTitle = new Array();
@@ -249,10 +263,9 @@
             </script>
             <!--generating pies, single-question markers-->
             </div>
-      </section>
+        </div>
+      </div>
 
-      <footer>
-      </footer>
-
+    </div>                
   </body>
 </html>

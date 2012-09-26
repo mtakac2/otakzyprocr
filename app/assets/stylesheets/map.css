@@ -70,16 +70,17 @@ h1,h3{
 }
 
 #sideMenu ul li{
-	padding: 5px 0px;
+	padding: 5px 0px;	
 }
 
-#sideMenu ul li a{
-	width: 73px;
+#sideMenu ul li a{	
 	text-decoration: none;
 	color: #147AE0;
-	padding: 3px 2px;
+	padding: 3px 6px;
 	background-color: #E8E8E8;
 	border-radius: 5px;
+	display: inline-block;
+	width: 700px;
 }
 
 h2{
