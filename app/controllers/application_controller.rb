@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # before_filter :block_citizen_without_question
-  before_filter :get_all_questions, :get_all_elections
+  before_filter :get_all_questions, :get_all_elections, :get_root_pages, :get_child_pages
 
   protected
 
@@ -61,5 +61,13 @@ class ApplicationController < ActionController::Base
       if current_user
         redirect_to '/'
       end
+    end
+
+    def get_root_pages
+      @root_pages = Refinery::Page.where('show_in_menu = true AND parent_id IS NULL').order('lft ASC')
+    end
+
+    def get_child_pages
+      @child_pages = Refinery::Page.where('show_in_menu = true AND parent_id IS NOT NULL').order('lft ASC')
     end
 end

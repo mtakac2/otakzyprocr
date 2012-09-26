@@ -10,13 +10,25 @@
   <div class="navbar-inner">
     <nav id='<%= dom_id %>' class='container <%= css %>'>
       <ul class="nav group page_item">
-        <%= render :partial => '/refinery/menu_branch', :collection => roots,
-                   :locals => {
-                     :hide_children => hide_children,
-                     :sibling_count => (roots.length - 1),
-                     :menu_levels => local_assigns[:menu_levels],
-                     :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
-                   } -%>
+        <% @root_pages.each do |root| %>          
+
+          <% if has_children?(root) %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= root.title %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <% @child_pages.each do |child| %>
+                  <% if child.parent_id == root.id %>
+                    <li><%= link_to child.title, child.url %></li>
+                  <% end %>
+                <% end %>                
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to root.title, root.url %></li>   
+          <% end %>                                                            
+        <% end %> 
       </ul>
 
       <ul class="nav pull-right">
