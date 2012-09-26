@@ -2,7 +2,8 @@
 
 class PaymentsController < ApplicationController
   def paypal
-    @citizens_question = session[:citizens_question]
+    @citizens_question = CitizensQuestion.new(citizen_id: session[:citizens_question][:citizen_id], question_id: session[:citizens_question][:question_id],
+      hours: session[:citizens_question][:hours])
     session[:citizens_question] = nil
     
     """

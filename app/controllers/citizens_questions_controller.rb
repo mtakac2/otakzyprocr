@@ -20,7 +20,9 @@ class CitizensQuestionsController < ApplicationController
         @citizens_question.save
         redirect_to '/', flash: { notice: 'Ok' }
       else
-        session[:citizens_question] = @citizens_question
+        session[:citizens_question][:question_id] = @citizens_question.question_id
+        session[:citizens_question][:citizen_id] = @citizens_question.citizen_id
+        session[:citizens_question][:hours] = @citizens_question.hours
         redirect_to @citizens_question.paypal_url
       end
     else
