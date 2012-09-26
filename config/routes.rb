@@ -1,5 +1,7 @@
 Otazkyprocr::Application.routes.draw do  
   
+
+  resources :sessions
   get "tasks/index"
 
   get "tasks/new"
@@ -23,8 +25,7 @@ Otazkyprocr::Application.routes.draw do
     resources :questions do
       resources :tasks
     end
-  end
-  resources :sessions
+  end  
   resources :citizens_questions
   resources :elections
   resources :password_resets

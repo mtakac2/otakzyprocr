@@ -2,8 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  # before_filter :block_citizen_without_question
+  
   before_filter :get_all_questions, :get_all_elections, :get_root_pages, :get_child_pages
 
   protected
