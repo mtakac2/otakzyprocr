@@ -1,92 +1,19 @@
-body{
-	font-size: 12px;
-	font-family: Verdana, Trebuchet, sans-serif;
+body {
+	line-height: 16px;
 }
 
-
-
-#wrapper{
-	width: 1100px;
-	height: 900px;
-	margin: auto;
+h1, h2, h3{
+	color: #147AE0;	
 }
 
-
-#heading{
-	background-color: rgba(255, 255, 255, 0.7);
-	padding: 10px;
+#header {
+	margin-top: 32px;
+	margin-bottom: 32px;
 }
 
-
-
-
-
-h1,h3{
-	color: #147AE0;
-	margin: 0px;
-	display: inline-block;
+#top-menu {
+	margin-bottom: 48px;
 }
-
-
-
-#topMenu{
-	float: right;
-}
-
-#topMenu ul{
-	margin: 5px 0px 0px 0px;
-	padding: 0px;
-}
-
-#topMenu ul li{
-	display: inline-block;
-}
-
-#topMenu ul li a{
-	text-decoration: none;
-	color: #147AE0;
-	font-size: 12px;
-	padding: 5px;
-	background-color: #E8E8E8;
-	border-radius: 5px;
-}
-
-#topMenu ul li a:hover{
-	background-color: #F4F2F2;
-	color: #6AB3E8;
-}
-
-
-
-#sideMenu{
-	display: block-inline;
-	float: left;
-}
-
-#sideMenu ul{
-	padding: 0px 0px 0px 5px;
-	margin: 0px;
-	list-style-type: none;
-}
-
-#sideMenu ul li{
-	padding: 5px 0px;	
-}
-
-#sideMenu ul li a{	
-	text-decoration: none;
-	color: #147AE0;
-	padding: 3px 6px;
-	background-color: #E8E8E8;
-	border-radius: 5px;
-	display: inline-block;
-	width: 700px;
-}
-
-h2{
-	margin: 0px;
-}
-
 
 #infoHead{
 	padding: 5px;
@@ -103,4 +30,15 @@ h2{
 	color: white;
 	margin: 0px;
 	padding: 0px 0px;
+}
+
+ul li.headline {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	background-color: #eee;
+}
+
+ul li.active a {
+	font-weight: bold;
 }
