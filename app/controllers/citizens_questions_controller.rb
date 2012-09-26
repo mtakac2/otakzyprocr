@@ -14,7 +14,7 @@ class CitizensQuestionsController < ApplicationController
   def create    
     @citizens_question = CitizensQuestion.new(params[:citizens_question])
     @question = Refinery::Questions::Question.find(@citizens_question.question_id)
-    
+  
     if @citizens_question.valid?
       if @citizens_question.hours <= 3
         @citizens_question.save
