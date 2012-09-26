@@ -20,7 +20,7 @@
               <ul class="dropdown-menu">
                 <% @child_pages.each do |child| %>
                   <% if child.parent_id == root.id %>                  
-                    <li><%= link_to child.title, child.url[:path].join('/') %></li>
+                    <li><%= link_to child.title, '/'+child.url[:path].join('/') %></li>
                   <% end %>
                 <% end %>                
               </ul>
