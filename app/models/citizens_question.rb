@@ -52,7 +52,7 @@ class CitizensQuestion < ActiveRecord::Base
       end
     end
 
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347886840_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.cz/payments/paypal/"
+    "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ceskaprezidentka@seznam.cz&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://www.otazkyprocr.cz/payments/paypal/"
   end
 
   def format_of_promised_hours    
