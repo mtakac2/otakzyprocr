@@ -6,14 +6,13 @@
 
       <title>Symbol Map</title>
 
-      <%= stylesheet_link_tag "map"%>      
+      <%= stylesheet_link_tag "map"%>
+      <%= javascript_include_tag "map/protovis-r3.2"%>
       <%= javascript_include_tag "map/jquery-1.7.2.min"%>
       <%= javascript_include_tag "map/jquery-ui-1.8rc3.custom.min"%>
       <%= javascript_include_tag "map/centroid"%>
       <%= javascript_include_tag "map/okresyCoord"%>
-      <%= javascript_include_tag "map/map"%>
-
-      <%= render 'map/protovis' %>
+      <%= javascript_include_tag "map/map"%>      
 
       <script>
         var us_stats = {
