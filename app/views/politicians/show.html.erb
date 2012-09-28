@@ -1,3 +1,9 @@
 <section id="politician-detail">
-  <h2><%= @politician.firstname + ' ' + @politician.lastname %></h2>  
+  <h2><%= @politician.firstname + ' ' + @politician.lastname %></h2>
+  
+  <ul>
+  <% @politician.questions.each do |question| %>
+    <li><%= link_to question.title, main_app.question_path(question) %></li>
+  <% end %>
+  </ul>
 </section>

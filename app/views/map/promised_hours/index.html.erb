@@ -1,3 +1,8 @@
 <% @questions.each do |question| %>
-  <li><%= link_to question.title, "/map/promised_hours/#{question.id}/" %></li>
+  <% if question.subject.subtype == 'Refinery::Politicians::Politician' %>
+    <% @name = "#{question.subject.firstname} #{question.subject.lastname}" %>
+  <% else %>
+    <% @name = question.subject.name %>
+  <% end %>
+  <li><%= link_to "#{@name}: #{question.title}", "/map/promised_hours/#{question.id}/" %></li>
 <% end %>
