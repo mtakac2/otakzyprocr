@@ -8,10 +8,12 @@ class Map::WorkedHoursController < ApplicationController
     @counties = Refinery::Counties::County.all
     @questions = Refinery::Questions::Question.order('created_at DESC')
     @map_data = :worked_hours
+    @worked = true
   end
 
   def show
     @question = Refinery::Questions::Question.find(params[:id])
     @map_data = :worked_hours
+    @worked = true
   end
 end

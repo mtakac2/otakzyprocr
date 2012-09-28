@@ -43,9 +43,9 @@
         <div class="span12">          
           <nav id="top-menu">
             <ul class="nav nav-tabs">
-              <li class="active"><%= link_to 'Voliči', '/map/citizens/' %></li>
-              <li><%= link_to 'Přislíbené hodiny', '/map/promised_hours' %></li>
-              <li><%= link_to 'Odrobené hodiny', '/map/worked_hours' %></li>
+              <li class="<%= 'active' if @citizens %>"><%= link_to 'Voliči', '/map/citizens/' %></li>
+              <li class="<%= 'active' if @promised %>"><%= link_to 'Přislíbené hodiny', '/map/promised_hours' %></li>
+              <li class="<%= 'active' if @worked %>"><%= link_to 'Odrobené hodiny', '/map/worked_hours' %></li>
             </ul>
           </nav>
         </div>
@@ -62,6 +62,7 @@
         </div>
       </div>
 
+      <!--
       <div class="row">
         <div class="span12">
           <div id="breadcrumbs">
@@ -72,7 +73,8 @@
           </div>
         </div>
       </div>
-
+      -->
+      
       <div class="row">
         <div class="span12">
           <div id="infoHead"></div>
@@ -263,7 +265,7 @@
                   }
                     })
                     .left(10)
-                    .bottom(function() this.index * 12 - 20)
+                    .bottom(function() this.index * 12 - 70)
                     .strokeStyle(null)
                     .fillStyle(function()
                          colors[this.index]) //need to be done!!
@@ -272,8 +274,8 @@
                   vis.render();
                   ge = null;
 
-                  $("#map").find("span").css("height", 700);
-                  $("#map").find("span").find("svg").attr("height", 700);
+                  $("#map").find("span").css("height", 900);
+                  $("#map").find("span").find("svg").attr("height", 900);
 
             </script>
             <!--generating pies, single-question markers-->

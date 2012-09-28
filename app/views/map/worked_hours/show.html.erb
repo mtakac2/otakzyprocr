@@ -1,7 +1,3 @@
-<nav id="sideMenu">
-  <ul>
-    <% @questions.each do |question| %>
-      <li><%= link_to question.title, "/map/worked_hours/#{question.id}/" %></li>
-    <% end %>
-  </ul>
-</nav>
+<% @questions.each do |question| %>
+  <li class="<%= 'active' if question.id == params[:id].to_i %>"><%= link_to question.title, "/map/worked_hours/#{question.id}/" %></li>
+<% end %>
