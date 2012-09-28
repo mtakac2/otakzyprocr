@@ -263,7 +263,7 @@
                   }
                     })
                     .left(10)
-                    .bottom(function() this.index * 12 + 10)
+                    .bottom(function() this.index * 12 - 20)
                     .strokeStyle(null)
                     .fillStyle(function()
                          colors[this.index]) //need to be done!!
@@ -271,6 +271,9 @@
     
                   vis.render();
                   ge = null;
+
+                  $("#map").find("span").css("height", 700);
+                  $("#map").find("span").find("svg").attr("height", 700);
 
             </script>
             <!--generating pies, single-question markers-->

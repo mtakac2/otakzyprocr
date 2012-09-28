@@ -30,7 +30,7 @@
           <td colspan="2">    
             <p><%= raw(@email.content) %></p>  
             <p>
-              Prosím aktivujte si svůj účet kliktnutím na odkaz:
+              Prosím aktivujte si svůj účet:
               <%= link_to 'Založit účet', "#{refinery.root_url}citizens/activate/#{@citizen.activation_code}" %>
             </p>            
           </td>                  
