@@ -8,7 +8,7 @@ class Map::CitizensController < ApplicationController
     @counties = Refinery::Counties::County.all
     @questions = Refinery::Questions::Question.order('created_at DESC')
     @map_data = :citizens
-    @citizens = true
+    @citizens = true    
   end
 
   def show    
