@@ -249,20 +249,24 @@
                     {
                         var qLegend = new Array(a);
                         //var q = "q";
-                        if('<%= @question %>' === '')
-                        {
-                          qLegend[0]=questions[1].q_name;
-                          return qLegend;                          
-                        }
-                        else
-                        {
-                          for(var i=0;i<a;i++)
-                          {
-                             // var k = i+1;
-                              qLegend[i] = questions[i+1].q_name;
-                          }
-                          return qLegend;
-                        }
+                        <% if @question %>
+                          isDefault = false; 
+                        <% end %>
+
+                        if(isDefault == true)
+                       {
+                         for(var i=0;i<a;i++)
+                         {
+                            // var k = i+1;
+                             qLegend[i] = questions[i+1].q_name;
+                         }
+                         return qLegend;
+                       }
+                       else
+                       {
+                        qLegend[0]='<%= @question.title %>';
+                        return qLegend;
+                       }
                     })
                     .left(10)
                     .bottom(function() this.index * 12 - 150)
