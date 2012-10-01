@@ -264,7 +264,7 @@
                        }
                        else
                        {
-                        qLegend[0]='<%= @question.title %>';
+                        qLegend[0]='<%= @question.title if @question %>';
                         return qLegend;
                        }
                     })
