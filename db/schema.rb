@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920083726) do
+ActiveRecord::Schema.define(:version => 20121001225018) do
 
   create_table "citizens_questions", :force => true do |t|
     t.integer  "citizen_id"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20120920083726) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "payments", :force => true do |t|
+    t.integer  "hours"
+    t.float    "total"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "refinery_citizens", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -59,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20120920083726) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "activation_code"
-    t.string   "string"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
   end
@@ -315,5 +321,12 @@ ActiveRecord::Schema.define(:version => 20120920083726) do
   end
 
   add_index "tasks", ["question_id"], :name => "index_tasks_on_question_id"
+
+  create_table "team_exits", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "citizen_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end

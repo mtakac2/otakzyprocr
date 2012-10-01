@@ -59,8 +59,13 @@
 			</tr>
 
 			<tr>
-				<th>Nejaktivnější města</th>
-				<td> - </td>
+				<th>Nejaktivnější okres</th>				
+				<% if !@stats.county_with_most_citizens.nil? %>
+					<% county = @stats.county_with_most_citizens %>
+					<td><%= county[:name] %> | <%= county[:citizens_count] %> voličů</td>
+				<% else %>
+					<td> - </td>
+				<% end %>
 			</tr>
 
 			<tr>
@@ -70,16 +75,21 @@
 
 			<tr>
 				<th>Odchody z týmů</th>
-				<td> - </td>
+				<td><%= @stats.count_team_exits %></td>
 			</tr>			
 
 			<tr>
-				<th>Otázka s největším počtem odchodů</th>
-				<td> - </td>
+				<th>Otázka s největším počtem odchodů</th>								
+				<% if !@stats.question_with_highest_exit_rate.nil? %>
+					<% exit = @stats.question_with_highest_exit_rate %>
+					<td><%= exit[:question].title %> | <%= exit[:count] %> odchodů</td>
+				<% else %>
+					<td> - </td>
+				<% end %>
 			</tr>
 
 			<tr>
-				<th>Počet publikovaných řešení</th>
+				<th>Počet publikovaných řešení</th>				
 				<td> - </td>
 			</tr>
 		</tbody>
@@ -91,12 +101,17 @@
 		<tbody>
 			<tr>
 				<th>Stav fondu pro odměny nejaktivnějším voličům</th>
-				<td> - </td>
+				<td><%= @stats.reward_fond_amount %> Kč</td>
 			</tr>
 
 			<tr>
 				<th>Adepti na získání odměny z fondu</th>
-				<td> - </td>
+				<% if !@stats.adepts_for_reward.nil? %>
+					<% adepts = @stats.adepts_for_reward %>
+					<td><%= adepts[:citizen].email %> | <%= adepts[:hours] %> hodin</td>
+				<% else %>
+					<td> - </td>
+				<% end %>
 			</tr>
 		</tbody>
 	</table>

@@ -76,4 +76,41 @@ class Stat
   def percent_of_citizens
     (Refinery::Citizens::Citizen.count('id') / (8415892 / 100)).round(5)
   end
+
+  def county_with_most_citizens
+    @citizens_count = 0
+    Refinery::Counties::County.all.each do |county|      
+      if county.citizens.count > @citizens_count
+        @county = { citizens_count: citizens_count, name: county.name }        
+      end      
+    end
+    if !@county.nil?
+      return @county
+    end
+    nil
+  end
+
+  def count_team_exits
+    TeamExit.count
+  end
+
+  def question_with_highest_exit_rate
+    team_exit = TeamExit.group(:question_id).count(:citizen_id).max
+    if !team_exit.nil?
+      return exits = { question: Refinery::Questions::Question.find(team_exit[0].to_i), count: team_exit[1].to_i }
+    end
+    nil
+  end
+
+  def adepts_for_reward
+    citizen_question = CitizensQuestion.group(:citizen_id).sum(:hours).max
+    if !citizen_question.nil?
+      return adept = { citizen: Refinery::Citizens::Citizen.find(citizen_question[0]), hours: citizen_question[1] }
+    end
+    nil
+  end
+
+  def reward_fond_amount
+    Payment.sum(:total)
+  end
 end

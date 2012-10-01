@@ -71,6 +71,9 @@ class CitizensQuestionsController < ApplicationController
     
     if @from_citizens_question.update_attributes(hours: from_question_hours) &&
       @to_citizens_question.save
+      if @from_citizens_question.hours == 0
+        TeamExit.create(question_id: @from_citizens_question.question_id, citizen_id: @from_citizens_question.citizen_id)
+      end
       redirect_to citizen_path(@to_citizens_question.citizen_id)
     else
       redirect_to citizen_path(@to_citizens_question.citizen_id)

@@ -31,14 +31,15 @@ module Map::MapHelper
           case map_data
             when :citizens
               question_data += "q#{question_counter}:[#{county.percentage_of_citizens_for(question.id)}],"
+              question_total = 5000 if county.percentage_of_citizens_for(question.id) > 0
             when :promised_hours
               question_data += "q#{question_counter}:[#{county.percentage_of_promised_hours_for(question.id)}],"
+              question_total = 5000 if county.percentage_of_promised_hours_for(question.id) > 0
             when :worked_hours
               question_data += "q#{question_counter}:[#{county.percentage_of_worked_hours_for(question.id)}],"
+              question_total = 5000 if county.percentage_of_worked_hours_for(question.id) > 0
           end
-                    
-          question_total = 5000 if county.percentage_of_citizens_for(question.id) > 0
-          question_counter += 1
+                                      
         end
       end
 

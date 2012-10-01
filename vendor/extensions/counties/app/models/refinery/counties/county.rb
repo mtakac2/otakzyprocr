@@ -72,7 +72,7 @@ module Refinery
 
       def percentage_of_worked_hours_for(question_id)
         percentage = 0
-        if self.count_promised_hours > 0
+        if self.count_worked_hours > 0
           percentage = (self.count_worked_hours_for(question_id) / self.count_worked_hours) * 100          
         end
         percentage.round(2)
