@@ -83,7 +83,7 @@
           <!--generating pies, single-question markers-->
           <script>
             var qTitle = new Array();
-            var qData = new Array();                                      
+            var qData = new Array();
               
             <% if params[:id] %>
               <% number_of_q = 1 %>
@@ -107,7 +107,7 @@
                 ]
               
 
-              var a = questions[0].number_of_q;  //NUM OG QUESTIONS
+              var a = questions[0].number_of_q; //NUM OG QUESTIONS
                   
                 var w = 900,
                     h = 500,
@@ -168,7 +168,7 @@
                 .font("bold 10px sans-serif")
                 .textStyle("#848484")
                 .textShadow("5px 5px 5px rgba(0,0,0,0.5)")
-                .text(function(d, c) 
+                .text(function(d, c)
                               {
                                 var label = [c.name];
                                   return label;
@@ -185,13 +185,12 @@
                                   {
                                     var k = j + 1;
                                     if(j==(a-1))
-                                    {                                        
+                                    {
                                         for(var l=0;l<j;l++)
-                                        {                    
-                                            alert(l);
-                                            sum += qData[0][0];
+                                        {
+                                            sum += qData[l][0];
                                             sum = parseFloat(sum);
-                                        } 
+                                        }
                                         qData[j] = (100 - sum);
                                     }
                                     else{
@@ -223,10 +222,10 @@
                                       if(j==(a-1))
                                       {
                                           for(var l=0;l<j;l++)
-                                          {   
+                                          {
                                               sum += qTitle[l][0];
                                               sum = parseFloat(sum);
-                                            } 
+                                            }
                                           qTitle[j] = (100 - sum);
                                           qTitle[j+1] = [c.name];
                                       }
@@ -250,24 +249,20 @@
                     {
                         var qLegend = new Array(a);
                         //var q = "q";
-                        <% if @question %>
-                          isDefault = false; 
-                        <% end %>
-
                         if(isDefault == true)
-                       {
-                         for(var i=0;i<a;i++)
-                         {
-                            // var k = i+1;
-                             qLegend[i] = questions[i+1].q_name;
-                         }
-                         return qLegend;
-                       }
-                       else
-                       {
-                        qLegend[0]='<%= @question.title.gsub(/\n/, ' ') if @question %>';
-                        return qLegend;
-                       }
+                          {
+                          for(var i=0;i<a;i++)
+                          {
+                             // var k = i+1;
+                              qLegend[i] = questions[i+1].q_name;
+                          }
+                          return qLegend;
+                  }
+                  else
+                  {
+                    qLegend[0]=questions[1].q_name;
+                    return qLegend;
+                  }
                     })
                     .left(10)
                     .bottom(function() this.index * 12 - 150)
@@ -292,36 +287,16 @@
                       var titleValue = $(this).attr("title");
                       var titleValue = titleValue.split(',');
                       var count = titleValue.length;
-                      var qNames = new Array();                      
+                      var qNames = new Array();
                   
                       for(var i=0;i<a;i++)
                       {
                         //var k = i+1;
                         qNames[i] = questions[i+1].q_name;
                       }
-
-                      var total_in_county = new Array();
-                      <% if @citizens == true %>
-                        <% @counties.each do |county| %>
-                          total_in_county["<%= county.name %>"] = <%= county.citizens.count %>;
-                        <% end %>
-                      <% end %>
-
-                      <% if @promised == true %>
-                        <% @counties.each do |county| %>
-                          total_in_county["<%= county.name %>"] = <%= county.count_promised_hours %>;
-                        <% end %>
-                      <% end %>
-
-                      <% if @worked == true %>
-                        <% @counties.each do |county| %>
-                          total_in_county["<%= county.name %>"] = <%= county.count_worked_hours %>;
-                        <% end %>
-                      <% end %>
-                      
                   
                       $('#infoHead').append('<h3>Okres: ' + titleValue[count-1] + '</h3>');
-                      $('#infoHead').append('<h4>Spolu: ' + total_in_county[titleValue[count-1]] + '</h4>');
+                      $('#infoHead').append('<h4>Spolu: ' + '</h4>');
                   
                       for(var i=0;i<count-1;i++)
                       {
