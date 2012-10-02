@@ -12,6 +12,7 @@ class Map::PromisedHoursController < ApplicationController
   end
 
   def show
+    @counties = Refinery::Counties::County.all
     @question = Refinery::Questions::Question.find(params[:id])
     @map_data = :promised_hours
     @promised = true
