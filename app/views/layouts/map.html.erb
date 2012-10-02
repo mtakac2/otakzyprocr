@@ -187,7 +187,8 @@
                                     if(j==(a-1))
                                     {
                                         for(var l=0;l<j;l++)
-                                        {                                               
+                                        {   
+                                            
                                             sum += qData[l][0];
                                             sum = parseFloat(sum);
                                         } 
@@ -264,7 +265,7 @@
                        }
                        else
                        {
-                        qLegend[0]='<%= @question.title if @question %>';
+                        qLegend[0]='<%= @question.title.strip if @question %>';
                         return qLegend;
                        }
                     })
