@@ -39,7 +39,7 @@ module Map::MapHelper
               question_data += "q#{question_counter}:[#{county.percentage_of_worked_hours_for(question.id)}],"
               question_total = 5000 if county.percentage_of_worked_hours_for(question.id) > 0
           end
-                                      
+          question_counter += 1                          
         end
       end
 
