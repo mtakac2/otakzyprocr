@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
       else
         @total = @citizens_question.hours * 5
       end
-      Payment.create(hours: @citizens_question.hours, total: total)
+      Payment.create(hours: @citizens_question.hours, total: @total)
       @status = 'Vaše platba proběhla úspěšne. Doklad o platbě byl zaslán na Váš email. Pro více detailů se múžete přihlásit do svého
         paypal účtu: www.paypal.com/us. Děkujeme.'
     else
