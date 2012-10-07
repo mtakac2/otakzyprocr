@@ -81,7 +81,7 @@ class Stat
     @citizens_count = 0
     Refinery::Counties::County.all.each do |county|      
       if county.citizens.count > @citizens_count
-        @county = { citizens_count: citizens_count, name: county.name }        
+        @county = { citizens_count: county.citizens.count, name: county.name }        
       end      
     end
     if !@county.nil?

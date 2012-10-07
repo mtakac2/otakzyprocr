@@ -18,7 +18,7 @@ class CitizensQuestion < ActiveRecord::Base
   belongs_to :citizen, :class_name => 'Refinery::Citizens::Citizen'
   belongs_to :question, :class_name => 'Refinery::Questions::Question'
 
-  validate :format_of_promised_hours, :allowed_time_before_elections
+  validate :format_of_promised_hours, :allowed_time_before_elections, on: :create
   # validate :no_more_promised_hours, on: :update
   validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }, on: :create
 
@@ -52,7 +52,7 @@ class CitizensQuestion < ActiveRecord::Base
       end
     end
 
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=otazky_1347886840_biz@gmail.com&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.cz/payments/paypal/"
+    "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ceskaprezidentka@seznam.cz&item_name=#{values[:item_name]}&amount=#{values[:amount]}&quantity=#{values[:item_quantity]}&currency_code=CZK&return_url=http://otazkyprocr.cz/payments/paypal/"
   end
 
   def format_of_promised_hours    

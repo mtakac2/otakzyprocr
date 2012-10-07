@@ -67,17 +67,21 @@ class CitizensQuestionsController < ApplicationController
     @to_citizens_question = CitizensQuestion.new(citizen_id: params[:citizen_id], question_id: params[:citizens_question][:question_id],
       hours: params[:citizens_question][:hours])
 
+
     from_question_hours = @from_citizens_question.hours - @to_citizens_question.hours    
     
     if @from_citizens_question.update_attributes(hours: from_question_hours) &&
       @to_citizens_question.save
       if @from_citizens_question.hours == 0
+        @from_citizens_question.delete
         TeamExit.create(question_id: @from_citizens_question.question_id, citizen_id: @from_citizens_question.citizen_id)
       end
       redirect_to citizen_path(@to_citizens_question.citizen_id)
     else
       redirect_to citizen_path(@to_citizens_question.citizen_id)
     end
+
+
   end
 
   def payment

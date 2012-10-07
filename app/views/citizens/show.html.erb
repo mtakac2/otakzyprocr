@@ -82,7 +82,7 @@
 				<% end %>
 			</article>
 
-			<% unless question.last || @citizens.questions.count == 1 %>
+			<% unless @questions.last == question || @citizen.questions.count == 1 %>
 				<hr>
 			<% end %>
 		<% end %>	

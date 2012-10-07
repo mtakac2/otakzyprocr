@@ -12,7 +12,7 @@ class PasswordResetsController < ApplicationController
         CitizensMailer.password_reset(user).deliver
       end
     end    
-    redirect_to '/', flash: { message: "Na Váš email byly zaslány instrukce pro změnu hesla." }
+    redirect_to '/', flash: { message: "Na Váš email byli zaslány instrukce pro změnu hesla." }
   end
 
   def edit

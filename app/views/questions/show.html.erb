@@ -6,4 +6,16 @@
   </section>
 
   <%= link_to 'Řešit otázku', "/solve-question/#{@question.id}" %>
+
+  <br>
+  <br>
+
+  <aside id="tasks">
+    <h3>Úkoly</h3>
+    <ul>
+      <% @question.tasks.each do |task| %>
+        <li><%= task.content %></li>
+      <% end %>
+    </ul>
+  </aside>
 </article>
