@@ -113,7 +113,7 @@ module Refinery
       end      
 
       def is_team_manager_for?(question_id)
-        citizens_question = CitizensQuestion.where("question_id = #{question_id}").order('hours DESC').first
+        citizens_question = CitizensQuestion.where("question_id = #{question_id} AND teamleader = 1").order('hours DESC').first
         return true if self.id == citizens_question.citizen_id
       end   
 

@@ -81,6 +81,10 @@
 					</ul>
 				<% end %>
 			</article>
+
+			<% unless question.last || @citizens.questions.count == 1 %>
+				<hr>
+			<% end %>
 		<% end %>	
 	</section>
 </section>  
