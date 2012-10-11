@@ -5,7 +5,7 @@ class CitizensController < ApplicationController
   before_filter :redirect_logged_in_user, only: :new
 
   def show     
-    @citizen = Refinery::Citizens::Citizen.find(params[:id])    
+    @citizen = Refinery::Citizens::Citizen.find(params[:id])
   end
 
   def new        

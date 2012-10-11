@@ -125,6 +125,10 @@ module Refinery
       def get_most_hours_count_for(question_id)
         citizens_question = CitizensQuestion.where("question_id = #{question_id}").order('hours DESC').first.hours
       end
+
+      def get_partner_for(question_id)
+        CitizensQuestion.where("question_id = #{question_id} AND citizen_id = #{self.id}").first.partner
+      end
     end
   end
 end

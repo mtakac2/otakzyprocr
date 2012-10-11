@@ -17,10 +17,21 @@ class CitizensQuestion < ActiveRecord::Base
   attr_accessible :citizen_id, :hours, :hours_done, :question_id, :teamleader
   belongs_to :citizen, :class_name => 'Refinery::Citizens::Citizen'
   belongs_to :question, :class_name => 'Refinery::Questions::Question'
+  belongs_to :partner, :class_name => 'Refinery::Citizens::Citizen'
 
   validate :format_of_promised_hours, :allowed_time_before_elections, on: :create
   # validate :no_more_promised_hours, on: :update
   validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 200, message: 'zadejte prosím číslo v rozmezí 1 - 200' }, on: :create
+
+  before_save(on: :create) do
+    citizens_question = CitizensQuestion.where('question_id = ?', self.question_id).shuffle
+    citizen = Refinery::Citizens::Citizen.find(citizens_question.first.citizen_id)
+    if citizens_question.first.citizen_id == citizen.id
+      citizens_question = citizens_question.last
+      citizen = Refinery::Citizens::Citizen.find(citizens_question.citizen_id)
+    end
+    self.partner = citizen
+  end
 
   def paypal_url
     values = {
