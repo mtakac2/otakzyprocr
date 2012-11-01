@@ -108,7 +108,7 @@
 				<th>Adepti na získání odměny z fondu</th>
 				<% if !@stats.adepts_for_reward.nil? %>
 					<% adepts = @stats.adepts_for_reward %>
-					<td><%= adepts[:citizen].email %> | <%= adepts[:hours] %> hodin</td>
+					<td><%= adepts[:citizen].email %> | <%= adepts[:hours] %> hodin(a)</td>
 				<% else %>
 					<td> - </td>
 				<% end %>
