@@ -2,7 +2,7 @@
   <% if @citizen.errors.any? %>
     <div class="error_messages">
       <div class="alert alert-error">
-        <strong>Formulář byl vyplněn chybně. Opravte prosím následujíci chyby:</strong>
+        <strong>Formulář byl vyplněn chybně. Opravte prosím následující chyby:</strong>
       </div>      
     </div>
   <% end %>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :lastname, 'Přijmení' %>
+      <%= f.label :lastname, 'Příjmení' %>
       <%= f.text_field :lastname %>
       <span class="fieldWithErrors"><%= @citizen.errors[:lastname].first %></span>
     </div>
