@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
     @question.subject_id = @subject.id
 
     if @question.save
-      redirect_to keeper_path(@keeper), :notice => 'Otazka pridana'
+      redirect_to keeper_path(@keeper), :notice => 'Otázka byla přidána'
     else
       render 'new'
     end
