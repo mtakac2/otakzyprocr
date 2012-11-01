@@ -19,7 +19,7 @@ class KeepersController < ApplicationController
     @keeper = Refinery::Keepers::Keeper.find(params[:id])
 
     if @keeper.update_attributes(params[:keeper])
-      redirect_to main_app.keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne upraven.' }
+      redirect_to main_app.keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšně upraven.' }
     else
       render 'edit'
     end
@@ -37,7 +37,7 @@ class KeepersController < ApplicationController
     if @keeper.save
       session[:user_id] = @keeper.id
       session[:user_type] = @keeper.class.name
-      redirect_to main_app.edit_keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšne aktivován. Prosím skontrolujte / doplnte Vaše údaje.' }
+      redirect_to main_app.edit_keeper_path(@keeper), :flash => { :success => 'Váš účet byl úspěšně aktivován. Prosím zkontrolujte/doplňte Vaše údaje.' }
     end    
   end
 end
