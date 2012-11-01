@@ -23,16 +23,16 @@ class SessionsController < ApplicationController
         redirect_to '/', :notice => 'Váš účet nebyl aktivován.'
       end        
     else
-      flash.now[:error] = "Zadali ste nesprávný email nebo heslo. Nemáte ještě 
-        svůj účet? <a href=\"#{main_app.new_citizen_path}\">Zaregistrujte se</a>. Nebo ste jen <a href=\"#\">
-        zapomneli své heslo</a>?".html_safe
+      flash.now[:error] = "Zadal(a) jste nesprávný email nebo heslo. Nemáte ještě 
+        svůj účet? <a href=\"#{main_app.new_citizen_path}\">Zaregistrujte se</a>. Nebo jste jen <a href=\"#\">
+        zapomněl(a) své heslo</a>?".html_safe
       render 'new'
     end
   end
 
   def destroy
     session[:user_id] = session[:user_type] = nil
-    redirect_to '/', :notice => 'Vaše odhlášení proběhlo úspěšne.'
+    redirect_to '/', :notice => 'Vaše odhlášení proběhlo úspěšně.'
   end
 
   private
