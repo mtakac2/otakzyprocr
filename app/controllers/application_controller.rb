@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
     def block_citizen_without_question
       if session[:user_type] == 'Refinery::Citizens::Citizen' && current_user.questions.empty?
-        redirect_to main_app.questions_path, :notice => 'Vyberte otazku!!!'
+        redirect_to main_app.questions_path, :notice => 'Vyberte otázku!!!'
       end
     end
 
