@@ -15,7 +15,7 @@ class PoliticiansController < ApplicationController
     @politician = @keeper.subjects.find(params[:id])
 
     if @politician.update_attributes(params[:politician])
-      redirect_to main_app.keeper_path(@keeper), flash: { notice: 'Údaje politika byli úspěšne upraveny.'}
+      redirect_to main_app.keeper_path(@keeper), flash: { notice: 'Údaje politika byly úspěšně upraveny.'}
     else
       render 'edit'
     end
