@@ -15,7 +15,7 @@ $(document).ready(function() {
       mousewheel   : true
     },
     auto  : {
-      pauseDuration : 60000
+      pauseDuration : 20000
     }
   });
 
