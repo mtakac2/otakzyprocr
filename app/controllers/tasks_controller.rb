@@ -21,6 +21,6 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to main_app.citizen_path(params[:citizen_id]), flash: { success: 'Úkol byl odstráněn.' }
+    redirect_to main_app.citizen_path(params[:citizen_id]), flash: { success: 'Úkol byl smazán.' }
   end
 end

@@ -76,7 +76,7 @@
 					<% question.tasks.each do |task| %>
 						<li>
 							<%= task.content %>
-							<%= link_to('Odstránit', [@citizen, question, task], method: :delete, confirm: 'Jste si jistý(á)?') if @citizen.is_team_manager_for?(question.id) %>
+							<%= link_to('Odstranit', [@citizen, question, task], method: :delete, confirm: 'Jste si jistý(á)?') if @citizen.is_team_manager_for?(question.id) %>
 						</li>
 					<% end %>
 					</ul>

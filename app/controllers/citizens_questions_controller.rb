@@ -31,7 +31,7 @@ class CitizensQuestionsController < ApplicationController
 
 """
     if @citizens_question.save
-      redirect_to main_app.citizen_path(current_user.id), notice: 'Otazka pridana' 
+      redirect_to main_app.citizen_path(current_user.id), notice: 'Otázka byla přidána do Vašeho účtu' 
     else
       render 'new'
     end
@@ -40,17 +40,17 @@ class CitizensQuestionsController < ApplicationController
 
   def edit    
     @citizens_question = CitizensQuestion.find(params[:id])
-    redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Pro přidáni hodin musíte vyčerpat přislíbené.'
+    redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Pro přidání hodin musíte nejprve vyčerpat hodiny přislíbené.'
   end
 
   def update
     @citizens_question = CitizensQuestion.find(params[:id])
-    redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Pro přidáni hodin musíte vyčerpat přislíbené.'
+    redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Pro přidání hodin musíte nejprve vyčerpat hodiny přislíbené.'
     
     params[:citizens_question][:hours] = params[:citizens_question][:hours].to_i + @citizens_question.hours
 
     if @citizens_question.update_attributes(params[:citizens_question])
-      redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Počet hodin upraven.' 
+      redirect_to citizen_path(@citizens_question.citizen_id), notice: 'Počet hodin byl upraven.' 
     else
       render 'edit'
     end

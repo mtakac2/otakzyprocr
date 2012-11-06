@@ -66,7 +66,7 @@ class CitizensController < ApplicationController
     @citizen.next_step
 
     if @citizen.update_attributes(params[:citizen])
-      redirect_to main_app.citizen_path(@citizen), :flash => { :success => 'Váš účet byl úspěšne upraven.' }
+      redirect_to main_app.citizen_path(@citizen), :flash => { :success => 'Váš účet byl úspěšně upraven.' }
     else
       render 'edit'
     end
@@ -87,9 +87,9 @@ class CitizensController < ApplicationController
       if session[:return_url]
           return_url = session[:return_url]
           session[:return_url] = nil
-          redirect_to return_url, :flash => { :success => 'Váš účet byl úspěšne aktivován.' }
+          redirect_to return_url, :flash => { :success => 'Váš účet byl úspěšně aktivován.' }
       else
-        redirect_to questions_path, :flash => { :success => 'Váš účet byl úspěšne aktivován. Vyberte si prosím otázku, na které budete pracovat.' }
+        redirect_to questions_path, :flash => { :success => 'Váš účet byl úspěšně aktivován. Vyberte si prosím otázku, na které budete pracovat.' }
       end
     end    
   end
